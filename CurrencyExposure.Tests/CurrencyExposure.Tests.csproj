@@ -33,6 +33,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="System" />
@@ -40,6 +44,7 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.Web.Extensions" />
@@ -93,6 +98,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BlogTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -102,6 +108,14 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CurrencyExposure.Model\CurrencyExposure.Model.csproj">
+      <Project>{6a864047-7b04-4a51-b373-36cecfdf0bcc}</Project>
+      <Name>CurrencyExposure.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CurrencyExposure.Repository\CurrencyExposure.Repository.csproj">
+      <Project>{ba961001-ad54-4844-8e94-19370cf988aa}</Project>
+      <Name>CurrencyExposure.Repository</Name>
+    </ProjectReference>
     <ProjectReference Include="..\CurrencyExposure\CurrencyExposure.csproj">
       <Project>{B782EE04-26B3-42F5-9C26-AAD20B89848D}</Project>
       <Name>CurrencyExposure</Name>

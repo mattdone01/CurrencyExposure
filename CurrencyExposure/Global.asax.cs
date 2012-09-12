@@ -6,6 +6,8 @@ using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using CurrencyExposure.Helpers;
+using CurrencyExposure.Repository;
 
 namespace CurrencyExposure
 {
@@ -22,6 +24,11 @@ namespace CurrencyExposure
 			FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
 			RouteConfig.RegisterRoutes(RouteTable.Routes);
 			BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+			//Custom dependency resolver
+			var unityContainer = ModelContainer.Instance;
+			//unityContainer.RegisterControllers(); No longer needed due to package update
+			DependencyResolver.SetResolver(new UnityDependencyResolver(unityContainer));
 		}
 	}
 }

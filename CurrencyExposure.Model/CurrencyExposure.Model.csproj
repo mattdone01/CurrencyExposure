@@ -44,6 +44,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Blog.cs" />
+    <Compile Include="BlogAuthor.cs" />
+    <Compile Include="BlogCategory.cs" />
+    <Compile Include="BlogComment.cs" />
+    <Compile Include="BlogSocialLink.cs" />
     <Compile Include="OperationalStatus.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
