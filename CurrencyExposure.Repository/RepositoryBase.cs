@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data.Entity;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Linq.Expressions;
 using CurrencyExposure.Model;
@@ -7,7 +8,7 @@ using CurrencyExposure.Model;
 namespace CurrencyExposure.Repository
 {
 	public class RepositoryBase<C> : IDisposable
-		where C : DbContext, new()
+	   where C : DbContext, IDisposedTracker, new()
 	{
 		private C _dataContext;
 
@@ -15,10 +16,10 @@ namespace CurrencyExposure.Repository
 		{
 			get
 			{
-				if (_dataContext == null)
+				if (_dataContext == null || _dataContext.IsDisposed)
 				{
 					_dataContext = new C();
-					this.AllowSerialization = true;
+					AllowSerialization = true;
 					//Disable ProxyCreationDisabled to prevent the "In order to serialize the parameter, add the type to the known types collection for the operation using ServiceKnownTypeAttribute" error
 				}
 				return _dataContext;
@@ -156,6 +157,25 @@ namespace CurrencyExposure.Repository
 			}
 			return opStatus;
 		}
+
+		//public virtual OperationStatus Delete<T>(T entity) where T : class
+		//{
+		//    OperationStatus opStatus = new OperationStatus { Status = true };
+
+		//    try
+		//    {
+		//        ObjectSet<T> objectSet = DataContext.CreateObjectSet<T>();
+		//        objectSet.Attach(entity);
+		//        objectSet.DeleteObject(entity);
+		//        opStatus.Status = DataContext.SaveChanges() > 0;
+		//    }
+		//    catch (Exception exp)
+		//    {
+		//        return OperationStatus.CreateFromException("Error deleting " + typeof(T), exp);
+		//    }
+
+		//    return opStatus;
+		//}
 
 		public void Dispose()
 		{

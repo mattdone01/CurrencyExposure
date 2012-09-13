@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Http;
@@ -25,6 +26,7 @@ namespace CurrencyExposure
 			RouteConfig.RegisterRoutes(RouteTable.Routes);
 			BundleConfig.RegisterBundles(BundleTable.Bundles);
 
+			Database.SetInitializer<CurrencyExposureContext>(null);
 			//Custom dependency resolver
 			var unityContainer = ModelContainer.Instance;
 			//unityContainer.RegisterControllers(); No longer needed due to package update

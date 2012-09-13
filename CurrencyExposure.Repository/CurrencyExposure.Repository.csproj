@@ -56,6 +56,7 @@
   <ItemGroup>
     <Compile Include="BlogRepository.cs" />
     <Compile Include="CurrencyExposureContext.cs" />
+    <Compile Include="IBlogRepository.cs" />
     <Compile Include="Migrations\201209121058598_InitialCreate.cs" />
     <Compile Include="Migrations\201209121058598_InitialCreate.Designer.cs">
       <DependentUpon>201209121058598_InitialCreate.cs</DependentUpon>

@@ -1,16 +1,50 @@
 ﻿<!DOCTYPE html>
-<html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+<!--<![endif]-->
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="description" content="">
+	<meta name="author" content="Dan Wahlin, Corey Schuman, Jarod Ferguson, John Papa">
+	<meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
-<body>
-    @RenderBody()
+	<body>
+		@RenderBody()
 
-    @Scripts.Render("~/bundles/jquery")
-    @RenderSection("scripts", required: false)
-</body>
+		@Scripts.Render("~/bundles/jquery")
+		@RenderSection("scripts", required: false)
+		<div class="footer_area">
+			<div class="footer">
+				<div class="footer-social">
+					<span id="twitter"><a href="https://twitter.com/CurrencyExposur" class="twitter-follow-button" data-show-count="false"
+						data-size="large" data-show-screen-name="false">Follow CurrencyExposur</a>
+					</span>
+					<span><a id="fcbk_share" href="http://www.facebook.com/pages/CurrencyExposurecom/430339047010625"
+						target="blank">
+						<img src="http://www.currencyexposure.com/wp-content/plugins/facebook-button-plugin/img/facebook-ico1.jpg"
+							alt="Fb-Button" /></a>
+					</span>
+				</div>
+				<div class="footer-middle">
+					<span id="footer-middle-mail"><a href="mailto:info@currencyexposure.com">info@currencyexposure.com</a><br />
+						<label>©2012 CurrencyExposure.com. All rights reserved. </label>
+					</span>
+				</div>
+				<div class="footer-rightlogo">
+					<fieldset>
+						<a href="http://www.currencyexposure.com" title="">
+							<img src="http://www.currencyexposure.com/wp-content/themes/currency/images/ftr_logo.jpg" alt="" /></a>
+					</fieldset>
+				</div>
+			</div>
+		</div>
+	</body>
+
 </html>

@@ -20,7 +20,7 @@ namespace CurrencyExposure.Repository
 		{
 			get
 			{
-				//_Instance.RegisterType<IAccountRepository, AccountRepository>(new HierarchicalLifetimeManager());
+				_instance.RegisterType<IBlogRepository, BlogRepository>(new HierarchicalLifetimeManager());
 				return _instance;
 			}
 		}

@@ -14,7 +14,10 @@ namespace CurrencyExposure.Repository
 
 		protected override void OnModelCreating(DbModelBuilder modelBuilder)
 		{
-
+			modelBuilder.Entity<BlogComment>()
+				.HasMany(page => page.ChildComments)
+				.WithRequired(child => child.ParentComment)
+				.HasForeignKey(child => child.ParentCommentId);
 		}
 
 		protected override void Dispose(bool disposing)

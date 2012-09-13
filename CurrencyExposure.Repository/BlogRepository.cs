@@ -7,7 +7,7 @@ using CurrencyExposure.Model;
 
 namespace CurrencyExposure.Repository
 {
-	public class BlogRepository : RepositoryBase<CurrencyExposureContext>
+	public class BlogRepository : RepositoryBase<CurrencyExposureContext>, IBlogRepository
 	{
 		public Blog GetBlog(int id)
 		{
@@ -15,8 +15,9 @@ namespace CurrencyExposure.Repository
 			{
 				return context.Blogs
 					.Include("BlogComments")
-					.Include("BlogSocialLinks")
-					.SingleOrDefault(ba => ba.Id == id);
+					.Include("BlogCategory")
+					.Include("BlogAuthor")
+					.SingleOrDefault(b => b.Id == id);
 			}
 		}
 	}
