@@ -12,12 +12,19 @@ namespace CurrencyExposure.Controllers
 	        _blogRepository = blogRepository;
         }
 
-	    public ActionResult GetBlog(string id)
-	    {
-		    int blogId = -1;
-		    int.TryParse(id, out blogId);
-			var blog = _blogRepository.GetBlog(blogId);
-			return Json(blog, JsonRequestBehavior.AllowGet);
-        }
+		public ActionResult GetBlog(int id = 0)
+		{
+			var blog = _blogRepository.GetBlog(id);
+			return View("Blog",blog);
+		}
+
+
+		//public ActionResult GetBlog(string id)
+		//{
+		//	int blogId = -1;
+		//	int.TryParse(id, out blogId);
+		//	var blog = _blogRepository.GetBlog(blogId);
+		//	return Json(blog, JsonRequestBehavior.AllowGet);
+		//}
     }
 }

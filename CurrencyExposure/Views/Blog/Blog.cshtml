@@ -1,13 +1,15 @@
-﻿@model IEnumerable<CurrencyExposure.Model.BlogSummaryDto>
+﻿@model CurrencyExposure.Model.Blog
 @{
-    ViewBag.Title = "Currency Exposure";
+    ViewBag.Title = "Blog";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+	string Article = Model.Article;
 }
 
 <script>
 	$(document).ready(function () {
 		$("#body").height($(document).height() - 200);
 		$("ul#navigation li").removeClass("selected");
-		$("#HomeTab").addClass("selected");
+		$("#BlogTab").addClass("selected");
 	});
 </script>
 
@@ -20,21 +22,18 @@
 
 <div id="home_rates" class="homePage-right-floats">
 	<h2>Live Cross Rates</h2>
-		<img id="img_crossrates" src="../../Content/Images/rates.png" alt="">
+	<img id="img_crossrates" src="../../Content/Images/rates.png" alt="">
 </div>
 
 <div id="home_twitter" class="homePage-right-floats">
 	<h2>Twitter Feed</h2>
 	<img id="img_twitterfeed" src="../../Content/Images/TwitterFeed.png" alt="">
 </div>
-
-<div id="home_ourvision">
-	<h2>Our Vision</h2>
-	<p>
-		Committed to delivering unbiased, objective information on currency markets for all business of all sizes with a focus on adding rigor and objectiveness to hedging decisions. 
-	</p>
+<div id="blog_blogarticle">
+	<h2>@Html.DisplayFor(model => model.Title)</h2>
+	<br />
+	<h3>@Html.DisplayFor(model => model.CreateDate) > @Html.DisplayFor(model => model.BlogAuthor.AuthorName) </h3>
+	<br />
+	@MvcHtmlString.Create(Article)
 </div>
-
-<h2>Recent Articles</h2>
-@Html.Partial("_BlogSummaryPartial", Model)
 

@@ -17,7 +17,7 @@ namespace CurrencyExposure.Repository
 		{
 			modelBuilder.Entity<BlogComment>()
 				.HasMany(page => page.ChildComments)
-				.WithRequired(child => child.ParentComment)
+				.WithOptional(child => child.ParentComment)
 				.HasForeignKey(child => child.ParentCommentId);
 		}
 

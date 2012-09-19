@@ -51,6 +51,7 @@
     <Compile Include="BlogCategory.cs" />
     <Compile Include="BlogComment.cs" />
     <Compile Include="BlogSocialLink.cs" />
+    <Compile Include="BlogSummaryDto.cs" />
     <Compile Include="OperationalStatus.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

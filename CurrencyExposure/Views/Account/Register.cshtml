@@ -3,6 +3,7 @@
     ViewBag.Title = "Register";
 }
 
+<div class="centerme logincontrol">
 <hgroup class="title">
     <h1>@ViewBag.Title.</h1>
     <h2>Create a new account.</h2>
@@ -35,7 +36,13 @@
         <input type="submit" value="Register" />
     </fieldset>
 }
+	</div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
+<script>
+	$(document).ready(function () {
+		$("#body").height($(document).height() - 200);
+	});
+</script>

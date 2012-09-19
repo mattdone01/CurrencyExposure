@@ -1,0 +1,16 @@
+﻿@model IEnumerable<CurrencyExposure.Model.BlogSummaryDto>
+@foreach(var summary in Model)
+{
+	string article = summary.Article;
+	<div class="home_blogSummary">
+		<h2>@summary.Title</h2>
+		<br />
+		<h3>@summary.CreateDate > @summary.Author</h3>
+		<div class="home_blogSummary_text">
+			@MvcHtmlString.Create(article)
+		</div>
+		<div class="blog_button_div">
+			@Html.ActionLink("Read More", "GetBlog", "Blog", new {Id = @summary.Id}, new {Class = "blogbutton"})
+		</div>
+	</div>
+}

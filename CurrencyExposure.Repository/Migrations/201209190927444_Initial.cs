@@ -3,7 +3,7 @@ namespace CurrencyExposure.Repository.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class InitialCreate : DbMigration
+    public partial class Initial : DbMigration
     {
         public override void Up()
         {
@@ -15,6 +15,7 @@ namespace CurrencyExposure.Repository.Migrations
                         Title = c.String(),
                         Article = c.String(),
                         Tag = c.String(),
+                        ExternalUrl = c.String(),
                         CreateDate = c.DateTime(nullable: false),
                         UpdateDate = c.DateTime(),
                         BlogCategory_Id = c.Int(),
@@ -80,6 +81,16 @@ namespace CurrencyExposure.Repository.Migrations
                 .ForeignKey("dbo.Blogs", t => t.Blog_Id)
                 .Index(t => t.Blog_Id);
             
+            CreateTable(
+                "dbo.UserProfile",
+                c => new
+                    {
+                        UserId = c.Int(nullable: false, identity: true),
+                        UserName = c.String(),
+                        DisplayName = c.String(),
+                    })
+                .PrimaryKey(t => t.UserId);
+            
         }
         
         public override void Down()
@@ -94,6 +105,7 @@ namespace CurrencyExposure.Repository.Migrations
             DropForeignKey("dbo.BlogComments", "Blog_Id", "dbo.Blogs");
             DropForeignKey("dbo.Blogs", "BlogAuthor_Id", "dbo.BlogAuthors");
             DropForeignKey("dbo.Blogs", "BlogCategory_Id", "dbo.BlogCategories");
+            DropTable("dbo.UserProfile");
             DropTable("dbo.BlogSocialLinks");
             DropTable("dbo.BlogComments");
             DropTable("dbo.BlogAuthors");

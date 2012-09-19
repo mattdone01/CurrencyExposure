@@ -144,9 +144,17 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\fonts\avenier\avenir-book_0-demo.html" />
+    <Content Include="Content\fonts\avenier\avenir-book_0.svg" />
+    <Content Include="Content\fonts\avenier\generator_config.txt" />
+    <Content Include="Content\fonts\avenier\stylesheet.css" />
+    <Content Include="Content\Images\CurrencyTool.png" />
+    <Content Include="Content\Images\ftr_logo.jpg" />
     <Content Include="Content\Images\mid_bg.png" />
+    <Content Include="Content\Images\rates.png" />
     <Content Include="Content\Images\slantjpeg.jpg" />
     <Content Include="Content\Images\slantlogo.png" />
+    <Content Include="Content\Images\TwitterFeed.png" />
     <Content Include="Content\kendo\Black\editor.png" />
     <Content Include="Content\kendo\Black\imagebrowser.png" />
     <Content Include="Content\kendo\Black\loading-image.gif" />
@@ -252,6 +260,9 @@
     <Content Include="Content\kendo\kendo.metro.less" />
     <Content Include="Content\kendo\kendo.silver.less" />
     <Content Include="Content\kendo\template.less" />
+    <Content Include="Content\fonts\avenier\avenir-book_0.eot" />
+    <Content Include="Content\fonts\avenier\avenir-book_0.ttf" />
+    <Content Include="Content\fonts\avenier\avenir-book_0.woff" />
     <None Include="Scripts\libs\jquery-1.7.1.intellisense.js" />
     <Content Include="Scripts\dataservices.js" />
     <Content Include="Scripts\libs\jquery-1.7.1.js" />
@@ -296,7 +307,8 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Links.cshtml" />
-    <Content Include="Views\Home\Blog.cshtml" />
+    <Content Include="Views\Blog\Blog.cshtml" />
+    <Content Include="Views\Home\_BlogSummaryPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

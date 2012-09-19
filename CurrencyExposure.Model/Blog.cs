@@ -19,6 +19,7 @@ namespace CurrencyExposure.Model
 		public string Title { get; set; }
 		public string Article { get; set; }
 		public string Tag { get; set; }
+		public string ExternalUrl { get; set; }
 		public DateTime CreateDate { get; set; }
 		public DateTime? UpdateDate { get; set; }
 

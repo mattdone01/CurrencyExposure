@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using CurrencyExposure.Repository;
 using CurrencyExposure.Repository.Migrations;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Shouldly;
 
 namespace CurrencyExposure.Tests
 {
@@ -46,5 +47,14 @@ namespace CurrencyExposure.Tests
 			Assert.AreEqual("This is a test Comment 2", blog.BlogComments.First().Comment);
 			Assert.AreEqual("This is a child reply to test Comment 2", blog.BlogComments.First().ChildComments.First().Comment);
 		}
+
+		[TestMethod]
+		public void GetBlogSummaryCollection()
+		{
+			var br = new BlogRepository();
+			var blogSummaries = br.GetBlogSummaries();
+			blogSummaries.Count.ShouldBe(4);
+		}
+
 	}
 }

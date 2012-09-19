@@ -40,6 +40,11 @@ header, footer, nav, section {
     float: right;
 }
 
+.float-rightClear {
+    float: right;
+    clear: both;
+}
+
 
 
 /* main layout
@@ -68,20 +73,14 @@ header, footer, nav, section {
     }
 header {
         height: 100px;
-    width: 1100px;
+        width: 1100px;
+        margin: 0 auto;
 }
 
 header .content-wrapper {
     padding-top: 20px; 
 }
 
-footer {
-    background-color: #e2e2e2;
-    font-size: .8em;
-    height: 60px;
-    width: 1100px;
-    display:inline-block;
-}
 
 /* site title
 ----------------------------------------------------------*/
@@ -99,9 +98,118 @@ footer {
     text-decoration: none;
 }
 
+/* page titles */
+hgroup.title {
+    margin-bottom: 10px;
+}
+
+hgroup.title h1, hgroup.title h2 {
+    display: inline;
+}
+
+hgroup.title h2 {
+    font-weight: normal;
+    margin-left: 3px;
+}
+
+/* forms */
+fieldset {
+    border: none;
+    margin: 0;
+    padding: 0;
+}
+
+    fieldset legend {
+        display: none;
+    }
+
+    fieldset ol {
+        padding: 0;
+        list-style: none;
+    }
+
+        fieldset ol li {
+            padding-bottom: 5px;
+        }
+
+label {
+    display: block;
+    font-size: 1.2em;
+    font-weight: 600;
+}
+
+label.checkbox {
+    display: inline;
+}
+
+input, textarea {
+    border: 1px solid #e2e2e2;
+    background: #fff;
+    color: #333;
+    font-size: 1.2em;
+    margin: 5px 0 6px 0;
+    padding: 5px;
+    width: 300px;
+}
+
+textarea {
+    font-family: inherit;
+    width: 500px;
+}
+
+    input:focus, textarea:focus {
+        border: 1px solid #7ac0da;
+    }
+
+    input[type="checkbox"] {
+        background: transparent;
+        border: inherit;
+        width: auto;
+    }
+
+    input[type="submit"],
+    input[type="button"],
+    button {
+        background-color: #d3dce0;
+        border: 1px solid #787878;
+        cursor: pointer;
+        font-size: 1.2em;
+        font-weight: 600;
+        padding: 7px;
+        margin-right: 8px;
+        width: auto;
+    }
+
+    td input[type="submit"],
+    td input[type="button"],
+    td button {
+        font-size: 1em;
+        padding: 4px;
+        margin-right: 4px;
+    }
+
+
 
 /* login
 ----------------------------------------------------------*/
+.centerme {
+    width: 40%;
+    margin: 0px auto;
+}
+
+.logincontrol {
+    margin-top: 40px;
+    padding-top: 10px;
+    border:1px solid #3096D2;
+    border-radius: 6px;
+    -webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+}
+
+.logincontrol hgroup, section, fieldset {
+    padding-left: 20px;
+}
+
 #login {
     display: block;
     font-size: .85em;
@@ -192,10 +300,9 @@ ul#navigation li a:link, ul#navigation li a:visited {
 	width: 100px;
 	height: 40px;
 	line-height: 36px;
-	font-family: Arial, Helvetica, sans-serif;
 	text-transform: uppercase;
 	text-decoration: none;
-	font-size: 13px;
+	font-size: 12px;
 	font-weight: bold;
 	color: #fff;
 	letter-spacing: 1px;
@@ -208,7 +315,7 @@ ul#navigation li a:link, ul#navigation li a:visited {
 }
 
 ul#navigation li a:hover {
-	background-color: #5a87dd;
+    background-color: midnightblue;
 }
 
 ul#navigation li.selected a:link, ul#navigation li.selected a:visited {
@@ -246,4 +353,140 @@ ul#navigation li.selected a:link, ul#navigation li.selected a:visited {
 
 .validation-summary-valid {
     display: none;
+}
+
+/* Home Page*/
+.homePage-right-floats {
+    float: right;
+    clear: both;
+    width: 280px;
+    height: 250px;
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+.homePage-right-floats h2{
+    display: inline;
+}
+
+.homePage-right-floats img {
+    width: 250px;
+    height: 200px;
+    padding-top: 5px;
+}
+
+#home_toolad {
+    margin-top: 20px;
+}
+
+#home_ourvision {
+    width: 750px;
+    background-color: lightgray;
+    border-radius: 6px;
+    -webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+    padding-left: 5px;
+}
+
+.home_blogSummary {
+    width: 750px;
+    border:1px solid #3096D2;
+    border-radius: 6px;
+    -webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+    margin-bottom: 5px;
+    padding-left: 5px;
+}
+
+.home_blogSummary h2, h3 {
+    display: inline;
+    font-size: 1.2em;
+}
+
+.home_blogSummary h3 {
+    font-size: 11px;
+}
+
+.home_blogSummary_text {
+    height: 94px;
+     overflow:hidden;
+}
+
+.blog_button_div {
+    padding-bottom: 5px;
+    padding-right: 10px;
+    text-align: right;
+    margin-top: -20px;
+}
+
+#blog_blogarticle {
+    text-align: justify;
+    width: 750px;
+}
+
+/*Blog Button*/
+.blogbutton {
+	-moz-box-shadow:inset 0px 1px 0px 0px #bbdaf7;
+	-webkit-box-shadow:inset 0px 1px 0px 0px #bbdaf7;
+	box-shadow:inset 0px 1px 0px 0px #bbdaf7;
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #79bbff), color-stop(1, #378de5) );
+	background:-moz-linear-gradient( center top, #79bbff 5%, #378de5 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#79bbff', endColorstr='#378de5');
+	background-color:#79bbff;
+	-moz-border-radius:6px;
+	-webkit-border-radius:6px;
+	border-radius:6px;
+	border:1px solid #84bbf3;
+	display:inline-block;
+	color:#ffffff;
+	font-family:arial;
+	font-size:14px;
+	font-weight:bold;
+	padding:6px 21px;
+	text-decoration:none;
+	text-shadow:1px 1px 0px #528ecc;
+}.blogbutton:hover {
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #378de5), color-stop(1, #79bbff) );
+	background:-moz-linear-gradient( center top, #378de5 5%, #79bbff 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#378de5', endColorstr='#79bbff');
+	background-color:#378de5;
+}.blogbutton:active {
+	position:relative;
+	top:1px;
+}
+
+ #about_us {
+     text-align: justify;
+     width: 70%;
+     margin: 0 auto;
+ }
+
+ /*---------------------------------------Footer area------------------------------------*/
+footer {
+	font-size: .8em;
+    width:100%;
+	overflow:hidden;
+	background:#3195D1;
+	padding:20px 0;
+    margin:0 auto;
+    padding-top: 10px;
+    width: 1100px;
+    height: 20px;
+}
+
+.footer-rightlogo {
+	width:129px;
+	float:right;
+    padding-right: 15px;
+}
+
+.footer-middle
+{
+    float:left;
+    padding-left: 15px;
+}
+.footer-middle label{
+	font-size:11px;
+	color:#fff;
+	line-height:21px;
 }

@@ -3,12 +3,12 @@
 @{
     ViewBag.Title = "Log in";
 }
-
+<div class="centerme logincontrol">
 <hgroup class="title">
     <h1>@ViewBag.Title.</h1>
 </hgroup>
 
-<section id="loginForm">
+<section id="loginForm" >
 <h2>Use a local account to log in.</h2>
 @using (Html.BeginForm(new { ReturnUrl = ViewBag.ReturnUrl })) {
     @Html.AntiForgeryToken()
@@ -39,7 +39,13 @@
     </p>
 }
 </section>
-
+</div>
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
+
+<script>
+	$(document).ready(function () {
+		$("#body").height($(document).height() - 200);
+	});
+</script>

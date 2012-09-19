@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,11 +14,41 @@ namespace CurrencyExposure.Repository
 		{
 			using (var context = DataContext)
 			{
+				if (id > 0)
+				{
+					return context.Blogs
+						.Include("BlogComments")
+						.Include("BlogCategory")
+						.Include("BlogAuthor")
+						.SingleOrDefault(b => b.Id == id);
+				}
+
 				return context.Blogs
 					.Include("BlogComments")
 					.Include("BlogCategory")
 					.Include("BlogAuthor")
-					.SingleOrDefault(b => b.Id == id);
+					.Take(1)
+					.OrderByDescending(c => c.CreateDate)
+					.SingleOrDefault();
+			}
+		}
+
+		public List<BlogSummaryDto> GetBlogSummaries(int count = 4)
+		{
+			using (DataContext)
+			{
+				return DataContext.Blogs
+					.Include("BlogAuthor")
+					.OrderByDescending(s =>s.CreateDate)
+					.Take(count)
+					.Select(s => new BlogSummaryDto
+						             {
+							             Id = s.Id,
+							             Title = s.Title,
+							             Article = s.Article,
+							             Author = s.BlogAuthor.AuthorName,
+							             CreateDate = s.CreateDate
+						             }).ToList();
 			}
 		}
 

@@ -1,3 +1,4 @@
+using System.Threading;
 using CurrencyExposure.Model;
 using System;
 using System.Data.Entity;
@@ -78,9 +79,37 @@ namespace CurrencyExposure.Repository.Migrations
 					            Tag = "Payments, Risk, Exposure"
 				            };
 
-			context.Blogs.AddOrUpdate(p => p.Title, blog1, blog2);
-			                          
+			var blog3 = new Blog
+			{
+				Title = "This is the third blog post",
+				Article = "This is some data",
+				BlogAuthor = mtAuthor,
+				BlogCategory = myProductCategory,
+				Tag = "Payments, Risk, Exposure"
+			};
 
+
+			var blog4 = new Blog
+			{
+				Title = "This is the forth blog post",
+				Article = "This is some data",
+				BlogAuthor = mtAuthor,
+				BlogCategory = myProductCategory,
+				Tag = "Payments, Risk, Exposure"
+			};
+
+			var blog5 = new Blog
+			{
+				Title = "This is the fith blog post",
+				Article = "This is some data",
+				BlogAuthor = mtAuthor,
+				BlogCategory = myProductCategory,
+				Tag = "Payments, Risk, Exposure"
+			};
+
+			context.Blogs.AddOrUpdate(p => p.Title, blog1, blog2, blog3);
+
+			context.Blogs.AddOrUpdate(p => p.Title, blog4, blog5);
 
 			//Add Blog Comments
 			var blogComment1 = new BlogComment

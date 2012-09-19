@@ -1,17 +1,13 @@
-﻿<script id="AccountDetailsTemplate_Medium" type="text/x-jquery-tmpl">
-	<div class="content">
-		<header>
-			<span>ACCOUNT DETAILS - ${AccountTitle}</span>
-		</header>
-		<section style="padding-top: 10px;">
-			{{tmpl '#AccountDetailsTemplate_Base'}}
-		</section>
-	</div>
-	<div class="stickyfooter" style="background-color: #fbcccc;">
-		<div class="Left Bold">Total:</div>
-		<div class="Right">
-			<span class="Currency">${Total}</span>
+﻿<script id="BlogSummaryTemplate" type="text/x-jquery-tmpl">
+	<div class="home_blogSummary">
+		<h2>${Title}</h2>
+		<br />
+		<h3>${CreateDate} > ${Author}</h3>
+		<div class="home_blogSummary_text">
+			${CreateDate}
 		</div>
-		<div class="Clear" />
+		<div class="blog_button_div">
+			<a href="/home/${Id}" class="blogbutton">my button</a>
+		</div>
 	</div>
 </script>
