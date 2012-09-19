@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using CurrencyExposure.Repository;
 
 namespace CurrencyExposure.Controllers
@@ -16,7 +12,7 @@ namespace CurrencyExposure.Controllers
 	        _blogRepository = blogRepository;
         }
 
-	    public ActionResult Index(string id)
+	    public ActionResult GetBlog(string id)
 	    {
 		    int blogId = -1;
 		    int.TryParse(id, out blogId);

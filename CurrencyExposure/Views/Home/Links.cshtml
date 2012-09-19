@@ -1,0 +1,14 @@
+﻿@{
+    ViewBag.Title = "Links";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script>
+	$(document).ready(function () {
+		$("#body").height($(document).height() - 230);
+		$("ul#navigation li").removeClass("selected");
+		$("#LinksTab").addClass("selected");
+	});
+</script>
+
+<h2>Links</h2>

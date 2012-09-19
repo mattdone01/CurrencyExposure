@@ -20,5 +20,19 @@ namespace CurrencyExposure.Repository
 					.SingleOrDefault(b => b.Id == id);
 			}
 		}
+
+		public OperationStatus SaveNewBlog(Blog blog)
+		{
+			DataContext.Entry(blog).State = System.Data.EntityState.Modified;
+			try
+			{
+				DataContext.SaveChanges();
+			}
+			catch (Exception ex)
+			{
+				return OperationStatus.CreateFromException("Failed to Save Blog.", ex);
+			}
+			return new OperationStatus { Status = true };
+		}
 	}
 }

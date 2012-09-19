@@ -19,7 +19,7 @@ namespace CurrencyExposure.Repository
 				if (_dataContext == null || _dataContext.IsDisposed)
 				{
 					_dataContext = new C();
-					AllowSerialization = true;
+					AllowSerialization =  true;
 					//Disable ProxyCreationDisabled to prevent the "In order to serialize the parameter, add the type to the known types collection for the operation using ServiceKnownTypeAttribute" error
 				}
 				return _dataContext;

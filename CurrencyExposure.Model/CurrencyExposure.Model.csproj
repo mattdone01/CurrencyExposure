@@ -45,6 +45,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AccountModel.cs" />
     <Compile Include="Blog.cs" />
     <Compile Include="BlogAuthor.cs" />
     <Compile Include="BlogCategory.cs" />
