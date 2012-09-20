@@ -7,6 +7,6 @@ namespace CurrencyExposure.Repository
 	public interface IBlogRepository
 	{
 		Blog GetBlog(int id);
-		List<BlogSummaryDto> GetBlogSummaries(int count = 4);
+		List<BlogSummaryDto> GetBlogSummaries(int count = 5);
 	}
 }

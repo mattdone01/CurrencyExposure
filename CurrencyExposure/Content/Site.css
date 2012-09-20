@@ -68,6 +68,8 @@
 	width:21%;			/* Width of right column content (column width minus padding on either side) */
 	left:85%;			/* Please make note of the brackets here:
 					(100% - left column width) plus (center column left and right padding) plus (left column left and right padding) plus (right column left padding) */
+    border-top: 1px black;
+    border-top-style: solid;
 }
 
 /* Header styles */
@@ -411,7 +413,7 @@ ul#navigation li.selected a:link, ul#navigation li.selected a:visited {
 }
 
 .home_blogSummary_text {
-    height: 94px;
+    height: 80px;
      overflow:hidden;
 }
 
@@ -470,5 +472,8 @@ footer {
 	float:left;
 	width:100%;
 	border-top:1px solid #000;
+    border-top: 1px black;
+    border-top-style: solid;
+    padding-top: 25px;
 }
 
