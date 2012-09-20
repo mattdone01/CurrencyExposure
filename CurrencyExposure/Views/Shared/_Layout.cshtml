@@ -14,45 +14,50 @@
 	@Scripts.Render("~/bundles/currencyexposure")
 </head>
 	<body>
-		<header>
-			<div class="content-wrapper">
-				<div class="logo">
-					<div class="logo"><a href="http://www.currencyexposure.com" title="">
-										  <img id="logoimage" src="../../Content/Images/slantlogo.png" alt="" height="100px"></a></div>
-				</div>
-				<div class="float-right">
-					<section id="login">
-						@Html.Partial("_LoginPartial")
-					</section>
-					<nav>
-						<ul id="navigation">
-							<li id="ContactTab">@Html.ActionLink("Contact", "Contact", "Home")</li>
-							<li id="AboutTab">@Html.ActionLink("About", "About", "Home")</li>
-							<li id="LinksTab">@Html.ActionLink("Links", "Links", "Home")</li>
-							<li id="BlogTab">@Html.ActionLink("Blog", "GetBlog", "Blog")</li>
-							<li id="HomeTab" class="selected">@Html.ActionLink("Home", "Index", "Home")</li>
-						</ul>
-					</nav>
+		<div id="myBody" class="colmask threecol">
+			<div class="colmid">
+				<div class="colleft">
+					<div id="main-contentdiv" class="col1">
+						<header>
+							<div class="logo">
+								<div class="logo">
+									<a href="http://www.currencyexposure.com" title="">
+										<img id="logoimage" src="../../Content/Images/slantlogo.png" alt="" height="100px"></a>
+								</div>
+							</div>
+							<div class="float-right">
+								<section id="login">
+									@Html.Partial("_LoginPartial")
+								</section>
+								<nav>
+									<ul id="navigation">
+										<li id="ContactTab">@Html.ActionLink("Contact", "Contact", "Home")</li>
+										<li id="AboutTab">@Html.ActionLink("About", "About", "Home")</li>
+										<li id="LinksTab">@Html.ActionLink("Links", "Links", "Home")</li>
+										<li id="BlogTab">@Html.ActionLink("Blog", "GetBlog", "Blog")</li>
+										<li id="HomeTab" class="selected">@Html.ActionLink("Home", "Index", "Home")</li>
+									</ul>
+								</nav>
+							</div>
+						</header>
+						<section>
+							@RenderBody()
+						</section>
+					</div>
+					<div class="col2">Col2</div>
+					<div class="col3">Col2</div>
 				</div>
 			</div>
-		</header>
-		<div id="MainSiteDiv">
-		<div id="body">
-			<section class="content-wrapper main-content">
-				@RenderBody()
-			</section>
-		</div>
 		</div>
 		<footer>
 			<div class="footer-middle">
-					<label>©2012 CurrencyExposure.com. All rights reserved. </label>
+				<label>©2012 CurrencyExposure.com. All rights reserved. </label>
 			</div>
 			<div class="footer-rightlogo">
-					<a href="http://www.currencyexposure.com" title="">
-						<img src="../../Content/Images/ftr_logo.jpg" alt="" /></a>
+				<a href="http://www.currencyexposure.com" title="">
+					<img src="../../Content/Images/ftr_logo.jpg" alt="" /></a>
 			</div>
-		</footer>	
+		</footer>
 		@RenderSection("scripts", required: false)
-
 	</body>
 </html>
