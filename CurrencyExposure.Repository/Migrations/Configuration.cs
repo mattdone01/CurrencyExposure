@@ -11,7 +11,7 @@ namespace CurrencyExposure.Repository.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
         }
 
 		protected override void Seed(CurrencyExposure.Repository.CurrencyExposureContext context)
