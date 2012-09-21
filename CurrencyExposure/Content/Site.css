@@ -1,89 +1,86 @@
-﻿body {
+﻿html {
+    background-color: #e2e2e2;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #fff;
+    font-size: .85em;
     font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;
-    margin:0;
-	padding:0;
-	border:0;	
-	width:100%;
-	background:#fff;
-	min-width:800px;	
-	font-size:90%;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+#MainSiteDiv {
+        margin: 0 auto;
+        width: 1060px;
+        text-align:left;
+		border-top: 1px black;
+        border-top-style: solid;
+}
+
+header, footer, nav, section {
+    display: block;
 }
 
 .logo {
     float: left;
 }
 
-/* column container */
-.colmask {
-	position:relative;	/* This fixes the IE7 overflow hidden bug */
-	clear:both;
-	float:left;
-	width:100%;			/* width of whole page */
-	overflow:hidden;		/* This chops off any overhanging divs */
-}
-/* common column settings */
-.colright,
-.colmid,
-.colleft {
-	float:left;
-	width:100%;			/* width of page */
-	position:relative;
-}
-.col1,
-.col2,
-.col3 {
-	float:left;
-	position:relative;
-	padding:0 0 1em 0;	/* no left and right padding on columns, we just make them narrower instead 
-					only padding top and bottom is included here, make it whatever value you need */
-	overflow:hidden;
+#logoimage {
+    margin-top: -20px;
+    margin-left: 20px;
 }
 
-/* 3 Column settings */
-.threecol {
-	background:#eee;		/* right column background colour */
+.float-left {
+    float: left;
 }
 
-.threecol .colmid {
-	right:25%;			/* width of the right column */
-	background:#fff;		/* center column background colour */
+.float-right {
+    float: right;
 }
 
-.threecol .colleft {
-	right:50%;			/* width of the middle column */
-	background:#f4f4f4;	/* left column background colour */
+.float-rightClear {
+    float: right;
+    clear: both;
 }
 
-.threecol .col1 {
-	width:46%;			/* width of center column content (column width minus padding on either side) */
-	left:102%;			/* 100% plus left padding of center column */
+
+
+/* main layout
+----------------------------------------------------------*/
+#leftDiv {
+
 }
 
-.threecol .col2 {
-	width:21%;			/* Width of left column content (column width minus padding on either side) */
-	left:31%;			/* width of (right column) plus (center column left and right padding) plus (left column left padding) */
+.content-wrapper {
+    margin: 0;
+    margin-right: 15px;
 }
 
-.threecol .col3 {
-	width:21%;			/* Width of right column content (column width minus padding on either side) */
-	left:85%;			/* Please make note of the brackets here:
-					(100% - left column width) plus (center column left and right padding) plus (left column left and right padding) plus (right column left padding) */
-    border-top: 1px black;
-    border-top-style: solid;
+#body {
+    clear: both;
+    padding-bottom: 35px;
+    width: 1100px;
 }
 
-/* Header styles */
+    .main-content {
+        background: url("Images/mid_bg.png") no-repeat;
+        background-position: bottom center;
+        padding-left: 10px;
+        padding-top: 30px;
+        height: 100%;
+    }
 header {
-	clear:both;
-	float:left;
-	width:100%;
-}
-header {
-	border-bottom:1px solid #000;
+        height: 100px;
+        width: 1100px;
+        margin: 0 auto;
 }
 
-#main-contentdiv {
-    background: url("Images/mid_bg.png") no-repeat;
+header .content-wrapper {
+    padding-top: 20px; 
 }
 
 
@@ -413,8 +410,9 @@ ul#navigation li.selected a:link, ul#navigation li.selected a:visited {
 }
 
 .home_blogSummary_text {
-    height: 80px;
+    height: 94px;
      overflow:hidden;
+	 height: 80px;
 }
 
 .blog_button_div {
@@ -476,4 +474,3 @@ footer {
     border-top-style: solid;
     padding-top: 25px;
 }
-
