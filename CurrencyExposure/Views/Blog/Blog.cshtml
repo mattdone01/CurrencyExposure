@@ -6,17 +6,21 @@
 }
 
 <script type="text/x-jquery-tmpl" id="blogarticle_template">
-	<span class="blogcomments_template"><a href="/Blog/GetBlog/${Id}">${Title}</a><br />
-		${Author} - ${CreateDate}</span><br />
+	<div class="blogarticles_template blogfloats"><a href="/Blog/GetBlog/${Id}">${Title}</a><br />
+		${Author} - ${formatDate(CreateDate)}</div><br />
 </script>
 
 <script type="text/x-jquery-tmpl" id="blogcomment_template">
-	<span class="blogcomments_template"><a href="/Blog/GetBlog/${BlogId}">${Comment}</a><br />
-		${Name} - ${CreateDate}</span><br />
+	<div class="blogcomments_template blogfloats"><a href="/Blog/GetBlog/${BlogId}">${Comment}</a><br />
+		${Name} - ${formatDate(CreateDate)}</div><br />	
 </script>
 
 
 <script>
+	function formatDate(datetime) {
+		var dateObj = new Date(datetime);
+		return dateObj.toDateString();
+	}
 	$(document).ready(function () {
 		$("#body").height($(document).height() - 100);
 		$("ul#navigation li").removeClass("selected");
@@ -24,10 +28,12 @@
 
 		$.getJSON("/Blog/GetArticlesList", function (data) {
 			$("#blogarticle_template").tmpl(data).appendTo("#blog_articles_list");
+			$(".blogarticles_template:even").css("background-color", "#EBEBE0").css("width", "100%");
 		});
 		
 		$.getJSON("/Blog/GetCommentsList", function (data) {
 			$("#blogcomment_template").tmpl(data).appendTo("#blog_recent_comments_list");
+			$(".blogcomments_template:even").css("background-color", "#EBEBE0");
 		});
 	});
 </script>
@@ -63,5 +69,9 @@
 		<div id="blog_article_article">@MvcHtmlString.Create(Article)</div>
 		
 	</div>
+</div>
+
+<div id="blog_comments">
+@*@Html.Partial("_BlogComments", Model.BlogComments)*@
 </div>
 

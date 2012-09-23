@@ -18,7 +18,7 @@ namespace CurrencyExposure.Controllers
 			return null;
 		}
 
-	    public JsonResult UploadFile
+	    public JsonResult UploadFile()
 	    {
 			return null;	
 	    }

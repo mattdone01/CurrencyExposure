@@ -506,6 +506,17 @@ ul#navigation li.selected a:link, ul#navigation li.selected a:visited {
     text-align: left;
 }
 
+.blogfloats {
+    width: 100%;
+    border:1px solid #3096D2;
+    border-radius: 6px;
+    -webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+    margin-bottom: 7px;
+    padding-left: 3px;
+    display: inline-block;
+}
+
 /*Blog Button*/
 .blogbutton {
 	-moz-box-shadow:inset 0px 1px 0px 0px #bbdaf7;

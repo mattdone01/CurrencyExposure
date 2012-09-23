@@ -115,6 +115,7 @@ namespace CurrencyExposure.Repository.Migrations
 			var blogComment1 = new BlogComment
 				                  {
 					                  Blog = blog1,
+									  Title = "This is a test Comment 1",
 					                  Comment = "This is a test Comment 1",
 					                  Name = "MattDone",
 					                  Email = "mattdone@gmail.com"
@@ -123,7 +124,8 @@ namespace CurrencyExposure.Repository.Migrations
 			var blogComment2 = new BlogComment
 			{
 				Blog = blog2,
-				Comment = "This is a test Comment 2",
+				Title = "This is a test Comment 2",
+				Comment = "This is the content of the test comment",
 				Name = "MattDone",
 				Email = "mattdone@gmail.com"
 			};
@@ -134,6 +136,7 @@ namespace CurrencyExposure.Repository.Migrations
 			                                 new BlogComment
 				                                 {
 					                                 Blog = blog2,
+													 Title = "This is a test Comment",
 					                                 Comment = "This is a child reply to test Comment 2",
 					                                 Name = "MattTyrrell",
 					                                 Email = "MT@gmail.com",

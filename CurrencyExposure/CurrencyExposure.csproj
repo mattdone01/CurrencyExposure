@@ -322,6 +322,7 @@
     <Content Include="Views\Blog\Blog.cshtml" />
     <Content Include="Views\Home\_BlogSummaryPartial.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Blog\_BlogComments.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
