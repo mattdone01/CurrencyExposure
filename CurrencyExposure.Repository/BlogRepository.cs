@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using CurrencyExposure.Model;
+using HtmlAgilityPack;
 
 namespace CurrencyExposure.Repository
 {
@@ -12,7 +14,7 @@ namespace CurrencyExposure.Repository
 	{
 		public Blog GetBlog(int id)
 		{
-			using (var context = DataContext)
+			using (var context = new CurrencyExposureContext())
 			{
 				if (id > 0)
 				{
@@ -35,9 +37,9 @@ namespace CurrencyExposure.Repository
 
 		public List<BlogSummaryDto> GetBlogSummaries(int count = 4)
 		{
-			using (DataContext)
+			using (var context = new CurrencyExposureContext())
 			{
-				return DataContext.Blogs
+				return context.Blogs
 					.Include("BlogAuthor")
 					.OrderByDescending(s =>s.CreateDate)
 					.Take(count)
@@ -45,10 +47,55 @@ namespace CurrencyExposure.Repository
 						             {
 							             Id = s.Id,
 							             Title = s.Title,
-							             Article = s.Article,
+							             Article = s.Article, //Probably need touse a blog summary
 							             Author = s.BlogAuthor.AuthorName,
 							             CreateDate = s.CreateDate
 						             }).ToList();
+			}
+		}
+
+		public Task<List<CommentsListDto>> GetCommentsList(DateTime pageId, int count = 5)
+		{
+			var taskCompletionSource = new TaskCompletionSource<List<CommentsListDto>>();
+			using (var context = new CurrencyExposureContext())
+			{
+				var result = context.BlogComments
+					.Include("Blogs")
+					.OrderByDescending(s => s.CreateDate)
+					.Where(s => s.CreateDate > pageId)
+					.Take(count)
+					.Select(s => new CommentsListDto
+						             {
+							             Comment = s.Comment.Substring(0,20),
+							             Id = s.Id,
+										 Name = s.Name,
+							             BlogId = s.Blog.Id,
+							             CreateDate = s.CreateDate
+						             }).ToList();
+				taskCompletionSource.TrySetResult(result);
+				return taskCompletionSource.Task;
+			}
+		}
+
+		public Task<List<BlogSummaryDto>> GetArticlesList(DateTime pageId, int count = 3)
+		{
+			var taskCompletionSource = new TaskCompletionSource<List<BlogSummaryDto>>();
+			using (var context = new CurrencyExposureContext())
+			{
+				var result = context.Blogs
+					.Include("BlogAuthor")
+					.OrderByDescending(s => s.CreateDate)
+					.Where(s => s.CreateDate > pageId)
+					.Take(count)
+					.Select(s => new BlogSummaryDto
+					{
+						Id = s.Id,
+						Title = s.Title,
+						Author = s.BlogAuthor.AuthorName,
+						CreateDate = s.CreateDate
+					}).ToList();
+				taskCompletionSource.TrySetResult(result);
+				return taskCompletionSource.Task;
 			}
 		}
 

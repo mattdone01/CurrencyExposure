@@ -11,16 +11,19 @@ namespace CurrencyExposure.Repository
 	   where C : DbContext, IDisposedTracker, new()
 	{
 		private C _dataContext;
-
+		static readonly object mySyncLock = new object();
 		public virtual C DataContext
 		{
 			get
 			{
-				if (_dataContext == null || _dataContext.IsDisposed)
+				lock (mySyncLock) //Probaby need to find a better way.
 				{
-					_dataContext = new C();
-					AllowSerialization =  true;
-					//Disable ProxyCreationDisabled to prevent the "In order to serialize the parameter, add the type to the known types collection for the operation using ServiceKnownTypeAttribute" error
+					if (_dataContext == null || _dataContext.IsDisposed)
+					{
+						_dataContext = new C();
+						AllowSerialization = true;
+						//Disable ProxyCreationDisabled to prevent the "In order to serialize the parameter, add the type to the known types collection for the operation using ServiceKnownTypeAttribute" error
+					}
 				}
 				return _dataContext;
 			}

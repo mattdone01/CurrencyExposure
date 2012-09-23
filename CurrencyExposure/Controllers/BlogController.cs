@@ -1,9 +1,14 @@
-﻿using System.Web.Mvc;
+﻿using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using System.Web.Mvc;
+using CurrencyExposure.Helpers;
+using CurrencyExposure.Model;
 using CurrencyExposure.Repository;
 
 namespace CurrencyExposure.Controllers
 {
-    public class BlogController : Controller
+	public class BlogController : BaseController
     {
 	    private readonly IBlogRepository _blogRepository;
 
@@ -18,13 +23,25 @@ namespace CurrencyExposure.Controllers
 			return View("Blog",blog);
 		}
 
+		public async Task<JsonNetResult> GetCommentsList()
+		{
+			var createDate = DateTime.MinValue;
+			var result = await _blogRepository.GetCommentsList(createDate);
+			return ToJsonNet(result, JsonRequestBehavior.AllowGet);
 
-		//public ActionResult GetBlog(string id)
-		//{
-		//	int blogId = -1;
-		//	int.TryParse(id, out blogId);
-		//	var blog = _blogRepository.GetBlog(blogId);
-		//	return Json(blog, JsonRequestBehavior.AllowGet);
-		//}
+			//To fix the date use value = new Date(parseInt(value.substr(6))) in JS
+		}
+
+		public async Task<JsonNetResult> GetArticlesList()
+		{
+			var createDate = DateTime.MinValue;
+			var result = await _blogRepository.GetArticlesList(createDate);
+			return ToJsonNet(result, JsonRequestBehavior.AllowGet);
+		}
+
+		public async Task<JsonResult> GetArchiveList()
+		{
+			return null;
+		}
     }
 }

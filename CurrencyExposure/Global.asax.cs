@@ -9,6 +9,8 @@ using System.Web.Optimization;
 using System.Web.Routing;
 using CurrencyExposure.Helpers;
 using CurrencyExposure.Repository;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 
 namespace CurrencyExposure
 {

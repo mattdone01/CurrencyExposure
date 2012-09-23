@@ -9,7 +9,7 @@ namespace CurrencyExposure
 		public static void RegisterBundles(BundleCollection bundles)
 		{
 			bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-						"~/Scripts/libs/jquery-{version}.js"));
+						"~/Scripts/libs/jquery-{version}.js", "~/Scripts/libs/jQuery.tmpl.js"));
 
 
 			bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
@@ -23,7 +23,9 @@ namespace CurrencyExposure
 				"~/Scripts/libs/kendo/kendo.core.js",
 				"~/Scripts/libs/kendo/kendo.data.js",
 				"~/Scripts/libs/kendo/kendo.fx.js",
-				"~/Scripts/libs/kendo/kendo.tabstrip.js"));
+				"~/Scripts/libs/kendo/kendo.pager.js",
+				"~/Scripts/libs/kendo/kendo.selectable.js",
+			   "~/Scripts/libs/kendo/kendo.listview.js"));
 
 			// Use the development version of Modernizr to develop with and learn from. Then, when you're
 			// ready for production, use the build tool at http://modernizr.com to pick only the tests you need.

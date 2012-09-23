@@ -137,11 +137,14 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\BlogController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\JsonNetResult.cs" />
     <Compile Include="Helpers\UnityDependencyResolver.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -265,15 +268,14 @@
     <Content Include="Content\fonts\avenier\avenir-book_0.eot" />
     <Content Include="Content\fonts\avenier\avenir-book_0.ttf" />
     <Content Include="Content\fonts\avenier\avenir-book_0.woff" />
-    <None Include="Scripts\libs\jquery-1.7.1.intellisense.js" />
     <Content Include="Scripts\dataservices.js" />
-    <None Include="Scripts\jquery-1.8.1.intellisense.js" />
-    <Content Include="Scripts\jquery-1.8.1.js" />
-    <Content Include="Scripts\jquery-1.8.1.min.js" />
-    <Content Include="Scripts\jquery-ui-1.8.23.js" />
-    <Content Include="Scripts\jquery-ui-1.8.23.min.js" />
-    <Content Include="Scripts\libs\jquery-1.7.1.js" />
-    <Content Include="Scripts\libs\jquery-1.7.1.min.js" />
+    <None Include="Scripts\libs\jquery-1.8.1.intellisense.js" />
+    <Content Include="Scripts\libs\jquery-1.8.1.js" />
+    <Content Include="Scripts\libs\jquery-1.8.1.min.js" />
+    <Content Include="Scripts\libs\jquery-ui-1.8.23.js" />
+    <Content Include="Scripts\libs\jquery-ui-1.8.23.min.js" />
+    <Content Include="Scripts\libs\jQuery.tmpl.js" />
+    <Content Include="Scripts\libs\jQuery.tmpl.min.js" />
     <None Include="Scripts\libs\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\libs\jquery-ui-1.8.20.js" />
     <Content Include="Scripts\libs\jquery-ui-1.8.20.min.js" />
@@ -291,7 +293,7 @@
     <Content Include="Scripts\libs\knockout-2.1.0.js" />
     <Content Include="Scripts\libs\modernizr-2.5.3.js" />
     <Content Include="Scripts\libs\_references.js" />
-    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\libs\modernizr-2.6.2.js" />
     <Content Include="Scripts\startup.js" />
     <Content Include="Templates\BlogSummary.html" />
     <Content Include="Web.config">
@@ -319,6 +321,7 @@
     <Content Include="Views\Home\Links.cshtml" />
     <Content Include="Views\Blog\Blog.cshtml" />
     <Content Include="Views\Home\_BlogSummaryPartial.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

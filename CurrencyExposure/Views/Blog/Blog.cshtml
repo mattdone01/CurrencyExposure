@@ -5,31 +5,63 @@
 	string Article = Model.Article;
 }
 
+<script type="text/x-jquery-tmpl" id="blogarticle_template">
+	<span class="blogcomments_template"><a href="/Blog/GetBlog/${Id}">${Title}</a><br />
+		${Author} - ${CreateDate}</span><br />
+</script>
+
+<script type="text/x-jquery-tmpl" id="blogcomment_template">
+	<span class="blogcomments_template"><a href="/Blog/GetBlog/${BlogId}">${Comment}</a><br />
+		${Name} - ${CreateDate}</span><br />
+</script>
+
+
 <script>
 	$(document).ready(function () {
-		$("#body").height($(document).height() - 200);
+		$("#body").height($(document).height() - 100);
 		$("ul#navigation li").removeClass("selected");
 		$("#BlogTab").addClass("selected");
+
+		$.getJSON("/Blog/GetArticlesList", function (data) {
+			$("#blogarticle_template").tmpl(data).appendTo("#blog_articles_list");
+		});
+		
+		$.getJSON("/Blog/GetCommentsList", function (data) {
+			$("#blogcomment_template").tmpl(data).appendTo("#blog_recent_comments_list");
+		});
 	});
 </script>
 
-<div id="home_toolad" class="homePage-right-floats">
-	<h2>Recent Articles</h2>
+<div class="blog_article_floats">
+	<div>
+		<h2>Recent Articles</h2>
+		<div id="blog_articles_list" class="blog_article_floats_content">
+
+		</div>
+	</div>
+
+	<div >
+		<h2>Recent Comments</h2>
+		<div id="blog_recent_comments_list" class="blog_article_floats_content">
+		
+		</div>
+	</div>
+
+	<div>
+		<h2>Archive</h2>
+		<div id="blog_archive_list" class="blog_article_floats_content">
+		</div>
+	</div>
 </div>
 
-<div id="home_rates" class="homePage-right-floats">
-	<h2>Categories</h2>
-</div>
-
-<div id="home_twitter" class="homePage-right-floats">
-	<h2>Twitter Feed</h2>
-	<img id="img_twitterfeed" src="../../Content/Images/TwitterFeed.png" alt="">
-</div>
 <div id="blog_blogarticle">
-	<h2>@Html.DisplayFor(model => model.Title)</h2>
-	<br />
-	<h3>@Html.DisplayFor(model => model.CreateDate) > @Html.DisplayFor(model => model.BlogAuthor.AuthorName) </h3>
-	<br />
-	@MvcHtmlString.Create(Article)
+	<h1>Articles</h1>
+	<div id="blog_article_content">
+		<h2>@Html.DisplayFor(model => model.Title)</h2>
+		<br />
+		<h3>@Html.DisplayFor(model => model.CreateDate) > @Html.DisplayFor(model => model.BlogAuthor.AuthorName) </h3>
+		<div id="blog_article_article">@MvcHtmlString.Create(Article)</div>
+		
+	</div>
 </div>
 
