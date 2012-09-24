@@ -1,41 +1,58 @@
 ﻿<div>
+	<script id="rowTemplate" type="text/x-kendo-tmpl">
+                <tr>
+                    <td>
+        <a href="/Blog/GetBlog/${Id}">${Title}</a>               
+                    </td>
+                    <td>
+                        ${ Author }
+                    </td>
+                    <td>
+						${formatDate(CreateDate)}
+                    </td>
+                </tr>
+	</script>
+	
 	<script>
 		function formatDate(datetime) {
 			var dateObj = new Date(datetime);
 			return dateObj.toDateString();
 		}
 		$(document).ready(function () {
-			$.getJSON("/Blog/GetArticlesList", function (data) {
-				$("#grid").kendoGrid({
-					dataSource: {
-						data: data,
-						pageSize: 20
+			$("#grid").kendoGrid({
+				dataSource: {
+					transport: {
+						read: {
+							url: "/Blog/GetArticlesList",
+							dataType: "json",
+							data: {
+								count: 20
+							}
+						}
 					},
-					sortable: {
-						mode: "single",
-						allowUnsort: false
-					},
-					selectable: "multiple row",
-					scrollable: false,
-					navigatable: true,
-					change: onChange,
-					filterable: true,
-					columnMenu: true,
-					columns: [{
-						field: "Title",
-						width: 100,
-					}, {
-						field: "Author",
-						width: 90,
-					}, {
-						width: 100,
-						field: "CreateDate"
-					}, {
-						width: 1,
-						field: "Id"
-					}
-					]
-				});
+				},
+				sortable: {
+					mode: "single",
+					allowUnsort: false
+				},
+				selectable: "row",
+				scrollable: false,
+				navigatable: true,
+				change: onChange,
+				filterable: true,
+				columnMenu: true,
+				rowTemplate: kendo.template($("#rowTemplate").html()),
+				columns: [{
+					field: "Title",
+					width: 150,
+				}, {
+					field: "Author",
+					width: 80,
+				}, {
+					width: 70,
+					field: "CreateDate"
+				}
+				]
 			});
 		});
 		function onChange(e) {
@@ -43,7 +60,7 @@
 		}
 	</script>
 
-	<div id="blog_list">
+	<div id="blog_list" style="text-align:left">
 		<div id="grid"></div>
 	</div>
 </div>

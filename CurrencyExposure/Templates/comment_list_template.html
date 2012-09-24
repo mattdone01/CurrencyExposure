@@ -1,18 +1,66 @@
 ﻿<div>
+	<script id="rowTemplate" type="text/x-kendo-tmpl">
+                <tr>
+                    <td>
+        <a href="/Blog/GetBlog/${Id}">${Name}</a>               
+                    </td>
+                    <td>
+                        ${ Comment }
+                    </td>
+                    <td>
+						${formatDate(CreateDate)}
+                    </td>
+                </tr>
+	</script>
+
 	<script>
 		function formatDate(datetime) {
 			var dateObj = new Date(datetime);
 			return dateObj.toDateString();
 		}
 		$(document).ready(function () {
-			$.getJSON("/Blog/GetArticlesList", function (data) {
-				$("#bloglist_template").tmpl(data).appendTo("#blog_list");
-				$(".bloglist_template:even").css("background-color", "#EBEBE0").css("width", "100%");
+			$("#grid").kendoGrid({
+				dataSource: {
+					transport: {
+						read: {
+							url: "/Blog/GetCommentsList",
+							dataType: "json",
+							data: {
+								count: 20
+							}
+						}
+					},
+				},
+				sortable: {
+					mode: "single",
+					allowUnsort: false
+				},
+				selectable: "row",
+				scrollable: false,
+				navigatable: true,
+				change: onChange,
+				filterable: true,
+				columnMenu: true,
+				rowTemplate: kendo.template($("#rowTemplate").html()),
+				columns: [{
+					field: "Name",
+					width: 80,
+				}, {
+					field: "Comment",
+					width: 150,
+				}, {
+					width: 70,
+					field: "CreateDate"
+				}
+				]
 			});
 		});
+		function onChange(e) {
+			alert('Hello');
+		}
 	</script>
 
-	<div id="blog_list">
-		This is a comment template
+	<div id="comment_list" style="text-align: left">
+		<div id="grid"></div>
 	</div>
 </div>

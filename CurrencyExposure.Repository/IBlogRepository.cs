@@ -10,7 +10,7 @@ namespace CurrencyExposure.Repository
 	{
 		Blog GetBlog(int id);
 		List<BlogSummaryDto> GetBlogSummaries(int count = 5);
-		Task<List<CommentsListDto>> GetCommentsList(int count = 5);
+		Task<List<CommentsListDto>> GetCommentsList(int count = 3);
 		Task<List<BlogSummaryDto>> GetArticlesList(int count = 3);
 	}
 }
