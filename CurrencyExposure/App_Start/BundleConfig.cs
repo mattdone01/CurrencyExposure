@@ -19,13 +19,14 @@ namespace CurrencyExposure
 			bundles.Add(new ScriptBundle("~/bundles/currencyexposure").Include(
 				"~/Scripts/startup.js"));
 
-			bundles.Add(new ScriptBundle("~/bundles/kendo").Include(
-				"~/Scripts/libs/kendo/kendo.core.js",
-				"~/Scripts/libs/kendo/kendo.data.js",
-				"~/Scripts/libs/kendo/kendo.fx.js",
-				"~/Scripts/libs/kendo/kendo.pager.js",
-				"~/Scripts/libs/kendo/kendo.selectable.js",
-			   "~/Scripts/libs/kendo/kendo.listview.js"));
+			bundles.Add(new ScriptBundle("~/bundles/kendo").Include("~/Scripts/libs/kendo/kendo.web.js"));
+			   // "~/Scripts/libs/kendo/kendo.core.js",
+			   // "~/Scripts/libs/kendo/kendo.data.js",
+			   // "~/Scripts/libs/kendo/kendo.fx.js",
+			   // "~/Scripts/libs/kendo/kendo.resizable.js",
+			   // "~/Scripts/libs/kendo/kendo.window.js",
+			   // "~/Scripts/libs/kendo/kendo.upload.js",
+			   //"~/Scripts/libs/kendo/kendo.draganddrop.js"));
 
 			// Use the development version of Modernizr to develop with and learn from. Then, when you're
 			// ready for production, use the build tool at http://modernizr.com to pick only the tests you need.

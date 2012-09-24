@@ -517,6 +517,10 @@ ul#navigation li.selected a:link, ul#navigation li.selected a:visited {
     display: inline-block;
 }
 
+.blogbuttonblogfloat {
+    text-align: center;
+}
+
 /*Blog Button*/
 .blogbutton {
 	-moz-box-shadow:inset 0px 1px 0px 0px #bbdaf7;

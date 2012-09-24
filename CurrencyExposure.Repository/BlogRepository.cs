@@ -25,6 +25,7 @@ namespace CurrencyExposure.Repository
 						.SingleOrDefault(b => b.Id == id);
 				}
 
+				//Get latest blog.
 				return context.Blogs
 					.Include("BlogComments")
 					.Include("BlogCategory")
@@ -54,7 +55,7 @@ namespace CurrencyExposure.Repository
 			}
 		}
 
-		public Task<List<CommentsListDto>> GetCommentsList(DateTime pageId, int count = 5)
+		public Task<List<CommentsListDto>> GetCommentsList(int count = 5)
 		{
 			var taskCompletionSource = new TaskCompletionSource<List<CommentsListDto>>();
 			using (var context = new CurrencyExposureContext())
@@ -62,7 +63,6 @@ namespace CurrencyExposure.Repository
 				var result = context.BlogComments
 					.Include("Blogs")
 					.OrderByDescending(s => s.CreateDate)
-					.Where(s => s.CreateDate > pageId)
 					.Take(count)
 					.Select(s => new CommentsListDto
 						             {
@@ -77,7 +77,7 @@ namespace CurrencyExposure.Repository
 			}
 		}
 
-		public Task<List<BlogSummaryDto>> GetArticlesList(DateTime pageId, int count = 3)
+		public Task<List<BlogSummaryDto>> GetArticlesList(int count = 3)
 		{
 			var taskCompletionSource = new TaskCompletionSource<List<BlogSummaryDto>>();
 			using (var context = new CurrencyExposureContext())
@@ -85,7 +85,6 @@ namespace CurrencyExposure.Repository
 				var result = context.Blogs
 					.Include("BlogAuthor")
 					.OrderByDescending(s => s.CreateDate)
-					.Where(s => s.CreateDate > pageId)
 					.Take(count)
 					.Select(s => new BlogSummaryDto
 					{
@@ -114,3 +113,4 @@ namespace CurrencyExposure.Repository
 		}
 	}
 }
+	

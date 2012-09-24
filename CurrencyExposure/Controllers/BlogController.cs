@@ -23,19 +23,17 @@ namespace CurrencyExposure.Controllers
 			return View("Blog",blog);
 		}
 
-		public async Task<JsonNetResult> GetCommentsList()
+		public async Task<JsonNetResult> GetCommentsList(int count = 3)
 		{
 			var createDate = DateTime.MinValue;
-			var result = await _blogRepository.GetCommentsList(createDate);
+			var result = await _blogRepository.GetCommentsList(count);
 			return ToJsonNet(result, JsonRequestBehavior.AllowGet);
-
-			//To fix the date use value = new Date(parseInt(value.substr(6))) in JS
 		}
 
-		public async Task<JsonNetResult> GetArticlesList()
+		public async Task<JsonNetResult> GetArticlesList(int count = 3)
 		{
 			var createDate = DateTime.MinValue;
-			var result = await _blogRepository.GetArticlesList(createDate);
+			var result = await _blogRepository.GetArticlesList(count);
 			return ToJsonNet(result, JsonRequestBehavior.AllowGet);
 		}
 

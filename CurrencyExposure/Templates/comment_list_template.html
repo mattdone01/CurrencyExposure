@@ -1,0 +1,18 @@
+﻿<div>
+	<script>
+		function formatDate(datetime) {
+			var dateObj = new Date(datetime);
+			return dateObj.toDateString();
+		}
+		$(document).ready(function () {
+			$.getJSON("/Blog/GetArticlesList", function (data) {
+				$("#bloglist_template").tmpl(data).appendTo("#blog_list");
+				$(".bloglist_template:even").css("background-color", "#EBEBE0").css("width", "100%");
+			});
+		});
+	</script>
+
+	<div id="blog_list">
+		This is a comment template
+	</div>
+</div>

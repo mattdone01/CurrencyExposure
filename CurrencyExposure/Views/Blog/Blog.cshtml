@@ -29,20 +29,62 @@
 		$.getJSON("/Blog/GetArticlesList", function (data) {
 			$("#blogarticle_template").tmpl(data).appendTo("#blog_articles_list");
 			$(".blogarticles_template:even").css("background-color", "#EBEBE0").css("width", "100%");
+			$("#blog_articles_list").append('<div class="blogbuttonblogfloat"><a id="bloglistbutton" class="blogbutton blogbuttonblogfloat" href="#" onclick="openBlogListWindow();">Show More</a></div>');
 		});
 		
 		$.getJSON("/Blog/GetCommentsList", function (data) {
 			$("#blogcomment_template").tmpl(data).appendTo("#blog_recent_comments_list");
 			$(".blogcomments_template:even").css("background-color", "#EBEBE0");
+			$("#blog_recent_comments_list").append('<div class="blogbuttonblogfloat"><a id="blogcommentbutton" class="blogbutton" href="#" onclick="openCommentListWindow();">Show More</a></div>');
 		});
 	});
+	
+	function openBlogListWindow() {
+		openListWindow("Article List","bloglistbutton", "/templates/blog_list_template.html", OnBlogWindowOpen);
+	}
+	
+	function openCommentListWindow() {
+		openListWindow("Comments", "blogcommentbutton", "/templates/comment_list_template.html", OnCommentWindowOpen);
+	}
+	
+	function openListWindow(title, buttonName, url, openCallBack) {
+		$("#window").kendoWindow({
+			width: "505px",
+			height: "315px",
+			title: title,
+			actions: ["Close"],
+			visible: false,
+			iframe: false,
+			content: url,
+			open: openCallBack
+		});
+		var window = $("#window").data("kendoWindow");
+		window.title(title);
+		window.open();
+		var buttonClick = $("#" + buttonName);
+		var leftOffset = buttonClick.parent().parent().position().left + 20;
+		var topOffset = buttonClick.parent().parent().position().top;
+		window.wrapper.css({
+			top: topOffset,
+			left: leftOffset
+		});
+	}
+	
+	function OnCommentWindowOpen(e) {
+		//alert('Comment Window closed');
+	}
+	
+	function OnBlogWindowOpen(e) {
+		//alert('BlogList Window closed');
+	}
+
 </script>
 
 <div class="blog_article_floats">
 	<div>
 		<h2>Recent Articles</h2>
 		<div id="blog_articles_list" class="blog_article_floats_content">
-
+			
 		</div>
 	</div>
 
@@ -69,6 +111,7 @@
 		<div id="blog_article_article">@MvcHtmlString.Create(Article)</div>
 		
 	</div>
+	<div id="window"></div>
 </div>
 
 <div id="blog_comments">
