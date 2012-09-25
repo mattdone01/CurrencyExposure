@@ -84,6 +84,7 @@ namespace CurrencyExposure.Repository
 			{
 				var result = context.Blogs
 					.Include("BlogAuthor")
+					.Include("BlogCategory")
 					.OrderByDescending(s => s.CreateDate)
 					.Take(count)
 					.Select(s => new BlogSummaryDto
@@ -91,6 +92,7 @@ namespace CurrencyExposure.Repository
 						Id = s.Id,
 						Title = s.Title,
 						Author = s.BlogAuthor.AuthorName,
+						Category = s.BlogCategory.CategoryName,
 						CreateDate = s.CreateDate
 					}).ToList();
 				taskCompletionSource.TrySetResult(result);

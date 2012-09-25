@@ -4,8 +4,11 @@
                     <td>
         <a href="/Blog/GetBlog/${Id}">${Title}</a>               
                     </td>
-                    <td>
+		            <td>
                         ${ Author }
+                    </td>
+                    <td>
+                        ${ Category }
                     </td>
                     <td>
 						${formatDate(CreateDate)}
@@ -21,12 +24,13 @@
 		$(document).ready(function () {
 			$("#grid").kendoGrid({
 				dataSource: {
+					pageSize: 10,
 					transport: {
 						read: {
 							url: "/Blog/GetArticlesList",
 							dataType: "json",
 							data: {
-								count: 20
+								count: 10
 							}
 						}
 					},
@@ -41,12 +45,19 @@
 				change: onChange,
 				filterable: true,
 				columnMenu: true,
+				pageable: {
+					refresh: true,
+					pageSizes: true
+				},
 				rowTemplate: kendo.template($("#rowTemplate").html()),
 				columns: [{
 					field: "Title",
 					width: 150,
 				}, {
 					field: "Author",
+					width: 80,
+				}, {
+					field: "Category",
 					width: 80,
 				}, {
 					width: 70,

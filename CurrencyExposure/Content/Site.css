@@ -39,6 +39,7 @@ header, footer, nav, section {
     margin-top: -20px;
     margin-left: 20px;
     border: none;
+    height: 90px;
 }
 
 .float-left {
@@ -369,7 +370,7 @@ ul#navigation li.selected a:link, ul#navigation li.selected a:visited {
     height: 250px;
     text-align: center;
     margin-bottom: 5px;
-    margin-right: 55px;
+    margin-right: 35px;
 }
 
 .homePage-right-floats h2{
@@ -386,6 +387,35 @@ ul#navigation li.selected a:link, ul#navigation li.selected a:visited {
     height: 180px;
 }
 
+#homepage_content {
+    margin-left: 25px;
+    min-height: 830px;
+}
+
+#homepage_content h1 {
+    margin-left: -10px;
+    font-weight: bold;
+    font-size: 20px;
+   text-decoration:underline;
+}
+#homepage_actioncall {
+    margin: 0 auto;
+    text-align: center;
+    width: 700px;
+    border-bottom: 1px solid;
+}
+#homepage_actioncall h1 {
+    font-weight: normal;
+    font-size: 40px;
+    display: inline;
+}
+
+#homepage_actioncall h2 {
+    font-size: 13px;
+    font-style: italic;
+    font-weight: normal;
+}
+
 #home_toolad {
     margin-top: 20px;
 }
@@ -397,7 +427,6 @@ ul#navigation li.selected a:link, ul#navigation li.selected a:visited {
     -webkit-border-radius: 6px;
 	-moz-border-radius: 6px;
     padding-left: 5px;
-
     box-shadow: 5px 5px 5px #888888;
 }
 
@@ -413,7 +442,7 @@ ul#navigation li.selected a:link, ul#navigation li.selected a:visited {
     -webkit-border-radius: 6px;
 	-moz-border-radius: 6px;
     margin-bottom: 10px;
-    padding-left: 5px;
+    padding-left: 15px;
     box-shadow: 5px 5px 5px #888888;
 }
 
@@ -484,11 +513,11 @@ ul#navigation li.selected a:link, ul#navigation li.selected a:visited {
     text-align: center;
     margin-right: 55px;
     margin-bottom: 5px;
-    margin-top: 37px;
+    margin-top: 10px;
 }
 
 .blog_article_floats h2 {
-    display: inline;
+    display: inline-block;
     text-align: left;
     font-size: 18px;
 }
@@ -500,7 +529,7 @@ ul#navigation li.selected a:link, ul#navigation li.selected a:visited {
 	-moz-border-radius: 6px;
     margin-bottom: 5px;
     padding: 15px;
-    height: 180px;
+    height: 280px;
     width: 250px;
     box-shadow: 5px 5px 5px #888888;
     text-align: left;
@@ -519,6 +548,39 @@ ul#navigation li.selected a:link, ul#navigation li.selected a:visited {
 
 .blogbuttonblogfloat {
     text-align: center;
+    padding-top: 15px;
+}
+
+.blogCommentHeader {
+    padding-left: 32px;
+    display: inline;
+}
+
+#blog_comments {
+    margin-left: 30px;
+    width: 650px;
+    border:1px solid #3096D2;
+    border-radius: 6px;
+    -webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+    margin-bottom: 5px;
+    padding: 15px;
+    box-shadow: 5px 5px 5px #888888;
+}
+
+#blog_socialLinks {
+    width: 710px;
+    text-align: right;
+}
+
+#blog_socialLinks li {
+    display: inline;
+    list-style-type: none;
+}
+
+#blog_socialLinks a,img {
+    border: none;
+    padding: 1px;
 }
 
 /*Blog Button*/

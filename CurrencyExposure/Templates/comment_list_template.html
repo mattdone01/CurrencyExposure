@@ -21,12 +21,13 @@
 		$(document).ready(function () {
 			$("#grid").kendoGrid({
 				dataSource: {
+					pageSize: 10,
 					transport: {
 						read: {
 							url: "/Blog/GetCommentsList",
 							dataType: "json",
 							data: {
-								count: 20
+								count: 10
 							}
 						}
 					},
@@ -41,6 +42,10 @@
 				change: onChange,
 				filterable: true,
 				columnMenu: true,
+				pageable: {
+					refresh: true,
+					pageSizes: true
+				},
 				rowTemplate: kendo.template($("#rowTemplate").html()),
 				columns: [{
 					field: "Name",

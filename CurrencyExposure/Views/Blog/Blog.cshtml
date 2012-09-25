@@ -22,17 +22,16 @@
 		return dateObj.toDateString();
 	}
 	$(document).ready(function () {
-		$("#body").height($(document).height() - 100);
 		$("ul#navigation li").removeClass("selected");
 		$("#BlogTab").addClass("selected");
 
-		$.getJSON("/Blog/GetArticlesList", function (data) {
+		$.getJSON("/Blog/GetArticlesList", { count: 4 }, function (data) {
 			$("#blogarticle_template").tmpl(data).appendTo("#blog_articles_list");
 			$(".blogarticles_template:even").css("background-color", "#EBEBE0").css("width", "100%");
 			$("#blog_articles_list").append('<div class="blogbuttonblogfloat"><a id="bloglistbutton" class="blogbutton blogbuttonblogfloat" href="#" onclick="openBlogListWindow();">Show More</a></div>');
 		});
 		
-		$.getJSON("/Blog/GetCommentsList", function (data) {
+		$.getJSON("/Blog/GetCommentsList",{count: 5}, function (data) {
 			$("#blogcomment_template").tmpl(data).appendTo("#blog_recent_comments_list");
 			$(".blogcomments_template:even").css("background-color", "#EBEBE0");
 			$("#blog_recent_comments_list").append('<div class="blogbuttonblogfloat"><a id="blogcommentbutton" class="blogbutton" href="#" onclick="openCommentListWindow();">Show More</a></div>');
@@ -49,7 +48,7 @@
 	
 	function openListWindow(title, buttonName, url, openCallBack) {
 		$("#window").kendoWindow({
-			width: "505px",
+			width: "700px",
 			height: "315px",
 			title: title,
 			actions: ["Close"],
@@ -61,13 +60,14 @@
 		var window = $("#window").data("kendoWindow");
 		window.title(title);
 		window.open();
-		var buttonClick = $("#" + buttonName);
-		var leftOffset = buttonClick.parent().parent().position().left + 20;
-		var topOffset = buttonClick.parent().parent().position().top;
-		window.wrapper.css({
-			top: topOffset,
-			left: leftOffset
-		});
+		window.center();
+		//var buttonClick = $("#" + buttonName);
+		//var leftOffset = buttonClick.parent().parent().position().left + 20;
+		//var topOffset = buttonClick.parent().parent().position().top;
+		//window.wrapper.css({
+		//	top: topOffset,
+		//	left: leftOffset
+		//});
 	}
 	
 	function OnCommentWindowOpen(e) {
@@ -95,11 +95,11 @@
 		</div>
 	</div>
 
-	<div>
+@*	<div>
 		<h2>Archive</h2>
 		<div id="blog_archive_list" class="blog_article_floats_content">
 		</div>
-	</div>
+	</div>*@
 </div>
 
 <div id="blog_blogarticle">
@@ -113,8 +113,27 @@
 	</div>
 	<div id="window"></div>
 </div>
-
+<div id="blog_socialLinks">
+	<ul>
+		<li>
+			<a href="https://twitter.com/CurrencyExposur" title="">
+				<img src="~/Content/Images/twitter_icon.png" alt="">
+			</a>
+		</li>
+		<li>
+			<a href="mailto:info@CurrencyExposure.com" title="">
+				<img src="~/Content/Images/Email.png" alt="" >
+			</a>
+		</li>
+		<li>
+			<a href="http://www.facebook.com/pages/CurrencyExposurecom/430339047010625" title="">
+				<img src="~/Content/Images/facebook_icon.png" alt="" >
+			</a>
+		</li>
+	</ul>
+</div>
+<h2 class="blogCommentHeader">Comments</h2>
 <div id="blog_comments">
-@*@Html.Partial("_BlogComments", Model.BlogComments)*@
+	@Html.Partial("_BlogCommentPartial", Model.BlogComments)
 </div>
 
