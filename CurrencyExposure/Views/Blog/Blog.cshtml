@@ -132,8 +132,35 @@
 		</li>
 	</ul>
 </div>
-<h2 class="blogCommentHeader">Comments</h2>
-<div id="blog_comments">
-	@Html.Partial("_BlogCommentPartial", Model.BlogComments)
+<h1 class="blogCommentHeader">Comments</h1>
+<div class="blog_comments_container">
+	<div id="comment_Reply">
+		<h2>Leave a Comment</h2>
+		<p class="name">
+			<input type="text" name="name" id="comment_name" />
+			<label for="name">Name</label>
+		</p>
+
+		<p class="email">
+			<input type="text" name="email" id="comment_email" />
+			<label for="email">E-mail (We will not show this)</label>
+		</p>
+
+		<p class="web">
+			<input type="text" name="title" id="comment_title" />
+			<label for="web">Comment Title</label>
+		</p>
+
+		<p class="text">
+			<textarea name="text"></textarea>
+		</p>
+
+		<p class="submit">
+			<input type="submit" value="Send" />
+		</p>
+	</div>
 </div>
+
+@Html.Partial("_BlogCommentPartial", Model.BlogComments)
+
 

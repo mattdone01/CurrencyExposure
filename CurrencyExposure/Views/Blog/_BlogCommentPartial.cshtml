@@ -1,66 +1,19 @@
 ﻿@model IEnumerable<CurrencyExposure.Model.BlogComment>
 
-<p>
-	@Html.ActionLink("Create New", "Create")
-</p>
-
-<table>
-	@if (Model.Count() > 1)
+@if (!Model.Any())
 {
-	<tr>
-		<th>
-			@Html.DisplayNameFor(model => model.Title)
-		</th>
-		<th>
-			@Html.DisplayNameFor(model => model.Comment)
-		</th>
-		<th>
-			@Html.DisplayNameFor(model => model.Name)
-		</th>
-		<th>
-			@Html.DisplayNameFor(model => model.Email)
-		</th>
-		<th>
-			@Html.DisplayNameFor(model => model.CreateDate)
-		</th>
-		<th>
-			@Html.DisplayNameFor(model => model.UpdateDate)
-		</th>
-		<th>
-			@Html.DisplayNameFor(model => model.ParentCommentId)
-		</th>
-		<th></th>
-	</tr>
+	<h2>No comments...Be the first to comment</h2>
 }
-	@foreach (var item in Model) {
-		<tr>
-			<td>
-				@Html.DisplayFor(modelItem => item.Title)
-			</td>
-			<td>
-				@Html.DisplayFor(modelItem => item.Comment)
-			</td>
-			<td>
-				@Html.DisplayFor(modelItem => item.Name)
-			</td>
-			<td>
-				@Html.DisplayFor(modelItem => item.Email)
-			</td>
-			<td>
-				@Html.DisplayFor(modelItem => item.CreateDate)
-			</td>
-			<td>
-				@Html.DisplayFor(modelItem => item.UpdateDate)
-			</td>
-			<td>
-				@Html.DisplayFor(modelItem => item.ParentCommentId)
-			</td>
-			<td>
-				@Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-				@Html.ActionLink("Details", "Details", new { id=item.Id }) |
-				@Html.ActionLink("Delete", "Delete", new { id=item.Id })
-			</td>
-		</tr>
-	}
 
-</table>
+
+@foreach (var item in Model) {
+<div id="blog_comments" class="blog_comments_container">
+	<div class="blog_comments">
+		<h2>@Html.DisplayFor(modelItem => item.Title)</h2><br/>
+		<h3>Posted By: @Html.DisplayFor(modelItem => item.Name) on @Html.DisplayFor(modelItem => item.CreateDate)</h3>
+		<p>@Html.DisplayFor(modelItem => item.Comment)</p>
+	</div>
+</div>
+}
+
+

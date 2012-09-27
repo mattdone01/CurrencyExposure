@@ -73,7 +73,7 @@ header, footer, nav, section {
 
     .main-content {
         background: url("Images/mid_bg.png") no-repeat;
-        background-position: bottom center;
+        background-position: 200px 100px;
         padding-left: 10px;
         padding-top: 30px;
         height: 100%;
@@ -514,6 +514,7 @@ ul#navigation li.selected a:link, ul#navigation li.selected a:visited {
     margin-right: 55px;
     margin-bottom: 5px;
     margin-top: 10px;
+    font-size: 13px;
 }
 
 .blog_article_floats h2 {
@@ -552,11 +553,13 @@ ul#navigation li.selected a:link, ul#navigation li.selected a:visited {
 }
 
 .blogCommentHeader {
-    padding-left: 32px;
-    display: inline;
+    margin-left: 15px;
+    font-weight: bold;
+    font-size: 20px;
+   text-decoration:underline;
 }
 
-#blog_comments {
+.blog_comments_container {
     margin-left: 30px;
     width: 650px;
     border:1px solid #3096D2;
@@ -657,6 +660,61 @@ ul#navigation li.selected a:link, ul#navigation li.selected a:visited {
     padding: 15px;
     box-shadow: 5px 5px 5px #888888;
  }
+
+
+ /*Comments*/
+#comment_Reply input, textarea { 
+	padding: 7px;
+	border: solid 1px #E5E5E5;
+	outline: 0;
+	font: normal 13px/100% Verdana, Tahoma, sans-serif;
+	width: 200px;
+	background: #FFFFFF url('bg_form.png') left top repeat-x;
+	background: -webkit-gradient(linear, left top, left 25, from(#FFFFFF), color-stop(4%, #EEEEEE), to(#FFFFFF));
+	background: -moz-linear-gradient(top, #FFFFFF, #EEEEEE 1px, #FFFFFF 25px);
+	box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;
+	-moz-box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;
+	-webkit-box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;
+	}
+
+#comment_Reply textarea { 
+	width: 400px;
+	max-width: 400px;
+	height: 150px;
+	line-height: 150%;
+	}
+
+#comment_Reply input:hover, textarea:hover,
+input:focus, textarea:focus { 
+	border-color: #C9C9C9; 
+	-webkit-box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 8px;
+	}
+
+#comment_Reply label { 
+	margin-left: 10px; 
+	color: #999999; 
+        display: inline;
+	}
+
+#comment_Reply .submit input {
+	width: auto;
+	padding: 9px 15px;
+	background: #617798;
+	border: 0;
+	font-size: 14px;
+	color: #FFFFFF;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	}
+
+.blog_comments h2{
+      display: inline;
+    font-size: 1.2em;
+}
+
+.blog_comments h3 {
+    font-size: 11px;
+}
 
  /*---------------------------------------Footer area------------------------------------*/
 footer {
