@@ -6,7 +6,7 @@
 }
 
 
-@foreach (var item in Model) {
+@foreach (var item in Model.OrderByDescending(c=>c.CreateDate)) {
 <div id="blog_comments" class="blog_comments_container">
 	<div class="blog_comments">
 		<h2>@Html.DisplayFor(modelItem => item.Title)</h2><br/>

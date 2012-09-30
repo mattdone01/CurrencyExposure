@@ -19,17 +19,17 @@ namespace CurrencyExposure.Repository
 				if (id > 0)
 				{
 					return context.Blogs
-						.Include("BlogComments")
-						.Include("BlogCategory")
-						.Include("BlogAuthor")
+						.Include(t => t.BlogComments)
+						.Include(t => t.BlogCategory)
+						.Include(t => t.BlogAuthor)
 						.SingleOrDefault(b => b.Id == id);
 				}
 
 				//Get latest blog.
 				return context.Blogs
-					.Include("BlogComments")
-					.Include("BlogCategory")
-					.Include("BlogAuthor")
+					.Include(t => t.BlogComments)
+					.Include(t => t.BlogCategory)
+					.Include(t => t.BlogAuthor)
 					.Take(1)
 					.OrderByDescending(c => c.CreateDate)
 					.SingleOrDefault();
@@ -41,7 +41,7 @@ namespace CurrencyExposure.Repository
 			using (var context = new CurrencyExposureContext())
 			{
 				return context.Blogs
-					.Include("BlogAuthor")
+					.Include(t => t.BlogAuthor)
 					.OrderByDescending(s =>s.CreateDate)
 					.Take(count)
 					.Select(s => new BlogSummaryDto
@@ -61,12 +61,12 @@ namespace CurrencyExposure.Repository
 			using (var context = new CurrencyExposureContext())
 			{
 				var result = context.BlogComments
-					.Include("Blogs")
+					.Include(t => t.Blog)
 					.OrderByDescending(s => s.CreateDate)
 					.Take(count)
 					.Select(s => new CommentsListDto
 						             {
-							             Comment = s.Comment.Substring(0,20),
+							             Title =s.Title,
 							             Id = s.Id,
 										 Name = s.Name,
 							             BlogId = s.Blog.Id,
@@ -83,8 +83,8 @@ namespace CurrencyExposure.Repository
 			using (var context = new CurrencyExposureContext())
 			{
 				var result = context.Blogs
-					.Include("BlogAuthor")
-					.Include("BlogCategory")
+					.Include(t => t.BlogAuthor)
+					.Include(t => t.BlogCategory)
 					.OrderByDescending(s => s.CreateDate)
 					.Take(count)
 					.Select(s => new BlogSummaryDto
@@ -98,6 +98,29 @@ namespace CurrencyExposure.Repository
 				taskCompletionSource.TrySetResult(result);
 				return taskCompletionSource.Task;
 			}
+		}
+
+		public TransactionResult SaveComments(BlogCommentDto comment)
+		{
+			var blogComment = new BlogComment();
+			blogComment.Name = comment.Name;
+			blogComment.Title = comment.Title;
+			blogComment.Email = comment.Email;
+			blogComment.Comment = comment.Comment;
+
+			int recs = 0;
+			using (var context = new CurrencyExposureContext())
+			{
+				var blog = context.Blogs.First(c => c.Id == comment.BlogId);
+				blogComment.Blog = blog;
+				context.BlogComments.Add(blogComment);
+				recs = context.SaveChanges();
+			}
+			var result = new TransactionResult(true);
+			if (recs == 0)
+				result.ErrorText = "Failed to save comment";
+
+			return result;
 		}
 
 		public OperationStatus SaveNewBlog(Blog blog)

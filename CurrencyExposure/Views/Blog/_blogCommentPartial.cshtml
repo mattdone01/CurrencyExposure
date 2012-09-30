@@ -1,0 +1,46 @@
+﻿@model CurrencyExposure.Model.BlogCommentDto
+
+@*<script src="~/Scripts/jquery-1.7.1.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>*@
+
+@using (Html.BeginForm("SaveComment", "Blog"))
+{
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+		<legend>BlogCommentDto</legend>
+		<div class="blog_comments_container">
+			<div id="comment_Reply">
+				<h2>Leave a Comment</h2>
+				<input type="hidden" name="BlogId" id="BlogId" value="" />
+				<p class="name">
+					@Html.EditorFor(model => model.Name)
+					<label for="name">Name</label><br />
+					@Html.ValidationMessageFor(model => model.Name)
+				</p>
+
+				<p class="email">
+					@Html.EditorFor(model => model.Email)
+					<label for="email">E-mail (We will not show this)</label><br />
+					@Html.ValidationMessageFor(model => model.Email)
+				</p>
+
+				<p class="web">
+					@Html.EditorFor(model => model.Title)
+					<label for="web">Comment Title</label><br />
+					@Html.ValidationMessageFor(model => model.Title)
+				</p>
+
+				<p class="text">
+					@Html.TextAreaFor(model => model.Comment)<br/>
+					@Html.ValidationMessageFor(model => model.Comment)
+				</p>
+
+				<p class="submit">
+					<input type="submit" value="Send" />
+				</p>
+			</div>
+		</div>
+    </fieldset>
+}

@@ -10,6 +10,7 @@
 	@Styles.Render("~/Content/kendo/css")
 	@Scripts.Render("~/bundles/modernizr")
 	@Scripts.Render("~/bundles/jquery")
+	@Scripts.Render("~/bundles/jqueryval")
 	@Scripts.Render("~/bundles/kendo")
 	@Scripts.Render("~/bundles/currencyexposure")
 </head>
@@ -31,7 +32,7 @@
 						<li id="ContactTab">@Html.ActionLink("Contact", "Contact", "Home")</li>
 						<li id="AboutTab">@Html.ActionLink("About", "About", "Home")</li>
 						<li id="LinksTab">@Html.ActionLink("Links", "Links", "Home")</li>
-						<li id="BlogTab">@Html.ActionLink("Blog", "GetBlog", "Blog")</li>
+						<li id="BlogTab">@Html.ActionLink("Blog", "Index", "Blog")</li>
 						<li id="HomeTab" class="selected">@Html.ActionLink("Home", "Index", "Home")</li>
 					</ul>
 				</nav>

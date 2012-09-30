@@ -139,17 +139,17 @@ fieldset {
             padding-bottom: 5px;
         }
 
-label {
+fieldset label {
     display: block;
-    font-size: 1.2em;
+    font-size: 11px;
     font-weight: 600;
 }
 
-label.checkbox {
+fieldset label.checkbox {
     display: inline;
 }
 
-input, textarea {
+fieldset input, textarea {
     border: 1px solid #e2e2e2;
     background: #fff;
     color: #333;
@@ -159,7 +159,7 @@ input, textarea {
     width: 300px;
 }
 
-textarea {
+fieldset textarea {
     font-family: inherit;
     width: 500px;
 }
@@ -211,10 +211,6 @@ textarea {
     border-radius: 6px;
     -webkit-border-radius: 6px;
 	-moz-border-radius: 6px;
-}
-
-.logincontrol hgroup, section, fieldset {
-    padding-left: 20px;
 }
 
 #login {
@@ -367,9 +363,9 @@ ul#navigation li.selected a:link, ul#navigation li.selected a:visited {
     float: right;
     clear: both;
     width: 280px;
-    height: 250px;
+    height: 220px;
     text-align: center;
-    margin-bottom: 5px;
+    margin-bottom: 0px;
     margin-right: 35px;
 }
 
@@ -710,6 +706,7 @@ input:focus, textarea:focus {
 .blog_comments h2{
       display: inline;
     font-size: 1.2em;
+    margin-top: -10px;
 }
 
 .blog_comments h3 {

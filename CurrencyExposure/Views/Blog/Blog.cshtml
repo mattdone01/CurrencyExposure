@@ -11,7 +11,7 @@
 </script>
 
 <script type="text/x-jquery-tmpl" id="blogcomment_template">
-	<div class="blogcomments_template blogfloats"><a href="/Blog/GetBlog/${BlogId}">${Comment}</a><br />
+	<div class="blogcomments_template blogfloats"><a href="/Blog/GetBlog/${BlogId}">${Title}</a><br />
 		${Name} - ${formatDate(CreateDate)}</div><br />	
 </script>
 
@@ -36,6 +36,8 @@
 			$(".blogcomments_template:even").css("background-color", "#EBEBE0");
 			$("#blog_recent_comments_list").append('<div class="blogbuttonblogfloat"><a id="blogcommentbutton" class="blogbutton" href="#" onclick="openCommentListWindow();">Show More</a></div>');
 		});
+
+		$("#BlogId").val($("#mainblogid").val());
 	});
 	
 	function openBlogListWindow() {
@@ -61,13 +63,6 @@
 		window.title(title);
 		window.open();
 		window.center();
-		//var buttonClick = $("#" + buttonName);
-		//var leftOffset = buttonClick.parent().parent().position().left + 20;
-		//var topOffset = buttonClick.parent().parent().position().top;
-		//window.wrapper.css({
-		//	top: topOffset,
-		//	left: leftOffset
-		//});
 	}
 	
 	function OnCommentWindowOpen(e) {
@@ -77,7 +72,6 @@
 	function OnBlogWindowOpen(e) {
 		//alert('BlogList Window closed');
 	}
-
 </script>
 
 <div class="blog_article_floats">
@@ -112,6 +106,7 @@
 		
 	</div>
 	<div id="window"></div>
+	<input type="hidden" id="mainblogid" value="@Model.Id" />
 </div>
 <div id="blog_socialLinks">
 	<ul>
@@ -133,34 +128,7 @@
 	</ul>
 </div>
 <h1 class="blogCommentHeader">Comments</h1>
-<div class="blog_comments_container">
-	<div id="comment_Reply">
-		<h2>Leave a Comment</h2>
-		<p class="name">
-			<input type="text" name="name" id="comment_name" />
-			<label for="name">Name</label>
-		</p>
 
-		<p class="email">
-			<input type="text" name="email" id="comment_email" />
-			<label for="email">E-mail (We will not show this)</label>
-		</p>
-
-		<p class="web">
-			<input type="text" name="title" id="comment_title" />
-			<label for="web">Comment Title</label>
-		</p>
-
-		<p class="text">
-			<textarea name="text"></textarea>
-		</p>
-
-		<p class="submit">
-			<input type="submit" value="Send" />
-		</p>
-	</div>
-</div>
-
-@Html.Partial("_BlogCommentPartial", Model.BlogComments)
-
+@{Html.RenderAction("CreateComment", "Blog");}
+@Html.Partial("_BlogCommentListPartial", Model.BlogComments)
 

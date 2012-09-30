@@ -10,7 +10,7 @@
 			@MvcHtmlString.Create(article)
 		</div>
 		<div class="blog_button_div">
-			@Html.ActionLink("Read More", "GetBlog", "Blog", new {Id = @summary.Id}, new {Class = "blogbutton"})
+			@Html.ActionLink("Read More", "Index", "Blog", new {Id = @summary.Id}, new {Class = "blogbutton"})
 		</div>
 	</div>
 }
