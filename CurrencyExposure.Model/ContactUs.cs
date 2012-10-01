@@ -19,6 +19,7 @@ namespace CurrencyExposure.Model
 		[StringLength(100)]
 		public string Company { get; set; }
 		[Required]
+		[DataType(DataType.EmailAddress)]
 		public string Email { get; set; }
 		[StringLength(25)]
 		public string Phone { get; set; }
