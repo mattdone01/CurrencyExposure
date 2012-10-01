@@ -1,0 +1,92 @@
+﻿@model CurrencyExposure.Model.BlogSummaryDto
+
+@{
+    ViewBag.Title = "Blog Search";
+}
+
+<script>
+	$(document).ready(function () {
+		$("#body").height($(document).height() - 200);
+		$("ul#navigation li").removeClass("selected");
+		$("#BlogTab").addClass("selected");
+	});
+</script>
+<h2 class="mainheading">Search for Blogs</h2>
+
+<div class="KendoGridFix" style="width:900px; margin-left: 50px;">
+	<script id="rowTemplate" type="text/x-kendo-tmpl">
+                <tr>
+                    <td>
+        <a href="/Blog/GetBlog/${Id}">${Title}</a>               
+                    </td>
+		            <td>
+                        ${ Author }
+                    </td>
+                    <td>
+                        ${ Category }
+                    </td>
+                    <td>
+						${formatDate(CreateDate)}
+                    </td>
+                </tr>
+	</script>
+
+	<script>
+		function formatDate(datetime) {
+			var dateObj = new Date(datetime);
+			return dateObj.toDateString();
+		}
+		$(document).ready(function () {
+			$("#grid").kendoGrid({
+				dataSource: {
+					pageSize: 10,
+					transport: {
+						read: {
+							url: "/Blog/GetArticlesList",
+							dataType: "json",
+							data: {
+								count: 10
+							}
+						}
+					},
+				},
+				sortable: {
+					mode: "single",
+					allowUnsort: false
+				},
+				selectable: "row",
+				scrollable: false,
+				navigatable: true,
+				change: onChange,
+				filterable: true,
+				columnMenu: true,
+				pageable: {
+					refresh: true,
+					pageSizes: true
+				},
+				rowTemplate: kendo.template($("#rowTemplate").html()),
+				columns: [{
+					field: "Title",
+					width: 150,
+				}, {
+					field: "Author",
+					width: 80,
+				}, {
+					field: "Category",
+					width: 80,
+				}, {
+					width: 70,
+					field: "CreateDate"
+				}
+				]
+			});
+		});
+		function onChange(e) {
+			alert('Hello');
+		}
+	</script>
+
+	<div id="blog_list" style="text-align: left">
+		<div id="grid"></div>
+	</div>
+</div>

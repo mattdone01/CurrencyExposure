@@ -28,42 +28,28 @@
 		$.getJSON("/Blog/GetArticlesList", { count: 4 }, function (data) {
 			$("#blogarticle_template").tmpl(data).appendTo("#blog_articles_list");
 			$(".blogarticles_template:even").css("background-color", "#EBEBE0").css("width", "100%");
-			$("#blog_articles_list").append('<div class="blogbuttonblogfloat"><a id="bloglistbutton" class="blogbutton blogbuttonblogfloat" href="#" onclick="openBlogListWindow();">Show More</a></div>');
+			$("#blog_articles_list").append('<div class="blogbuttonblogfloat"><a id="bloglistbutton" class="blogbutton blogbuttonblogfloat" href="/blog/BlogSearch">Show More</a></div>');
 		});
 		
 		$.getJSON("/Blog/GetCommentsList",{count: 5}, function (data) {
 			$("#blogcomment_template").tmpl(data).appendTo("#blog_recent_comments_list");
 			$(".blogcomments_template:even").css("background-color", "#EBEBE0");
-			$("#blog_recent_comments_list").append('<div class="blogbuttonblogfloat"><a id="blogcommentbutton" class="blogbutton" href="#" onclick="openCommentListWindow();">Show More</a></div>');
+			$("#blog_recent_comments_list").append('<div class="blogbuttonblogfloat"><a id="blogcommentbutton" class="blogbutton" href="/blog/CommentSearch">Show More</a></div>');
 		});
 
 		$("#BlogId").val($("#mainblogid").val());
 	});
 	
 	function openBlogListWindow() {
-		openListWindow("Article List","bloglistbutton", "/templates/blog_list_template.html", OnBlogWindowOpen);
+		//openListWindow("Article List","bloglistbutton", "/templates/blog_list_template.html", OnBlogWindowOpen);
+		
 	}
 	
 	function openCommentListWindow() {
-		openListWindow("Comments", "blogcommentbutton", "/templates/comment_list_template.html", OnCommentWindowOpen);
+		//openListWindow("Comments", "blogcommentbutton", "/templates/comment_list_template.html", OnCommentWindowOpen);
 	}
 	
-	function openListWindow(title, buttonName, url, openCallBack) {
-		$("#window").kendoWindow({
-			width: "700px",
-			height: "315px",
-			title: title,
-			actions: ["Close"],
-			visible: false,
-			iframe: false,
-			content: url,
-			open: openCallBack
-		});
-		var window = $("#window").data("kendoWindow");
-		window.title(title);
-		window.open();
-		window.center();
-	}
+
 	
 	function OnCommentWindowOpen(e) {
 		//alert('Comment Window closed');
@@ -97,11 +83,9 @@
 </div>
 
 <div id="blog_blogarticle">
-	<h1>Articles</h1>
+	<h1>@Html.DisplayFor(model => model.Title)</h1>
 	<div id="blog_article_content">
-		<h2>@Html.DisplayFor(model => model.Title)</h2>
-		<br />
-		<h3>@Html.DisplayFor(model => model.CreateDate) > @Html.DisplayFor(model => model.BlogAuthor.AuthorName) </h3>
+		<h3>Posted by: @Html.DisplayFor(model => model.BlogAuthor.AuthorName) at @Html.DisplayFor(model => model.CreateDate)  </h3>
 		<div id="blog_article_article">@MvcHtmlString.Create(Article)</div>
 		
 	</div>
@@ -127,8 +111,7 @@
 		</li>
 	</ul>
 </div>
-<h1 class="blogCommentHeader">Comments</h1>
-
 @{Html.RenderAction("CreateComment", "Blog");}
+<h1 class="blogCommentHeader">Comments</h1>
 @Html.Partial("_BlogCommentListPartial", Model.BlogComments)
 

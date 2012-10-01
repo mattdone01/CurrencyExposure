@@ -115,6 +115,7 @@
   <ItemGroup>
     <Compile Include="BlogTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestMigration.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App.config" />

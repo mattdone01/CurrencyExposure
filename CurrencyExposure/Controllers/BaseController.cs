@@ -11,6 +11,10 @@ namespace CurrencyExposure.Controllers
 {
 	public class BaseController : Controller
 	{
+		protected BaseController()
+		{
+			ViewData["Message"] = string.Empty;
+		}
 
 		public JsonNetResult ToJsonNet(object data)
 		{

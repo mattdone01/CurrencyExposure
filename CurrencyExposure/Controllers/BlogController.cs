@@ -53,6 +53,16 @@ namespace CurrencyExposure.Controllers
 			return PartialView("_blogCommentPartial", blogComment);
 		}
 
+		public ActionResult BlogSearch()
+		{
+			return View("BlogSearch");
+		}
+
+		public ActionResult CommentSearch()
+		{
+			return View("CommentSearch");
+		}
+
 		[HttpPost]
 		public ActionResult SaveComment(BlogCommentDto blogComment)
 		{

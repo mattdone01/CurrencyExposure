@@ -12,10 +12,11 @@ body {
     font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;
     margin: 0;
     padding: 0;
-    text-align: center;
+
 }
 
 #MainSiteDiv {
+        text-align: center;
         background-color: white;
         margin: 0 auto;
         width: 1060px;
@@ -55,6 +56,24 @@ header, footer, nav, section {
     clear: both;
 }
 
+.lightgreybg {
+    background: url("Images/lightgreybg.jpg") no-repeat;
+}
+
+.boxshadow {
+     border:1px solid #3096D2;
+    border-radius: 6px;
+    -webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+    -webkit-box-shadow: #888888 5px 5px 5px;
+	-moz-box-shadow: #888888 5px 5px 5px;
+     box-shadow: 5px 5px 5px #888888;
+}
+
+.KendoGridFix {
+    text-align: left ! Important;
+}
+
 
 
 /* main layout
@@ -75,7 +94,6 @@ header, footer, nav, section {
         background: url("Images/mid_bg.png") no-repeat;
         background-position: 200px 100px;
         padding-left: 10px;
-        padding-top: 30px;
         height: 100%;
     }
 header {
@@ -117,6 +135,16 @@ hgroup.title h1, hgroup.title h2 {
 hgroup.title h2 {
     font-weight: normal;
     margin-left: 3px;
+}
+
+.mainheading {
+    color: #58585A;
+    text-align: center;
+    font-size: 35px;
+    font-weight: normal;
+    margin-top: -1px;
+    padding-bottom: 5px;
+    background: url("Images/btm_icon.jpg") no-repeat bottom center;
 }
 
 /* forms */
@@ -195,8 +223,6 @@ fieldset textarea {
         margin-right: 4px;
     }
 
-
-
 /* login
 ----------------------------------------------------------*/
 .centerme {
@@ -211,6 +237,7 @@ fieldset textarea {
     border-radius: 6px;
     -webkit-border-radius: 6px;
 	-moz-border-radius: 6px;
+    padding-left: 20px;
 }
 
 #login {
@@ -243,7 +270,29 @@ fieldset textarea {
         list-style: none;
     }
 
+/* Contact*/
+#contactus {
+    width: 450px;
+}
+#contactus input {
+    width: 350px;
+}
 
+#contactus textarea {
+    width: 350px;
+    height: 150px;  
+}
+
+#submitcomment {
+    width: 100px ! important;
+}
+
+.contact_details {
+    float: left;
+    width: 250px;
+    margin-left: 50px;
+    margin-top: 100px;
+}
 
 /* Tabs for navigation*/
 table {
@@ -260,7 +309,7 @@ ul#navigation {
 	margin: 0 auto;
 	position: relative;
 	overflow: hidden;
-    margin-top: 25px;
+    margin-top: 40px;
 }
 
 ul#navigation li {
@@ -392,7 +441,7 @@ ul#navigation li.selected a:link, ul#navigation li.selected a:visited {
     margin-left: -10px;
     font-weight: bold;
     font-size: 20px;
-   text-decoration:underline;
+    color: #58585A;
 }
 #homepage_actioncall {
     margin: 0 auto;
@@ -404,6 +453,7 @@ ul#navigation li.selected a:link, ul#navigation li.selected a:visited {
     font-weight: normal;
     font-size: 40px;
     display: inline;
+    color: #58585A;
 }
 
 #homepage_actioncall h2 {
@@ -471,10 +521,10 @@ ul#navigation li.selected a:link, ul#navigation li.selected a:visited {
 }
 
 #blog_blogarticle h1 {
+    color: #58585A;
     margin-left: 15px;
     font-weight: bold;
     font-size: 20px;
-   text-decoration:underline;
 }
 #blog_blogarticle h2 {
     display: inline;
@@ -509,11 +559,12 @@ ul#navigation li.selected a:link, ul#navigation li.selected a:visited {
     text-align: center;
     margin-right: 55px;
     margin-bottom: 5px;
-    margin-top: 10px;
+    margin-top: -10px;
     font-size: 13px;
 }
 
 .blog_article_floats h2 {
+    color: #58585A;
     display: inline-block;
     text-align: left;
     font-size: 18px;
@@ -549,10 +600,10 @@ ul#navigation li.selected a:link, ul#navigation li.selected a:visited {
 }
 
 .blogCommentHeader {
+    color: #58585A;
     margin-left: 15px;
     font-weight: bold;
     font-size: 20px;
-   text-decoration:underline;
 }
 
 .blog_comments_container {
@@ -613,19 +664,11 @@ ul#navigation li.selected a:link, ul#navigation li.selected a:visited {
 	top:1px;
 }
 
- #links h2 {
-    margin-left: 15px;
-    font-weight: bold;
-    font-size: 20px;
-   text-decoration:underline;
- }
-
  #links_content {
           text-align: justify;
-     width: 70%;
      margin: 0 auto;
-    margin-left: 30px;
-    width: 650px;
+    margin-left: 120px;
+    width: 750px;
     border:1px solid #3096D2;
     border-radius: 6px;
     -webkit-border-radius: 6px;
@@ -635,19 +678,14 @@ ul#navigation li.selected a:link, ul#navigation li.selected a:visited {
     box-shadow: 5px 5px 5px #888888;
  }
 
- #about_us h2 {
-     margin-left: 15px;
-    font-weight: bold;
-    font-size: 20px;
-   text-decoration:underline;
- }
+  #about_us {
 
+  }
  #about_us_content {
      text-align: justify;
-     width: 70%;
      margin: 0 auto;
-    margin-left: 30px;
-    width: 650px;
+    margin-left: 120px;
+    width: 750px;
     border:1px solid #3096D2;
     border-radius: 6px;
     -webkit-border-radius: 6px;
@@ -715,6 +753,7 @@ input:focus, textarea:focus {
 
  /*---------------------------------------Footer area------------------------------------*/
 footer {
+    text-align: center;
     height: 15px;
     width: 1060px;
     margin: 0 auto;

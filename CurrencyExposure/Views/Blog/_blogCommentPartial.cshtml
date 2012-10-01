@@ -1,16 +1,12 @@
 ﻿@model CurrencyExposure.Model.BlogCommentDto
 
-@*<script src="~/Scripts/jquery-1.7.1.min.js"></script>
-<script src="~/Scripts/jquery.validate.min.js"></script>
-<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>*@
-
 @using (Html.BeginForm("SaveComment", "Blog"))
 {
     @Html.ValidationSummary(true)
 
     <fieldset>
-		<legend>BlogCommentDto</legend>
-		<div class="blog_comments_container">
+		<legend>BlogComment</legend>
+		<div class="blog_comments_container lightgreybg">
 			<div id="comment_Reply">
 				<h2>Leave a Comment</h2>
 				<input type="hidden" name="BlogId" id="BlogId" value="" />

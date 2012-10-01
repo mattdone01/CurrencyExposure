@@ -24,9 +24,6 @@
 				</div>
 			</div>
 			<div class="float-right">
-				<section id="login">
-					@Html.Partial("_LoginPartial")
-				</section>
 				<nav>
 					<ul id="navigation">
 						<li id="ContactTab">@Html.ActionLink("Contact", "Contact", "Home")</li>
@@ -40,6 +37,7 @@
 		</div>
 	</header>
 	<div id="MainSiteDiv">
+		<iframe id="tmc-ticker" src="http://themoneyconverter.com/AUD/RateTicker.aspx" style="width:1060px;height:30px" scrolling="no" frameborder="0" marginwidth="0" marginheight="0"></iframe>
 		<div id="body">
 			<section class="content-wrapper main-content">
 				@RenderBody()

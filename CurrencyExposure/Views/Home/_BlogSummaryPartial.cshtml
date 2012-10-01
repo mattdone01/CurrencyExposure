@@ -1,11 +1,10 @@
 ﻿@model IEnumerable<CurrencyExposure.Model.BlogSummaryDto>
 @foreach(var summary in Model)
 {
-	string article = summary.Article;
+	string article = summary.Summary;
 	<div class="home_blogSummary">
 		<h2>@summary.Title</h2>
-		<br />
-		<h3>@summary.CreateDate > @summary.Author</h3>
+		<h3>&nbsp;&nbsp;&nbsp;&nbsp;Posted by: @summary.Author on @summary.CreateDate </h3>
 		<div class="home_blogSummary_text">
 			@MvcHtmlString.Create(article)
 		</div>

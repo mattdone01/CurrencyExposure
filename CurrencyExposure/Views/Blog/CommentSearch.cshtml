@@ -1,0 +1,85 @@
+﻿@{
+    ViewBag.Title = "Comment Search";
+}
+
+<script>
+	$(document).ready(function () {
+		$("#body").height($(document).height() - 200);
+		$("ul#navigation li").removeClass("selected");
+		$("#BlogTab").addClass("selected");
+	});
+</script>
+
+<h2 class="mainheading">Comment Search</h2>
+<div style="width: 900px; margin-left: 50px;">
+	<script id="rowTemplate" type="text/x-kendo-tmpl">
+                <tr>
+                    <td>
+        <a href="/Blog/GetBlog/${BlogId}">${Name}</a>               
+                    </td>
+                    <td>
+                        ${ Title }
+                    </td>
+                    <td>
+						${formatDate(CreateDate)}
+                    </td>
+                </tr>
+	</script>
+
+	<script>
+		function formatDate(datetime) {
+			var dateObj = new Date(datetime);
+			return dateObj.toDateString();
+		}
+		$(document).ready(function () {
+			$("#grid").kendoGrid({
+				dataSource: {
+					pageSize: 10,
+					transport: {
+						read: {
+							url: "/Blog/GetCommentsList",
+							dataType: "json",
+							data: {
+								count: 10
+							}
+						}
+					},
+				},
+				sortable: {
+					mode: "single",
+					allowUnsort: false
+				},
+				selectable: "row",
+				scrollable: false,
+				navigatable: true,
+				change: onChange,
+				filterable: true,
+				columnMenu: true,
+				pageable: {
+					refresh: true,
+					pageSizes: true
+				},
+				rowTemplate: kendo.template($("#rowTemplate").html()),
+				columns: [{
+					field: "Name",
+					width: 80,
+				}, {
+					field: "Title",
+					width: 150,
+				}, {
+					width: 70,
+					field: "CreateDate"
+				}
+				]
+			});
+		});
+		function onChange(e) {
+			alert('Hello');
+		}
+	</script>
+
+	<div id="comment_list" style="text-align: left">
+		<div id="grid"></div>
+	</div>
+</div>
+

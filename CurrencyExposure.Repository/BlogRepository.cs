@@ -48,7 +48,7 @@ namespace CurrencyExposure.Repository
 						             {
 							             Id = s.Id,
 							             Title = s.Title,
-							             Article = s.Article, //Probably need touse a blog summary
+							             Summary = s.BlogSummary,
 							             Author = s.BlogAuthor.AuthorName,
 							             CreateDate = s.CreateDate
 						             }).ToList();
@@ -114,6 +114,21 @@ namespace CurrencyExposure.Repository
 				var blog = context.Blogs.First(c => c.Id == comment.BlogId);
 				blogComment.Blog = blog;
 				context.BlogComments.Add(blogComment);
+				recs = context.SaveChanges();
+			}
+			var result = new TransactionResult(true);
+			if (recs == 0)
+				result.ErrorText = "Failed to save comment";
+
+			return result;
+		}
+
+		public TransactionResult SaveContactUs(ContactUs contactDetails)
+		{
+			int recs = 0;
+			using (var context = new CurrencyExposureContext())
+			{
+				context.ContactUs.Add(contactDetails);
 				recs = context.SaveChanges();
 			}
 			var result = new TransactionResult(true);

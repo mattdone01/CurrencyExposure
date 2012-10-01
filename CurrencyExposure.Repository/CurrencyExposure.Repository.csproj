@@ -74,6 +74,11 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="ModelContainer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="RepositoryBase.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -90,12 +95,17 @@
     <EmbeddedResource Include="Migrations\201209190927444_Initial.resx">
       <DependentUpon>201209190927444_Initial.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Migrations\BlogArticle1.html" />
     <Content Include="Migrations\BlogArticle2.html" />
     <Content Include="Migrations\BlogArticle3.html" />
     <Content Include="Migrations\BlogArticle4.html" />
+    <Content Include="Migrations\BlogArticle5.html" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
