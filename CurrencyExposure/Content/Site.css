@@ -309,7 +309,6 @@ ul#navigation {
 	margin: 0 auto;
 	position: relative;
 	overflow: hidden;
-    margin-top: 40px;
 }
 
 ul#navigation li {
@@ -360,7 +359,7 @@ ul#navigation li a:link, ul#navigation li a:visited {
 	letter-spacing: 1px;
 	outline: none;
 	float: left;
-	background: #3096D2;
+	background: #378DE5;
 	-webkit-transition: background-color 0.3s linear;
 	-moz-transition: background-color 0.3s linear;
 	-o-transition: background-color 0.3s linear;
@@ -371,7 +370,7 @@ ul#navigation li a:hover {
 }
 
 ul#navigation li.selected a:link, ul#navigation li.selected a:visited {
-	color: #3096D2;
+	color: #378DE5;
 	border: solid 1px #fff;
 	-webkit-transition: background-color 0.2s linear;
 	background: -moz-linear-gradient(top center, #d1d1d1, #f2f2f2 80%) repeat scroll 0 0 #f2f2f2;
@@ -432,6 +431,30 @@ ul#navigation li.selected a:link, ul#navigation li.selected a:visited {
     height: 180px;
 }
 
+.home_social {
+    display: block;
+    font-size: .85em;
+    margin: 0 0 10px;
+    text-align: right;
+}
+
+    .home_social a {
+        margin-right: 3px;
+        text-decoration: none;
+    }
+
+
+    .home_social ul {
+        margin: 0;
+    }
+
+    .home_social li {
+        display: inline;
+        list-style: none;
+    }
+
+
+
 #homepage_content {
     margin-left: 25px;
     min-height: 830px;
@@ -443,6 +466,10 @@ ul#navigation li.selected a:link, ul#navigation li.selected a:visited {
     font-size: 20px;
     color: #58585A;
 }
+#homepage_content h2 {
+    color: #58585A;
+}
+
 #homepage_actioncall {
     margin: 0 auto;
     text-align: center;
@@ -460,6 +487,10 @@ ul#navigation li.selected a:link, ul#navigation li.selected a:visited {
     font-size: 13px;
     font-style: italic;
     font-weight: normal;
+}
+
+#homepage_rightfloat_container {
+    margin-top: 20px;
 }
 
 #home_toolad {
@@ -596,7 +627,7 @@ ul#navigation li.selected a:link, ul#navigation li.selected a:visited {
 
 .blogbuttonblogfloat {
     text-align: center;
-    padding-top: 15px;
+    padding-top: 5px;
 }
 
 .blogCommentHeader {
@@ -621,16 +652,18 @@ ul#navigation li.selected a:link, ul#navigation li.selected a:visited {
 #blog_socialLinks {
     width: 710px;
     text-align: right;
+    padding: 5px;
 }
 
-#blog_socialLinks li {
-    display: inline;
-    list-style-type: none;
+
+#fb-blog span {
+    padding-bottom: 4px;
 }
 
 #blog_socialLinks a,img {
     border: none;
     padding: 1px;
+    text-decoration: none;
 }
 
 /*Blog Button*/
@@ -658,7 +691,7 @@ ul#navigation li.selected a:link, ul#navigation li.selected a:visited {
 	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #378de5), color-stop(1, #79bbff) );
 	background:-moz-linear-gradient( center top, #378de5 5%, #79bbff 100% );
 	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#378de5', endColorstr='#79bbff');
-	background-color:#378de5;
+	background-color:#3096D2;
 }.blogbutton:active {
 	position:relative;
 	top:1px;

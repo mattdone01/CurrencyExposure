@@ -3,6 +3,7 @@
     ViewBag.Title = "Blog";
     Layout = "~/Views/Shared/_Layout.cshtml";
 	string Article = Model.Article;
+	string blogId = Model.Id.ToString();
 }
 
 <script type="text/x-jquery-tmpl" id="blogarticle_template">
@@ -25,19 +26,21 @@
 		$("ul#navigation li").removeClass("selected");
 		$("#BlogTab").addClass("selected");
 
-		$.getJSON("/Blog/GetArticlesList", { count: 4 }, function (data) {
+		$.getJSON("/Blog/GetArticlesList", { count: 5 }, function (data) {
 			$("#blogarticle_template").tmpl(data).appendTo("#blog_articles_list");
 			$(".blogarticles_template:even").css("background-color", "#EBEBE0").css("width", "100%");
-			$("#blog_articles_list").append('<div class="blogbuttonblogfloat"><a id="bloglistbutton" class="blogbutton blogbuttonblogfloat" href="/blog/BlogSearch">Show More</a></div>');
+			$("#blog_articles_list").append('<div class="blogbuttonblogfloat"><a id="bloglistbutton" class="blogbuttonx blogbuttonblogfloat" href="/blog/BlogSearch">Show More</a></div>');
 		});
 		
 		$.getJSON("/Blog/GetCommentsList",{count: 5}, function (data) {
 			$("#blogcomment_template").tmpl(data).appendTo("#blog_recent_comments_list");
 			$(".blogcomments_template:even").css("background-color", "#EBEBE0");
-			$("#blog_recent_comments_list").append('<div class="blogbuttonblogfloat"><a id="blogcommentbutton" class="blogbutton" href="/blog/CommentSearch">Show More</a></div>');
+			$("#blog_recent_comments_list").append('<div class="blogbuttonblogfloat"><a id="blogcommentbutton" class="blogbuttonx" href="/blog/CommentSearch">Show More</a></div>');
 		});
 
-		$("#BlogId").val($("#mainblogid").val());
+		var blogId = $("#mainblogid").val();
+		$("#BlogId").val(blogId);
+		$("#fb-blog").attr("data-href", "http://www.currencyexposure.com/getblog/" + blogId);
 	});
 	
 	function openBlogListWindow() {
@@ -93,23 +96,27 @@
 	<input type="hidden" id="mainblogid" value="@Model.Id" />
 </div>
 <div id="blog_socialLinks">
-	<ul>
-		<li>
-			<a href="https://twitter.com/CurrencyExposur" title="">
-				<img src="~/Content/Images/twitter_icon.png" alt="">
-			</a>
-		</li>
-		<li>
-			<a href="mailto:info@CurrencyExposure.com" title="">
-				<img src="~/Content/Images/Email.png" alt="" >
-			</a>
-		</li>
-		<li>
-			<a href="http://www.facebook.com/pages/CurrencyExposurecom/430339047010625" title="">
-				<img src="~/Content/Images/facebook_icon.png" alt="" >
-			</a>
-		</li>
-	</ul>
+	<a href="mailto:info@CurrencyExposure.com" title="@Html.DisplayFor(model => model.Title): http://www.currencyexposure.com/getblog/@Model.Id.ToString()">
+		<img src="~/Content/Images/Email.png" alt="">
+	</a>
+	<div id="fb-blog" class="fb-like" data-href="http://www.currencyexposure.com/getblog/1"
+		 data-send="true" data-layout="button_count" data-width="450" data-show-faces="false">
+	</div>
+
+	<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.currencyexposure.com/getbog/1" data-via="currencyexposur">Tweet</a>
+	<script> !function(d, s, id) {
+	var js, fjs = d.getElementsByTagName(s)[0];
+	if (!d.getElementById(id)) {
+		js = d.createElement(s);
+		js.id = id;
+		js.src = "//platform.twitter.com/widgets.js";
+		fjs.parentNode.insertBefore(js, fjs);
+	}
+}(document, "script", "twitter-wjs");
+	</script>
+
+
+
 </div>
 @{Html.RenderAction("CreateComment", "Blog");}
 <h1 class="blogCommentHeader">Comments</h1>

@@ -152,13 +152,17 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\currencyexposuredb.mdf" />
+    <Content Include="App_Data\currencyexposuredb_log.ldf">
+      <DependentUpon>currencyexposuredb.mdf</DependentUpon>
+    </Content>
     <Content Include="Content\fonts\avenier\avenir-book_0-demo.html" />
     <Content Include="Content\fonts\avenier\avenir-book_0.svg" />
     <Content Include="Content\fonts\avenier\generator_config.txt" />
     <Content Include="Content\fonts\avenier\stylesheet.css" />
     <Content Include="Content\Images\btm_icon.jpg" />
     <Content Include="Content\Images\CurrencyTool.png" />
-    <Content Include="Content\Images\Email.png" />
+    <Content Include="Content\Images\email.png" />
     <Content Include="Content\Images\facebook_icon.png" />
     <Content Include="Content\Images\ftr_logo.jpg" />
     <Content Include="Content\Images\hedge_tool.png" />
@@ -343,9 +347,7 @@
     <Content Include="Views\Blog\BlogSearch.cshtml" />
     <Content Include="Views\Blog\CommentSearch.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>
