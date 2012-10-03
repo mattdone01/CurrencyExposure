@@ -10,7 +10,7 @@ namespace CurrencyExposure.Repository
 		public DbSet<BlogCategory> BlogCategorys { get; set; }
 		public DbSet<BlogComment> BlogComments { get; set; }
 		public DbSet<BlogSocialLink> BlogSocialLinks { get; set; }
-		public DbSet<UserProfile> UserProfiles { get; set; }
+		//public DbSet<UserProfile> UserProfiles { get; set; }
 		public DbSet<ContactUs> ContactUs { get; set; }
 		public bool IsDisposed { get; set; }
 
