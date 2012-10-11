@@ -14,5 +14,6 @@ namespace CurrencyExposure.Repository
 		Task<List<BlogSummaryDto>> GetArticlesList(int count = 3);
 		TransactionResult SaveComments(BlogCommentDto comment);
 		TransactionResult SaveContactUs(ContactUs contactDetails);
+		OperationStatus SaveEmailSubscription(EmailSubscribe emailSubDto);
 	}
 }

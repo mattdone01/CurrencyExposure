@@ -150,6 +150,27 @@ namespace CurrencyExposure.Repository
 			}
 			return new OperationStatus { Status = true };
 		}
+
+		public OperationStatus SaveEmailSubscription(EmailSubscribe emailSubDto)
+		{
+			var opStatus = new OperationStatus { Status = false };
+			using (var context = new CurrencyExposureContext())
+			{
+				try
+				{
+					context.EmailSubscription.Add(emailSubDto);
+					opStatus.RecordsAffected = context.SaveChanges();
+					opStatus.Status = opStatus.RecordsAffected > 1;
+					if (opStatus.Status)
+						opStatus.Message = "Thanks for subscribing";
+				}
+				catch (Exception ex)
+				{
+					return OperationStatus.CreateFromException("Failed to Save subscription.", ex);
+				}
+			}
+			return opStatus;
+		}
 	}
 }
 	

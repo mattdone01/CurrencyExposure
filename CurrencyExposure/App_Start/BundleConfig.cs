@@ -9,7 +9,9 @@ namespace CurrencyExposure
 		public static void RegisterBundles(BundleCollection bundles)
 		{
 			bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-						"~/Scripts/libs/jquery-{version}.js", "~/Scripts/libs/jQuery.tmpl.js"));
+						"~/Scripts/libs/jquery-{version}.js", 
+						"~/Scripts/libs/jQuery.tmpl.js",
+						"~/Scripts/libs/jquery.tipTip.js"));
 
 
 			bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
@@ -33,7 +35,8 @@ namespace CurrencyExposure
 			bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
 						"~/Scripts/libs/modernizr-*"));
 
-			bundles.Add(new StyleBundle("~/Content/css").Include("~/Content/site.css"));
+			bundles.Add(new StyleBundle("~/Content/less").Include("~/Content/site.less"));
+			bundles.Add(new StyleBundle("~/Content/tipTip/css").Include("~/Content/tipTip/tipTip.css"));
 
 			bundles.Add(new StyleBundle("~/Content/kendo/css").Include(
 				"~/Content/kendo/kendo.common.css",

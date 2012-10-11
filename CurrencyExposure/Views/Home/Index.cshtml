@@ -7,6 +7,12 @@
 	$(document).ready(function () {
 		$("ul#navigation li").removeClass("selected");
 		$("#HomeTab").addClass("selected");
+		$("#img_currencytool").tipTip({
+			attribute: "data-tooltip",
+			maxWidth: "auto",
+			edgeOffset: 3,
+			defaultPosition: "top"
+		});
 	});
 </script>
 <div id="homepage_actioncall">
@@ -15,12 +21,12 @@
 </div>
 
 <div id="homepage_rightfloat_container">
-	<div id="home_toolad" class="homePage-right-floats">
+	<div id="home_toolad" class="homePage-right-floats" >
 		<a href="/Home/ExposurePlatform" title="">
-			<img id="img_currencytool" src="../../Content/Images/CETool.jpg" alt="">
+			<img id="img_currencytool" src="../../Content/Images/hedge_tool.png" alt="" data-tooltip="Click to see what our new tool can do for you">
 		</a>
 	</div>
-	<div id="home_rates" class="homePage-right-floats">
+	<div id="home_emailsubscribe" class="homePage-right-floats boxshadow" >
 		@{Html.RenderAction("EmailSubscribe", "Home");}
 	</div>
 	<div id="home_twitter" class="homePage-right-floats twitter-widget">

@@ -20,6 +20,8 @@
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -157,7 +159,6 @@
     <Content Include="Content\fonts\avenier\generator_config.txt" />
     <Content Include="Content\fonts\avenier\stylesheet.css" />
     <Content Include="Content\Images\btm_icon.jpg" />
-    <Content Include="Content\Images\CETool.jpg" />
     <Content Include="Content\Images\CurrencyTool.png" />
     <Content Include="Content\Images\email.png" />
     <Content Include="Content\Images\facebook_icon.png" />
@@ -280,6 +281,7 @@
     <Content Include="Content\themes\base\minified\jquery.ui.slider.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
+    <Content Include="Content\tipTip\tipTip.css" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\kendo\kendo.black.less" />
@@ -296,6 +298,8 @@
     <None Include="Properties\PublishProfiles\currencyexposure.com - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\currencyexposure.com - Web Deploy.pubxml" />
     <None Include="Scripts\libs\jquery-1.8.1.intellisense.js" />
+    <Content Include="Scripts\libs\jquery.tipTip.js" />
+    <Content Include="Scripts\libs\jquery.tipTip.minified.js" />
     <Content Include="Scripts\libs\jquery-1.8.1.js" />
     <Content Include="Scripts\libs\jquery-1.8.1.min.js" />
     <Content Include="Scripts\libs\jquery-ui-1.8.23.js" />
@@ -399,6 +403,7 @@
       </FlavorProperties>
     </VisualStudio>
   </ProjectExtensions>
+  <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

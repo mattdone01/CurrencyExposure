@@ -1,21 +1,37 @@
 ﻿@model CurrencyExposure.Model.EmailSubscribe
 
-@using (Html.BeginForm()) {
+<script>
+	$(document).ready(function() {
+		$(".home_email_input").val("Enter your email");
+		$(".home_email_input").css("color", '#A6A5A5');
+		$(".home_email_input").on("focus", function () {
+			$(".home_email_input").val("");
+			$(".home_email_input").css("color", 'black');
+		});
+		$("#emailsubmit").tipTip({
+			attribute: "data-tooltip",
+			maxWidth: "auto",
+			edgeOffset: 3
+		});
+	});
+</script>
+
+@using (Html.BeginForm("SaveEmail", "Home"))
+{
     @Html.ValidationSummary(true)
 
     <fieldset>
         <legend>EmailSubscribe</legend>
 
         <div class="label">
-            @Html.LabelFor(model => model.Email)
+			<label id="home_email_label">Subscribe to our newsletter</label>
         </div>
         <div class="field">
-            @Html.EditorFor(model => model.Email)
+            @Html.TextBoxFor(model => model.Email, new { @class = "home_email_input" })<br/>
             @Html.ValidationMessageFor(model => model.Email)
         </div>
-        <p>
-            <input type="submit" value="Subscribe" />
-        </p>
+		<input id="emailsubmit" type="submit" value="Subscribe" data-tooltip="Subscribe to our monthly email and stay up to date" />	
+
     </fieldset>
 }
 

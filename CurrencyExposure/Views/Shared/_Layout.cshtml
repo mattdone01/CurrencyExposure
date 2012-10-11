@@ -6,8 +6,9 @@
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width" />
 	<title>@ViewBag.Title</title>
-	@Styles.Render("~/Content/css")
+	@Styles.Render("~/Content/less")
 	@Styles.Render("~/Content/kendo/css")
+	@Styles.Render("~/Content/tipTip/css")
 	@Scripts.Render("~/bundles/modernizr")
 	@Scripts.Render("~/bundles/jquery")
 	@Scripts.Render("~/bundles/jqueryval")
@@ -15,16 +16,6 @@
 	@Scripts.Render("~/bundles/currencyexposure")
 </head>
 	<body>
-		<div id="fb-root"></div>
-		<script>
-			(function(d, s, id) {
-				var js, fjs = d.getElementsByTagName(s)[0];
-				if (d.getElementById(id)) return;
-				js = d.createElement(s); js.id = id;
-				js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1";
-				fjs.parentNode.insertBefore(js, fjs);
-			}(document, 'script', 'facebook-jssdk'));
-		</script>
 		<header>
 			<div class="content-wrapper">
 				<div class="logo">
@@ -36,23 +27,23 @@
 				<div class="float-right">
 					<section>
 						<div class="home_social">
-						<ul>
-							<li>
-								<a href="mailto:info@CurrencyExposure.com" title="">
-									<img src="~/Content/Images/Email.png" alt="">
-								</a>
-							</li>
-							<li>
-								<a href="https://twitter.com/CurrencyExposur" title="">
-									<img src="~/Content/Images/twitter_icon.png" alt="">
-								</a>
-							</li>
-							<li>
-								<a href="http://www.facebook.com/pages/CurrencyExposurecom/430339047010625" title="">
-									<img src="~/Content/Images/facebook_icon.png" alt="">
-								</a>
-							</li>
-						</ul>
+							<ul>
+								<li>
+									<a href="mailto:info@CurrencyExposure.com" title="">
+										<img src="~/Content/Images/Email.png" alt="">
+									</a>
+								</li>
+								<li>
+									<a href="https://twitter.com/CurrencyExposur" title="">
+										<img src="~/Content/Images/twitter_icon.png" alt="">
+									</a>
+								</li>
+								<li>
+									<a href="http://www.facebook.com/pages/CurrencyExposurecom/430339047010625" title="">
+										<img src="~/Content/Images/facebook_icon.png" alt="">
+									</a>
+								</li>
+							</ul>
 						</div>
 					</section>
 					<nav>

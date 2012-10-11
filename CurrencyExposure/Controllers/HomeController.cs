@@ -59,5 +59,19 @@ namespace CurrencyExposure.Controllers
 			var emailModel = new EmailSubscribe();
 			return PartialView("_EmailSubscriptionPartial", emailModel);
 		}
+
+		public ActionResult SaveEmail(EmailSubscribe emaildto)
+		{
+			ViewData["home_email_message"] = string.Empty;
+			if (ModelState.IsValid)
+			{
+				var stat = _blogRepository.SaveEmailSubscription(emaildto);
+				ViewData["home_email_message"] = stat.Message;
+			}
+
+			var blogs = _blogRepository.GetBlogSummaries();
+			return View("Index", blogs);
+			//return Index(); //May need t change to async
+		}
     }
 }
