@@ -48,5 +48,11 @@ namespace CurrencyExposure.Controllers
 			ViewData["Message"] = !result.Success ? result.ErrorText : "Thanks for contacting us.";
 			return View("Contact");
 		}
+
+		public ActionResult EmailSubscribe()
+		{
+			var emailModel = new EmailSubscribe();
+			return PartialView("_EmailSubscriptionPartial", emailModel);
+		}
     }
 }

@@ -1,0 +1,21 @@
+﻿@model CurrencyExposure.Model.EmailSubscribe
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>EmailSubscribe</legend>
+
+        <div class="label">
+            @Html.LabelFor(model => model.Email)
+        </div>
+        <div class="field">
+            @Html.EditorFor(model => model.Email)
+            @Html.ValidationMessageFor(model => model.Email)
+        </div>
+        <p>
+            <input type="submit" value="Subscribe" />
+        </p>
+    </fieldset>
+}
+

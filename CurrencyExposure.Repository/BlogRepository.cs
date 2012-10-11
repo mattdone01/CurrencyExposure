@@ -6,7 +6,6 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using CurrencyExposure.Model;
-using HtmlAgilityPack;
 
 namespace CurrencyExposure.Repository
 {
