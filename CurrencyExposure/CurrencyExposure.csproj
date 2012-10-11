@@ -157,6 +157,7 @@
     <Content Include="Content\fonts\avenier\generator_config.txt" />
     <Content Include="Content\fonts\avenier\stylesheet.css" />
     <Content Include="Content\Images\btm_icon.jpg" />
+    <Content Include="Content\Images\CETool.jpg" />
     <Content Include="Content\Images\CurrencyTool.png" />
     <Content Include="Content\Images\email.png" />
     <Content Include="Content\Images\facebook_icon.png" />
@@ -165,9 +166,15 @@
     <Content Include="Content\Images\lightgreybg.jpg" />
     <Content Include="Content\Images\mid_bg.png" />
     <Content Include="Content\Images\newsletter.png" />
+    <Content Include="Content\Images\pic41.png" />
+    <Content Include="Content\Images\pic5.png" />
+    <Content Include="Content\Images\pic6.png" />
+    <Content Include="Content\Images\pic7.png" />
+    <Content Include="Content\Images\pic8.png" />
     <Content Include="Content\Images\rates.png" />
     <Content Include="Content\Images\slantjpeg.jpg" />
     <Content Include="Content\Images\slantlogo.png" />
+    <Content Include="Content\Images\step_bg.png" />
     <Content Include="Content\Images\TwitterFeed.png" />
     <Content Include="Content\Images\twitter_icon.png" />
     <Content Include="Content\kendo\Black\editor.png" />
@@ -346,6 +353,7 @@
     <Content Include="Views\Blog\BlogSearch.cshtml" />
     <Content Include="Views\Blog\CommentSearch.cshtml" />
     <Content Include="Views\Home\_EmailSubscriptionPartial.cshtml" />
+    <Content Include="Views\Home\ExposurePlatform.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

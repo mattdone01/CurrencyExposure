@@ -287,12 +287,40 @@ fieldset textarea {
     width: 100px ! important;
 }
 
-.contact_details {
+/*.contact_details {
     float: left;
     width: 250px;
     margin-left: 50px;
     margin-top: 100px;
+}*/
+
+.contact_details{
+	width:250px;
+    height: 460px;
+	overflow:hidden;
+	float:left;
+    margin-top: 90px;
+    margin-left: 50px;
 }
+
+.contact_details h2{
+	font-size:20px;
+	font-weight:normal;
+	color:#666;
+        line-height:30px;
+}
+
+.contact_details a{
+	font-size:14px;
+	font-weight:normal;
+}
+
+.contact_details p{
+	font-size:14px;
+	font-weight:normal;
+	line-height:20px;
+}
+
 
 /* Tabs for navigation*/
 table {
@@ -782,6 +810,108 @@ input:focus, textarea:focus {
 
 .blog_comments h3 {
     font-size: 11px;
+}
+
+/*---------------------------------------How to Works Page Start Here------------------------------------*/
+.work_area{
+	width:965px;
+	overflow:hidden;
+	padding:0 30px;
+}
+
+
+.entry-content{color: #58585A;
+    font-size: 14px;
+    line-height: 22px;}
+
+.entry-content ul  { margin-bottom: 1.5em; padding: 0 0 0 30px; }
+.entry-content ul ul  { margin: 0; }
+.entry-content ul li  {	list-style-type: disc;  line-height: 22px; }
+.entry-content ul ul li  { list-style-type: circle;line-height: 22px; }
+
+.entry-content ol  { margin-bottom: 1.5em; padding: 0 0 0 30px; }
+.entry-content ol ol  { margin: 0; }
+.entry-content  ol li  { list-style-type: decimal; line-height: 22px;}
+.entry-content  ol li ol li  { list-style-type: lower-latin; line-height: 22px;}
+
+
+.work_area h1{
+	width:964px;
+	font-size:35px;
+	color:#58585A;
+	font-weight:normal;
+	text-align:center;
+	padding-bottom:5px;
+	margin-bottom:30px;
+	background:url(images/btm_icon.jpg) no-repeat bottom center;
+}
+.step_area{
+	width:342px;
+	float:left;
+	overflow:hidden;
+}
+.step_one{
+	width:342px;
+	float:left;
+	text-align:right;
+	padding-bottom:30px;
+}
+.step_one h3,.step_two h3{
+	width:342px;
+	font-size:21px;
+	color:#3096D2;
+	font-weight:normal;
+	padding-bottom:8px;
+}
+.step_one h3 span,.step_two h3 span{
+	font-size:20px;
+	color:#58585A;
+	display:block;
+}
+.step_one p,.step_two p{
+	font-size:13px;
+	color:#58585A;
+	line-height:23px;
+}
+.step_one p img{
+	float:left;
+	width: 120px;
+	height: 120px;
+}
+
+.step_mide{
+	width:280px;
+	text-align:center;
+	padding-top:60px;
+	float:left;
+}
+.step1_area{
+	width:342px;
+	float:right;
+	overflow:hidden;
+	padding-top:40px;
+}
+.step_two{
+	width:342px;
+	float:left;
+	text-align:left;
+	padding-bottom:30px;
+}
+.step_two p img{
+	float:right;
+	width: 115px;
+	height: 125px;
+}
+.step_two .pic8{
+	float:left;
+	margin-top:20px;
+}
+.info_area{
+	width:400px;
+	overflow:hidden;
+	padding:10px;
+	background:#3195D1;
+	margin-left:240px;
 }
 
  /*---------------------------------------Footer area------------------------------------*/

@@ -37,6 +37,11 @@ namespace CurrencyExposure.Controllers
 			return View();
 		}
 
+		public ActionResult ExposurePlatform()
+		{
+			return View();
+		}
+
 		public ActionResult SaveContactUs(ContactUs contactDetail)
 		{
 			ViewData["Message"] = string.Empty;
