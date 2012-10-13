@@ -1,5 +1,6 @@
 ﻿using System.Web;
 using System.Web.Optimization;
+using CurrencyExposure.Helpers;
 
 namespace CurrencyExposure
 {
@@ -35,9 +36,13 @@ namespace CurrencyExposure
 			bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
 						"~/Scripts/libs/modernizr-*"));
 
-			bundles.Add(new StyleBundle("~/Content/less").Include("~/Content/site.less"));
-			bundles.Add(new StyleBundle("~/Content/tipTip/css").Include("~/Content/tipTip/tipTip.css"));
+			//Styles.
+			var lessBundle = new Bundle("~/Content/less").Include("~/Content/site.less");
+			lessBundle.Transforms.Add(new LessTransform());
+			lessBundle.Transforms.Add(new CssMinify());
+			bundles.Add(lessBundle);
 
+			bundles.Add(new StyleBundle("~/Content/tipTip/css").Include("~/Content/tipTip/tipTip.css"));
 			bundles.Add(new StyleBundle("~/Content/kendo/css").Include(
 				"~/Content/kendo/kendo.common.css",
 				"~/Content/kendo/kendo.default.css"));

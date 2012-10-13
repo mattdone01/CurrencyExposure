@@ -14,9 +14,12 @@
 			edgeOffset: 3
 		});
 	});
+	function email_submitted(context) {
+		alert("Subitted");
+	}
 </script>
 
-@using (Html.BeginForm("SaveEmail", "Home"))
+@using (Ajax.BeginForm("SaveEmail", new AjaxOptions { OnComplete = "email_submitted" }))
 {
     @Html.ValidationSummary(true)
 

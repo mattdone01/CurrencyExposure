@@ -150,6 +150,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\JsonNetResult.cs" />
+    <Compile Include="Helpers\LessTransform.cs" />
     <Compile Include="Helpers\UnityDependencyResolver.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -160,6 +161,7 @@
     <Content Include="Content\fonts\avenier\stylesheet.css" />
     <Content Include="Content\Images\btm_icon.jpg" />
     <Content Include="Content\Images\CurrencyTool.png" />
+    <Content Include="Content\Images\currency_box.png" />
     <Content Include="Content\Images\email.png" />
     <Content Include="Content\Images\facebook_icon.png" />
     <Content Include="Content\Images\ftr_logo.jpg" />

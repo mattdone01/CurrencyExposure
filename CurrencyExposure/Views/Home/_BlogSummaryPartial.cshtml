@@ -3,8 +3,8 @@
 {
 	string article = summary.Summary;
 	<div class="home_blogSummary">
-		<h2>@summary.Title</h2>
-		<h3>&nbsp;&nbsp;&nbsp;&nbsp;Posted by: @summary.Author on @summary.CreateDate </h3>
+		<h2>@summary.Title</h2><br/>
+		<h3>Posted by: @summary.Author on @summary.CreateDate </h3>
 		<div class="home_blogSummary_text">
 			@MvcHtmlString.Create(article)
 		</div>

@@ -9,8 +9,9 @@
 @foreach (var item in Model.OrderByDescending(c=>c.CreateDate)) {
 <div id="blog_comments" class="blog_comments_container">
 	<div class="blog_comments">
-		<h2>@Html.DisplayFor(modelItem => item.Title)</h2><br/>
-		<h3>Posted By: @Html.DisplayFor(modelItem => item.Name) on @Html.DisplayFor(modelItem => item.CreateDate)</h3>
+		<h2>@Html.DisplayFor(modelItem => item.Title)</h2>
+		<h3>Posted By: @Html.DisplayFor(modelItem => item.Name)</h3>
+		<h3>On: @Html.DisplayFor(modelItem => item.CreateDate)</h3>
 		<p>@Html.DisplayFor(modelItem => item.Comment)</p>
 	</div>
 </div>

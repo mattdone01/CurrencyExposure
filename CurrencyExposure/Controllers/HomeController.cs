@@ -62,16 +62,13 @@ namespace CurrencyExposure.Controllers
 
 		public ActionResult SaveEmail(EmailSubscribe emaildto)
 		{
-			ViewData["home_email_message"] = string.Empty;
+			var status = new OperationStatus();
 			if (ModelState.IsValid)
 			{
-				var stat = _blogRepository.SaveEmailSubscription(emaildto);
-				ViewData["home_email_message"] = stat.Message;
+				status = _blogRepository.SaveEmailSubscription(emaildto);
 			}
 
-			var blogs = _blogRepository.GetBlogSummaries();
-			return View("Index", blogs);
-			//return Index(); //May need t change to async
+			return Json(status);
 		}
     }
 }
