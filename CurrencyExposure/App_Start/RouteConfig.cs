@@ -14,9 +14,15 @@ namespace CurrencyExposure
 			routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
 			routes.MapRoute(
-				name: "Blog",
+				name: "GetBlog",
 				url: "getblog/{id}",
 				defaults: new { controller = "Blog", action = "GetBlog", id = UrlParameter.Optional }
+				);
+
+			routes.MapRoute(
+				name: "ContactUsProductEnquiry",
+				url: "contact/{prodenquiry}",
+				defaults: new { controller = "Contact", action = "Index", prodEnquiry = UrlParameter.Optional }
 				);
 
 			routes.MapRoute(

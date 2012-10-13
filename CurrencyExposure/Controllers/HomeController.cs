@@ -27,10 +27,6 @@ namespace CurrencyExposure.Controllers
 			return View();
 		}
 
-		public ActionResult Contact()
-		{
-			return View();
-		}
 
 		public ActionResult Links()
 		{
@@ -42,24 +38,13 @@ namespace CurrencyExposure.Controllers
 			return View();
 		}
 
-		public ActionResult SaveContactUs(ContactUs contactDetail)
-		{
-			ViewData["Message"] = string.Empty;
-			var result = new TransactionResult(false);
-			if (ModelState.IsValid)
-			{
-				result = _blogRepository.SaveContactUs(contactDetail);
-			}
-			ViewData["Message"] = !result.Success ? result.ErrorText : "Thanks for contacting us.";
-			return View("Contact");
-		}
-
 		public ActionResult EmailSubscribe()
 		{
 			var emailModel = new EmailSubscribe();
 			return PartialView("_EmailSubscriptionPartial", emailModel);
 		}
 
+		[HttpPost]
 		public ActionResult SaveEmail(EmailSubscribe emaildto)
 		{
 			var status = new OperationStatus();

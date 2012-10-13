@@ -26,6 +26,7 @@ namespace CurrencyExposure.Model
 		[Required]
 		[StringLength(2500)]
 		public string Comment { get; set; }
+		public bool ProductEnquiry { get; set; }
 		public DateTime CreateDate { get; set; }
 	}
 }

@@ -48,7 +48,7 @@
 					</section>
 					<nav>
 						<ul id="navigation">
-							<li id="ContactTab">@Html.ActionLink("Contact", "Contact", "Home")</li>
+							<li id="ContactTab">@Html.ActionLink("Contact", "Index", "Contact")</li>
 							<li id="AboutTab">@Html.ActionLink("About", "About", "Home")</li>
 							<li id="LinksTab">@Html.ActionLink("Links", "Links", "Home")</li>
 							<li id="BlogTab">@Html.ActionLink("Blog", "Index", "Blog")</li>
@@ -59,7 +59,7 @@
 			</div>
 		</header>
 		<div id="MainSiteDiv">
-			<iframe id="tmc-ticker" src="http://themoneyconverter.com/AUD/RateTicker.aspx" style="width:1060px;height:30px" scrolling="no" frameborder="0" marginwidth="0" marginheight="0"></iframe>
+			<iframe id="tmc-ticker" src="http://themoneyconverter.com/USD/RateTicker.aspx" style="width:1060px;height:30px" scrolling="no" frameborder="0" marginwidth="0" marginheight="0"></iframe>
 			<div id="body">
 				<section class="content-wrapper main-content">
 					@RenderBody()

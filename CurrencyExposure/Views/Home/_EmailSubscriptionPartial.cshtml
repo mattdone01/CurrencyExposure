@@ -2,11 +2,11 @@
 
 <script>
 	$(document).ready(function() {
-		$(".home_email_input").val("Enter your email");
-		$(".home_email_input").css("color", '#A6A5A5');
-		$(".home_email_input").on("focus", function () {
-			$(".home_email_input").val("");
-			$(".home_email_input").css("color", 'black');
+		$("#Email").val("Enter your email");
+		$("#Email").css("color", '#A6A5A5');
+		$("#Email").on("focus", function () {
+			$("#Email").val("");
+			$("#Email").css("color", 'black');
 		});
 		$("#emailsubmit").tipTip({
 			attribute: "data-tooltip",
@@ -30,7 +30,7 @@
 			<label id="home_email_label">Subscribe to our newsletter</label>
         </div>
         <div class="field">
-            @Html.TextBoxFor(model => model.Email, new { @class = "home_email_input" })<br/>
+            @Html.EditorFor(model => model.Email)<br/>
             @Html.ValidationMessageFor(model => model.Email)
         </div>
 		<input id="emailsubmit" type="submit" value="Subscribe" data-tooltip="Subscribe to our monthly email and stay up to date" />	
