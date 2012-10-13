@@ -362,7 +362,6 @@
     <Content Include="Views\Home\_EmailSubscriptionPartial.cshtml" />
     <Content Include="Views\Home\ExposurePlatform.cshtml" />
     <Content Include="Views\Contact\Index.cshtml" />
-    <Content Include="Views\Contact\xview.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
