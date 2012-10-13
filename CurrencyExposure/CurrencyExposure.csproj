@@ -161,6 +161,9 @@
     <Content Include="Content\fonts\avenier\generator_config.txt" />
     <Content Include="Content\fonts\avenier\stylesheet.css" />
     <Content Include="Content\Images\btm_icon.jpg" />
+    <Content Include="Content\Images\CELogo.ico" />
+    <Content Include="Content\Images\CELogo.png" />
+    <Content Include="Content\Images\CurrencyCircle1.ico" />
     <Content Include="Content\Images\CurrencyTool.png" />
     <Content Include="Content\Images\currency_box.png" />
     <Content Include="Content\Images\email.png" />
