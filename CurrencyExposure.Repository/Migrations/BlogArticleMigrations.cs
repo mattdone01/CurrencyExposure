@@ -128,36 +128,36 @@ namespace CurrencyExposure.Repository.Migrations
 			context.Blogs.AddOrUpdate(p => p.Title, blog4, blog5);
 
 			//Add Blog Comments
-			var blogComment1 = new BlogComment
-			{
-				Blog = blog1,
-				Title = "This is a test Comment 1",
-				Comment = "This is a test Comment 1",
-				Name = "MattDone",
-				Email = "mattdone@gmail.com"
-			};
+			//var blogComment1 = new BlogComment
+			//{
+			//	Blog = blog1,
+			//	Title = "This is a test Comment 1",
+			//	Comment = "This is a test Comment 1",
+			//	Name = "MattDone",
+			//	Email = "mattdone@gmail.com"
+			//};
 
-			var blogComment2 = new BlogComment
-			{
-				Blog = blog2,
-				Title = "This is a test Comment 2",
-				Comment = "This is the content of the test comment",
-				Name = "MattDone",
-				Email = "mattdone@gmail.com"
-			};
+			//var blogComment2 = new BlogComment
+			//{
+			//	Blog = blog2,
+			//	Title = "This is a test Comment 2",
+			//	Comment = "This is the content of the test comment",
+			//	Name = "MattDone",
+			//	Email = "mattdone@gmail.com"
+			//};
 
-			context.BlogComments.AddOrUpdate(p => new { p.Comment, p.Name }, blogComment1);
-			context.BlogComments.AddOrUpdate(p => new { p.Comment, p.Name }, blogComment2);
-			context.BlogComments.AddOrUpdate(p => new { p.Comment, p.Name },
-											 new BlogComment
-											 {
-												 Blog = blog2,
-												 Title = "This is a test Comment",
-												 Comment = "This is a child reply to test Comment 2",
-												 Name = "MattTyrrell",
-												 Email = "MT@gmail.com",
-												 ParentComment = blogComment2
-											 });
+			//context.BlogComments.AddOrUpdate(p => new { p.Comment, p.Name }, blogComment1);
+			//context.BlogComments.AddOrUpdate(p => new { p.Comment, p.Name }, blogComment2);
+			//context.BlogComments.AddOrUpdate(p => new { p.Comment, p.Name },
+			//								 new BlogComment
+			//								 {
+			//									 Blog = blog2,
+			//									 Title = "This is a test Comment",
+			//									 Comment = "This is a child reply to test Comment 2",
+			//									 Name = "MattTyrrell",
+			//									 Email = "MT@gmail.com",
+			//									 ParentComment = blogComment2
+			//								 });
 		}
 
 		public const string BlogArticle1Summary = @"<p>We started this blog because we have sold foreign currency solutions to the SME and Corporate segment in Australia and have a very good understanding of the problems that businesses have in managing their foreign currency exposure....</p>";

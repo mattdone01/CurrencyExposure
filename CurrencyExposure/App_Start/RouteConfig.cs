@@ -21,7 +21,7 @@ namespace CurrencyExposure
 
 			routes.MapRoute(
 				name: "ContactUsProductEnquiry",
-				url: "contact/{prodenquiry}",
+				url: "contactenq/{prodenquiry}",
 				defaults: new { controller = "Contact", action = "Index", prodEnquiry = UrlParameter.Optional }
 				);
 

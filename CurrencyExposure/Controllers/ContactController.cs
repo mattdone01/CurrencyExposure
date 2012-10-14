@@ -14,7 +14,6 @@ namespace CurrencyExposure.Controllers
 		 public ContactController(IBlogRepository blogRepository)
 		{
 			_blogRepository = blogRepository;
-			ViewData["Contact_us_Save_Message"] = string.Empty;
 		}
 
 		public ActionResult Index(bool prodEnquiry = false)
@@ -26,13 +25,13 @@ namespace CurrencyExposure.Controllers
 		[HttpPost]
 		public ActionResult SaveContactUs(ContactUs contactDetail)
 		{
-			var result = new TransactionResult(false);
+			var result = new OperationStatus();
 			if (ModelState.IsValid)
 			{
 				result = _blogRepository.SaveContactUs(contactDetail);
 			}
-			ViewData["Message"] = !result.Success ? result.ErrorText : "Thanks for contacting us.";
-			return View("Index");
+
+			return Json(result);
 		}
     }
 }

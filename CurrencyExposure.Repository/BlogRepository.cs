@@ -11,6 +11,13 @@ namespace CurrencyExposure.Repository
 {
 	public class BlogRepository : RepositoryBase<CurrencyExposureContext>, IBlogRepository
 	{
+		private readonly EmailHelper _emailHelper = null;
+		private const string _emailTo = "info@currencyexposure.com";
+
+		public BlogRepository()
+		{
+			_emailHelper = new EmailHelper("mattdone","Matt1234","info@currencyexposure.com");
+		}
 		public Blog GetBlog(int id)
 		{
 			using (var context = new CurrencyExposureContext())
@@ -99,7 +106,7 @@ namespace CurrencyExposure.Repository
 			}
 		}
 
-		public TransactionResult SaveComments(BlogCommentDto comment)
+		public OperationStatus SaveComments(BlogCommentDto comment)
 		{
 			var blogComment = new BlogComment();
 			blogComment.Name = comment.Name;
@@ -107,69 +114,93 @@ namespace CurrencyExposure.Repository
 			blogComment.Email = comment.Email;
 			blogComment.Comment = comment.Comment;
 
-			int recs = 0;
-			using (var context = new CurrencyExposureContext())
-			{
-				var blog = context.Blogs.First(c => c.Id == comment.BlogId);
-				blogComment.Blog = blog;
-				context.BlogComments.Add(blogComment);
-				recs = context.SaveChanges();
-			}
-			var result = new TransactionResult(true);
-			if (recs == 0)
-				result.ErrorText = "Failed to save comment";
-
-			return result;
-		}
-
-		public TransactionResult SaveContactUs(ContactUs contactDetails)
-		{
-			int recs = 0;
-			using (var context = new CurrencyExposureContext())
-			{
-				context.ContactUs.Add(contactDetails);
-				recs = context.SaveChanges();
-			}
-			var result = new TransactionResult(true);
-			if (recs == 0)
-				result.ErrorText = "Failed to save comment";
-
-			return result;
-		}
-
-		public OperationStatus SaveNewBlog(Blog blog)
-		{
-			DataContext.Entry(blog).State = System.Data.EntityState.Modified;
+			var result = new OperationStatus();
 			try
 			{
-				DataContext.SaveChanges();
+				using (var context = new CurrencyExposureContext())
+				{
+					var blog = context.Blogs.First(c => c.Id == comment.BlogId);
+					blogComment.Blog = blog;
+					context.BlogComments.Add(blogComment);
+					result.RecordsAffected = context.SaveChanges();
+				}
 			}
 			catch (Exception ex)
 			{
-				return OperationStatus.CreateFromException("Failed to Save Blog.", ex);
+				return OperationStatus.CreateFromException("Failed to create comment", ex);
 			}
-			return new OperationStatus { Status = true };
+
+			result.Status = result.RecordsAffected > 0;
+			if (!result.Status)
+				result.Message = "Failed to save comment";
+			else
+			{
+				_emailHelper.SendEmail(_emailTo, string.Format("A New Comment has been added by {0}", comment.Email),
+				                       "A New Comment has been added");
+				if (result.Status)
+					result.Message = "Thanks for commenting";
+			}
+
+			return result;
+		}
+
+		public OperationStatus SaveContactUs(ContactUs contactDetails)
+		{
+			var result = new OperationStatus();
+			try
+			{
+				using (var context = new CurrencyExposureContext())
+				{
+					context.ContactUs.Add(contactDetails);
+					result.RecordsAffected = context.SaveChanges();
+				}
+			}
+			catch (Exception ex)
+			{
+				return OperationStatus.CreateFromException("Failed to add contact us. Please try again", ex);
+			}
+
+			result.Status = result.RecordsAffected > 0;
+			if (!result.Status)
+				result.Message = "Failed to add contact us. Please try again";
+			else
+			{
+				_emailHelper.SendEmail(_emailTo, string.Format("A new contact us has been recieved from {0}", contactDetails.Email),
+									   "A new contact us has been recieved");
+				if (result.Status)
+					result.Message = "Thanks for contacting us";
+			}
+
+			return result;
 		}
 
 		public OperationStatus SaveEmailSubscription(EmailSubscribe emailSubDto)
 		{
-			var opStatus = new OperationStatus { Status = false };
-			using (var context = new CurrencyExposureContext())
+			var result = new OperationStatus();
+			try
 			{
-				try
+				using (var context = new CurrencyExposureContext())
 				{
 					context.EmailSubscription.Add(emailSubDto);
-					opStatus.RecordsAffected = context.SaveChanges();
-					opStatus.Status = opStatus.RecordsAffected > 1;
-					if (opStatus.Status)
-						opStatus.Message = "Thanks for subscribing";
-				}
-				catch (Exception ex)
-				{
-					return OperationStatus.CreateFromException("Failed to Save subscription.", ex);
+					result.RecordsAffected = context.SaveChanges();
 				}
 			}
-			return opStatus;
+			catch (Exception ex)
+			{
+				return OperationStatus.CreateFromException("Failed to Save subscription.", ex);
+			}
+
+			result.Status = result.RecordsAffected > 0;
+			if (!result.Status)
+				result.Message = "Failed to subscribe. Please try again";
+			else
+			{
+				_emailHelper.SendEmail(_emailTo, string.Format("A new subscription has been recieved from {0}", emailSubDto.Email),
+									   "A new subscription has been recieved");
+				if (result.Status)
+					result.Message = "Thanks for subscribing";
+			}
+			return result;
 		}
 	}
 }

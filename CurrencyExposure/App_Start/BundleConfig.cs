@@ -19,8 +19,9 @@ namespace CurrencyExposure
 						"~/Scripts/libs/jquery.unobtrusive*",
 						"~/Scripts/libs/jquery.validate*"));
 
-			bundles.Add(new ScriptBundle("~/bundles/currencyexposure").Include(
-				"~/Scripts/startup.js"));
+			bundles.Add(new ScriptBundle("~/bundles/currencyexposure")
+				            .Include("~/Scripts/startup.js")
+				            .Include("~/Scripts/misc.js"));
 
 			bundles.Add(new ScriptBundle("~/bundles/kendo").Include("~/Scripts/libs/kendo/kendo.web.js"));
 			   // "~/Scripts/libs/kendo/kendo.core.js",

@@ -1,4 +1,4 @@
-﻿@model CurrencyExposure.Model.Blog
+﻿﻿@model CurrencyExposure.Model.Blog
 @{
     ViewBag.Title = "Blog";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -7,21 +7,23 @@
 }
 
 <script type="text/x-jquery-tmpl" id="blogarticle_template">
-	<div class="blogarticles_template blogfloats"><a href="/Blog/GetBlog/${Id}">${Title}</a><br />
-		${Author} - ${formatDate(CreateDate)}</div><br />
+	<div class="blogarticles_template blogfloats">
+		<a href="/Blog/GetBlog/${Id}">${Title}</a><br />
+		${Author} - ${formatDate(CreateDate)}
+	</div>
+	<br />
 </script>
 
 <script type="text/x-jquery-tmpl" id="blogcomment_template">
-	<div class="blogcomments_template blogfloats"><a href="/Blog/GetBlog/${BlogId}">${Title}</a><br />
-		${Name} - ${formatDate(CreateDate)}</div><br />	
+	<div class="blogcomments_template blogfloats">
+		<a href="/Blog/GetBlog/${BlogId}">${Title}</a><br />
+		${Name} - ${formatDate(CreateDate)}
+	</div>
+	<br />
 </script>
 
 
 <script>
-	function formatDate(datetime) {
-		var dateObj = new Date(datetime);
-		return dateObj.toDateString();
-	}
 	$(document).ready(function () {
 		$("ul#navigation li").removeClass("selected");
 		$("#BlogTab").addClass("selected");
@@ -51,7 +53,7 @@
 		</div>
 	</div>
 
-	<div >
+	<div>
 		<h2>Recent Comments</h2>
 		<div id="blog_recent_comments_list" class="blog_article_floats_content">
 		</div>
@@ -61,7 +63,8 @@
 <div id="blog_blogarticle">
 	<h1>@Html.DisplayFor(model => model.Title)</h1>
 	<div id="blog_article_content">
-		<h3>Posted by: @Html.DisplayFor(model => model.BlogAuthor.AuthorName) </h3><br/>
+		<h3>Posted by: @Html.DisplayFor(model => model.BlogAuthor.AuthorName) </h3>
+		<br />
 		<h3>On: @Html.DisplayFor(model => model.CreateDate)</h3>
 		<div id="blog_article_article">@MvcHtmlString.Create(Article)</div>
 	</div>
@@ -78,12 +81,12 @@
 			js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1";
 			fjs.parentNode.insertBefore(js, fjs);
 		}(document, 'script', 'facebook-jssdk'));
-		</script>
+	</script>
 	<a href="mailto:info@CurrencyExposure.com" title="@Html.DisplayFor(model => model.Title): http://www.currencyexposure.com/getblog/@Model.Id.ToString()">
 		<img src="~/Content/Images/Email.png" alt="">
 	</a>
 	<div id="fb-blog" class="fb-like" data-href="http://www.currencyexposure.com/getblog/1"
-		 data-send="true" data-layout="button_count" data-width="450" data-show-faces="false">
+		data-send="true" data-layout="button_count" data-width="450" data-show-faces="false">
 	</div>
 
 	<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.currencyexposure.com/getbog/1" data-via="currencyexposur">Tweet</a>
@@ -101,5 +104,6 @@
 
 @{Html.RenderAction("CreateComment", "Blog");}
 <h1 class="blogCommentHeader">Comments</h1>
+<div id="blogcommentlistdiv">
 @Html.Partial("_BlogCommentListPartial", Model.BlogComments)
-
+</div>

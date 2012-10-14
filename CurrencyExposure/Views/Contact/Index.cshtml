@@ -3,6 +3,7 @@
 @{
     ViewBag.Title = "Contact Us";
 }
+
 <h2 class="mainheading">CONTACT US</h2>
 
 <div class="contact_details">
@@ -20,10 +21,14 @@
 	</p>
 </div>
 
-@using (Html.BeginForm("SaveContactUs", "Contact"))
- {
+@using (Ajax.BeginForm("SaveContactUs", new AjaxOptions
+											{
+												OnComplete = "contact_submitted",
+												OnBegin = "on_contactus_begin"
+											}))
+{
 	@Html.ValidationSummary(true)
-		
+
 	<fieldset>
 		<legend>ContactUs</legend>
 		<div class="blog_comments_container lightgreybg" style="width: 500px;">
@@ -53,26 +58,25 @@
 					@Html.ValidationMessageFor(model => model.Comment)
 				</p>
 				@if (Model.ProductEnquiry)
-					{
-						<p class="text">
-							<label>Product Enquiry</label>
-							@Html.CheckBoxFor(model => model.ProductEnquiry, new{@style = "width: 20px;"})<br />
-							@Html.ValidationMessageFor(model => model.ProductEnquiry)
-						</p>
-					}
-				@if (!string.IsNullOrEmpty(ViewData["Contact_us_Save_Message"].ToString()))
-					{
-					<div class="green">
-						<p>@ViewData["Message"].ToString()</p>
-					</div>
-					}
+				{
+					<p class="text">
+						<label>Product Enquiry</label>
+						@Html.CheckBoxFor(model => model.ProductEnquiry, new {@style = "width: 20px;"})<br />
+						@Html.ValidationMessageFor(model => model.ProductEnquiry)
+					</p>
+				}
+
+				<div id="contact_us_return_message" style="display: none">
+				</div>
+
 				<p class="submit">
 					<input id="submitcomment" type="submit" value="Submit" />
+					<img id="contactus_submit_loading" class="loadinggif" src="~/Content/Images/loading.gif" />
 				</p>
 			</div>
 		</div>
 	</fieldset>
-	}
+}
 <script>
 	$(document).ready(function () {
 		$("ul#navigation li").removeClass("selected");

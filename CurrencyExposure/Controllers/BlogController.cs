@@ -5,6 +5,7 @@ using System.Web.Mvc;
 using CurrencyExposure.Helpers;
 using CurrencyExposure.Model;
 using CurrencyExposure.Repository;
+using CurrencyExposure.Helpers;
 
 namespace CurrencyExposure.Controllers
 {
@@ -20,7 +21,7 @@ namespace CurrencyExposure.Controllers
 		public ActionResult Index(int id = 0)
 		{
 			var blog = _blogRepository.GetBlog(id);
-			return View("Blog",blog);
+			return View("Blog", blog);
 		}
 
 		public ActionResult GetBlog(int id = 0)
@@ -30,23 +31,16 @@ namespace CurrencyExposure.Controllers
 
 		public async Task<JsonNetResult> GetCommentsList(int count = 3)
 		{
-			var createDate = DateTime.MinValue;
 			var result = await _blogRepository.GetCommentsList(count);
 			return ToJsonNet(result, JsonRequestBehavior.AllowGet);
 		}
 
 		public async Task<JsonNetResult> GetArticlesList(int count = 3)
 		{
-			var createDate = DateTime.MinValue;
 			var result = await _blogRepository.GetArticlesList(count);
 			return ToJsonNet(result, JsonRequestBehavior.AllowGet);
 		}
-
-		public async Task<JsonResult> GetArchiveList()
-		{
-			return null;
-		}
-
+		
 		public ActionResult CreateComment()
 		{
 			var blogComment = new BlogCommentDto();
@@ -66,13 +60,16 @@ namespace CurrencyExposure.Controllers
 		[HttpPost]
 		public ActionResult SaveComment(BlogCommentDto blogComment)
 		{
-			var result = new TransactionResult(false);
+			var result = new OperationStatus();
 			if (ModelState.IsValid)
 			{
 				result = _blogRepository.SaveComments(blogComment);
 			}
 
-			return Index();
+			var blog = _blogRepository.GetBlog(blogComment.BlogId);
+			var partialView = this.RenderPartialViewToString("_BlogCommentListPartial", blog.BlogComments);
+			result.RenderedPartialViewUpdate = partialView;
+			return Json(result); 
 		}
     }
 }

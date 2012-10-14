@@ -150,6 +150,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\ControllerExtensions.cs" />
     <Compile Include="Helpers\JsonNetResult.cs" />
     <Compile Include="Helpers\LessTransform.cs" />
     <Compile Include="Helpers\UnityDependencyResolver.cs" />
@@ -172,6 +173,7 @@
     <Content Include="Content\Images\go_btn.jpg" />
     <Content Include="Content\Images\hedge_tool.png" />
     <Content Include="Content\Images\lightgreybg.jpg" />
+    <Content Include="Content\Images\loading.gif" />
     <Content Include="Content\Images\mid_bg.png" />
     <Content Include="Content\Images\newsletter.png" />
     <Content Include="Content\Images\pic41.png" />
@@ -355,7 +357,6 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Links.cshtml" />
-    <Content Include="Views\Blog\Blog.cshtml" />
     <Content Include="Views\Home\_BlogSummaryPartial.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Blog\_BlogCommentListPartial.cshtml" />
@@ -365,6 +366,7 @@
     <Content Include="Views\Home\_EmailSubscriptionPartial.cshtml" />
     <Content Include="Views\Home\ExposurePlatform.cshtml" />
     <Content Include="Views\Contact\Index.cshtml" />
+    <Content Include="Views\Blog\Blog.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

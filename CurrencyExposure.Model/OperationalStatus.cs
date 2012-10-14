@@ -10,6 +10,7 @@ namespace CurrencyExposure.Model
 		public int RecordsAffected { get; set; }
 		public string Message { get; set; }
 		public Object OperationId { get; set; }
+		public string RenderedPartialViewUpdate { get; set; }
 		public string ExceptionMessage { get; set; }
 		public string ExceptionStackTrace { get; set; }
 		public string ExceptionInnerMessage { get; set; }

@@ -14,12 +14,14 @@
 			edgeOffset: 3
 		});
 	});
-	function email_submitted(context) {
-		alert("Subitted");
-	}
+
 </script>
 
-@using (Ajax.BeginForm("SaveEmail", new AjaxOptions { OnComplete = "email_submitted" }))
+@using (Ajax.BeginForm("SaveEmail", new AjaxOptions
+										{
+											OnComplete = "email_submitted", 
+											OnBegin = "on_email_submit_begin"
+										}))
 {
     @Html.ValidationSummary(true)
 
@@ -29,12 +31,15 @@
         <div class="label">
 			<label id="home_email_label">Subscribe to our newsletter</label>
         </div>
-        <div class="field">
-            @Html.EditorFor(model => model.Email)<br/>
-            @Html.ValidationMessageFor(model => model.Email)
-        </div>
-		<input id="emailsubmit" type="submit" value="Subscribe" data-tooltip="Subscribe to our monthly email and stay up to date" />	
-
+		<div class="field">
+			@Html.EditorFor(model => model.Email)<br/>
+			@Html.ValidationMessageFor(model => model.Email)
+		</div>
+		<div id="email_submit_return_message" style="display: none">
+		</div>
+		<input id="emailsubmit" type="submit" value="Subscribe" data-tooltip="Subscribe to our monthly email and stay up to date" />
+		<img id="email_submit_loading" class="loadinggif" src="~/Content/Images/loading.gif" />
     </fieldset>
+	
 }
 
