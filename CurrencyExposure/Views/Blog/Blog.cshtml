@@ -1,6 +1,6 @@
 ﻿﻿@model CurrencyExposure.Model.Blog
 @{
-    ViewBag.Title = "Blog";
+    ViewBag.Title = Model.Title;
     Layout = "~/Views/Shared/_Layout.cshtml";
 	string Article = Model.Article;
 	string blogId = Model.Id.ToString();
@@ -42,7 +42,6 @@
 
 		var blogId = $("#mainblogid").val();
 		$("#BlogId").val(blogId);
-		$("#fb-blog").attr("data-href", "http://www.currencyexposure.com/getblog/" + blogId);
 	});
 </script>
 
@@ -67,38 +66,41 @@
 		<br />
 		<h3>On: @Html.DisplayFor(model => model.CreateDate)</h3>
 		<div id="blog_article_article">@MvcHtmlString.Create(Article)</div>
+		<div id="blogDisclaimer">
+			
+			<p style="font-style:italic;padding-top: 20px;">
+				<strong>General Disclaimer:</strong> All ideas, opinions, recommendations and/or forecasts, expressed or implied herein, 
+				are for informational and educational purposes only and should not be construed as financial product advice or an inducement 
+				or instruction to invest, trade, and/or speculate in the markets. All trading and investing activities are subject to the usual 
+				market fluctuations that may result in gains and losses. Any action or refraining from action; investments, trades, and/or speculations made 
+				in light of the ideas, opinions, and/or forecasts, expressed or implied herein, are committed at your own risk and consequence, 
+				financial or otherwise. Please seek legal and/or financial advice before taking or refraining from such action. 
+				Past or historical results may have no bearing of current or future trading or system results.
+			</p>
+		</div>
 	</div>
 	<div id="window"></div>
 	<input type="hidden" id="mainblogid" value="@Model.Id" />
 </div>
 <div id="blog_socialLinks">
-	<div id="fb-root"></div>
-	<script>
-		(function (d, s, id) {
-			var js, fjs = d.getElementsByTagName(s)[0];
-			if (d.getElementById(id)) return;
-			js = d.createElement(s); js.id = id;
-			js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1";
-			fjs.parentNode.insertBefore(js, fjs);
-		}(document, 'script', 'facebook-jssdk'));
-	</script>
 	<a href="mailto:info@CurrencyExposure.com" title="@Html.DisplayFor(model => model.Title): http://www.currencyexposure.com/getblog/@Model.Id.ToString()">
 		<img src="~/Content/Images/Email.png" alt="">
 	</a>
-	<div id="fb-blog" class="fb-like" data-href="http://www.currencyexposure.com/getblog/1"
-		data-send="true" data-layout="button_count" data-width="450" data-show-faces="false">
-	</div>
 
-	<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.currencyexposure.com/getbog/1" data-via="currencyexposur">Tweet</a>
-	<script> !function (d, s, id) {
-	var js, fjs = d.getElementsByTagName(s)[0];
-	if (!d.getElementById(id)) {
-		js = d.createElement(s);
-		js.id = id;
-		js.src = "//platform.twitter.com/widgets.js";
-		fjs.parentNode.insertBefore(js, fjs);
-	}
-}(document, "script", "twitter-wjs");
+	<fb:like id="fb-blog" href="http://www.currencyexposure.com/getblog/@Model.Id.ToString()/"  title="@ViewBag.Title" send="true" 
+		layout="button_count" width="450" show_faces="false" font="segoe ui"></fb:like>
+
+	<a id="blog_twitter" href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.currencyexposure.com/getbog/@Model.Id.ToString()/" data-via="currencyexposur">Tweet</a>
+	<script>
+		!function(d, s, id) {
+			var js, fjs = d.getElementsByTagName(s)[0];
+			if (!d.getElementById(id)) {
+				js = d.createElement(s);
+				js.id = id;
+				js.src = "//platform.twitter.com/widgets.js";
+				fjs.parentNode.insertBefore(js, fjs);
+			}
+		}(document, "script", "twitter-wjs");
 	</script>
 </div>
 
