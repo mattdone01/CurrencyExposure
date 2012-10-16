@@ -10,17 +10,23 @@ using SendGrid.Transport;
 
 namespace CurrencyExposure.Repository
 {
-	public class EmailHelper
+	public interface IEmailHelper
+	{
+		void SendEmail(string recipient, string html, string subject);
+		void SendEmail(IEnumerable<string> recipients, string html, string subject);
+	}
+
+	public class EmailHelper : IEmailHelper
 	{
 		private readonly string _username;
         private readonly string _password;
         private readonly string _from;
 
-		public EmailHelper(string username, string password, string from)
+		public EmailHelper()
 		{
-			_username = username;
-			_password = password;
-			_from = from;
+			_username = "mattdone";
+			_password = "Matt1234";
+			_from = "info@currencyexposure.com";
 		}
 
 		public void SendEmail(string recipient, string html, string subject)

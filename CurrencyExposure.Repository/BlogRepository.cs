@@ -11,13 +11,14 @@ namespace CurrencyExposure.Repository
 {
 	public class BlogRepository : RepositoryBase<CurrencyExposureContext>, IBlogRepository
 	{
-		private readonly EmailHelper _emailHelper = null;
-		private const string _emailTo = "info@currencyexposure.com";
+		private readonly IEmailHelper _emailHelper = null;
+		private const string EmailTo = "info@currencyexposure.com";
 
-		public BlogRepository()
+		public BlogRepository(IEmailHelper emailHelper)
 		{
-			_emailHelper = new EmailHelper("mattdone","Matt1234","info@currencyexposure.com");
+			_emailHelper = emailHelper;
 		}
+
 		public Blog GetBlog(int id)
 		{
 			using (var context = new CurrencyExposureContext())
@@ -135,7 +136,7 @@ namespace CurrencyExposure.Repository
 				result.Message = "Failed to save comment";
 			else
 			{
-				_emailHelper.SendEmail(_emailTo, string.Format("A New Comment has been added by {0}", comment.Email),
+				_emailHelper.SendEmail(EmailTo, string.Format("A New Comment has been added by {0}", comment.Email),
 				                       "A New Comment has been added");
 				if (result.Status)
 					result.Message = "Thanks for commenting";
@@ -165,7 +166,7 @@ namespace CurrencyExposure.Repository
 				result.Message = "Failed to add contact us. Please try again";
 			else
 			{
-				_emailHelper.SendEmail(_emailTo, string.Format("A new contact us has been recieved from {0}", contactDetails.Email),
+				_emailHelper.SendEmail(EmailTo, string.Format("A new contact us has been recieved from {0}", contactDetails.Email),
 									   "A new contact us has been recieved");
 				if (result.Status)
 					result.Message = "Thanks for contacting us";
@@ -195,7 +196,7 @@ namespace CurrencyExposure.Repository
 				result.Message = "Failed to subscribe. Please try again";
 			else
 			{
-				_emailHelper.SendEmail(_emailTo, string.Format("A new subscription has been recieved from {0}", emailSubDto.Email),
+				_emailHelper.SendEmail(EmailTo, string.Format("A new subscription has been recieved from {0}", emailSubDto.Email),
 									   "A new subscription has been recieved");
 				if (result.Status)
 					result.Message = "Thanks for subscribing";

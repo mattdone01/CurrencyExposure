@@ -21,6 +21,7 @@ namespace CurrencyExposure.Repository
 			get
 			{
 				_instance.RegisterType<IBlogRepository, BlogRepository>(new HierarchicalLifetimeManager());
+				_instance.RegisterType<IEmailHelper, EmailHelper>();
 				return _instance;
 			}
 		}
