@@ -1,9 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using CurrencyExposure.Model.Helpers;
 
 namespace CurrencyExposure.Model
 {
-	public class ContactUs
+	public class ContactUs: IValidatableObject
 	{
 		public ContactUs()
 		{
@@ -28,5 +30,16 @@ namespace CurrencyExposure.Model
 		public string Comment { get; set; }
 		public bool ProductEnquiry { get; set; }
 		public DateTime CreateDate { get; set; }
+
+		public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
+		{
+			var results = new List<ValidationResult>();
+			if (!Email.EmailAddressValidate())
+			{
+				results.Add(new ValidationResult("Email Address is not valid"));
+			}
+
+			return results;
+		}
 	}
 }

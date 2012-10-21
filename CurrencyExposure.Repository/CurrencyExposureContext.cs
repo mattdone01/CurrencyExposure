@@ -28,15 +28,6 @@ namespace CurrencyExposure.Repository
 			IsDisposed = true;
 			base.Dispose(disposing);
 		}
-
-		//public int DeleteAccounts()
-		//{
-		//	return base.Database.ExecuteSqlCommand("DeleteAccounts");
-		//}
-		//public int DeleteSecuritiesAndExchanges()
-		//{
-		//	return base.Database.ExecuteSqlCommand("DeleteSecuritiesAndExchanges");
-		//}
 	}
 
 	public interface IDisposedTracker

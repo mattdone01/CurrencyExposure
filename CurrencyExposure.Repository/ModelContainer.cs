@@ -1,4 +1,5 @@
-﻿using Microsoft.Practices.Unity;
+﻿using CurrencyExposure.Repository.Helpers;
+using Microsoft.Practices.Unity;
 using System;
 using System.Collections.Generic;
 using System.Linq;

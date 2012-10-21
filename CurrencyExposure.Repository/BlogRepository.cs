@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using CurrencyExposure.Model;
+using CurrencyExposure.Repository.Helpers;
 
 namespace CurrencyExposure.Repository
 {
@@ -36,7 +37,7 @@ namespace CurrencyExposure.Repository
 				return context.Blogs
 					.Include(t => t.BlogComments)
 					.Include(t => t.BlogCategory)
-					.Include(t => t.BlogAuthor)
+					.Include(t => t.BlogAuthor).ToList()
 					.Take(1)
 					.OrderByDescending(c => c.CreateDate)
 					.SingleOrDefault();

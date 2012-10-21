@@ -68,7 +68,8 @@
   <ItemGroup>
     <Compile Include="BlogRepository.cs" />
     <Compile Include="CurrencyExposureContext.cs" />
-    <Compile Include="EmailHelper.cs" />
+    <Compile Include="Helpers\EmailHelper.cs" />
+    <Compile Include="Helpers\ValidationExtensions.cs" />
     <Compile Include="IBlogRepository.cs" />
     <Compile Include="Migrations\201209190927444_Initial.cs" />
     <Compile Include="Migrations\201209190927444_Initial.Designer.cs">

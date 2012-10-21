@@ -16,7 +16,8 @@ namespace CurrencyExposure.Repository.Migrations
 
 		protected override void Seed(CurrencyExposure.Repository.CurrencyExposureContext context)
 		{
-			BlogArticleMigrations.SeeBlogs(context);
+			if (AutomaticMigrationsEnabled)
+				BlogArticleMigrations.SeedBlogs(context);
 		}
     }
 }
