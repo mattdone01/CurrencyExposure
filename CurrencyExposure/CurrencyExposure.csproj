@@ -302,6 +302,7 @@
     <Content Include="Content\fonts\avenier\avenir-book_0.eot" />
     <Content Include="Content\fonts\avenier\avenir-book_0.ttf" />
     <Content Include="Content\fonts\avenier\avenir-book_0.woff" />
+    <Content Include="Scripts\BlogAdmin.js" />
     <Content Include="Scripts\dataservices.js" />
     <Content Include="Content\Site.less" />
     <None Include="Properties\PublishProfiles\currencyexposure.com - FTP.pubxml" />
@@ -335,6 +336,7 @@
     <Content Include="Scripts\startup.js" />
     <Content Include="Templates\blog_list_template.html" />
     <Content Include="Templates\comment_list_template.html" />
+    <Content Include="Templates\file_upload_template.html" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>

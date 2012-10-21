@@ -23,6 +23,9 @@ namespace CurrencyExposure
 				            .Include("~/Scripts/startup.js")
 				            .Include("~/Scripts/misc.js"));
 
+			bundles.Add(new ScriptBundle("~/bundles/BlogAdmin")
+				            .Include("~/Scripts/BlogAdmin.js"));
+
 			bundles.Add(new ScriptBundle("~/bundles/kendo").Include("~/Scripts/libs/kendo/kendo.web.js"));
 			   // "~/Scripts/libs/kendo/kendo.core.js",
 			   // "~/Scripts/libs/kendo/kendo.data.js",

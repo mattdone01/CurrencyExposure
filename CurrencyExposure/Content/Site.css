@@ -758,6 +758,9 @@ input {
 .blog_edit_inputs textarea {
   width: 800px;
 }
+.blog_edit_buttons {
+  width: 100px;
+}
 /* Other Pages */
 #links_content {
   text-align: justify;
