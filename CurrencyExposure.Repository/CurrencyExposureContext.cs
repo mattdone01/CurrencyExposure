@@ -15,6 +15,11 @@ namespace CurrencyExposure.Repository
 		public DbSet<ContactUs> ContactUs { get; set; }
 		public bool IsDisposed { get; set; }
 
+		public CurrencyExposureContext()
+		{
+			Configuration.LazyLoadingEnabled = false;
+		}
+
 		protected override void OnModelCreating(DbModelBuilder modelBuilder)
 		{
 			modelBuilder.Entity<BlogComment>()

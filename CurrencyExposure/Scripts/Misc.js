@@ -9,7 +9,7 @@ function on_blog_comment_begin() {
 }
 
 function blog_comment_submitted(result) {
-	var response = setResultMessage(result, "#blog_comment_return_message");
+	var response = setResultMessage(result.responseText, "#blog_comment_return_message");
 	$("#blog_comment_submit_loading").css("display", "none");
 	if(response.RenderedPartialViewUpdate.length > 0) {
 		$("#blogcommentlistdiv").empty();
@@ -25,7 +25,7 @@ function on_email_submit_begin() {
 }
 
 function email_submitted(result) {
-	setResultMessage(result, "#email_submit_return_message");
+	setResultMessage(result.responseText, "#email_submit_return_message");
 	$("#email_submit_loading").css("display", "none");
 }
 
@@ -35,12 +35,15 @@ function on_contactus_begin() {
 }
 
 function contact_submitted(result) {
-	setResultMessage(result, "#contact_us_return_message");
+	setResultMessage(result.responseText, "#contact_us_return_message");
 	$("#contactus_submit_loading").css("display", "none");
 }
 
 function setResultMessage(response, resultDivId) {
-	var myResponse = $.parseJSON(response.responseText);
+	var myResponse = response;
+	if (typeof (response.Status) === 'undefined')
+		myResponse = $.parseJSON(response);
+	
 	var textColor = myResponse.Status ? "green" : "red";
 	$(resultDivId).empty();
 	$(resultDivId)

@@ -13,8 +13,8 @@ namespace CurrencyExposure.Tests.Migrations
 
 		protected override void Seed(CurrencyExposureContext context)
 		{
-			if (AutomaticMigrationsEnabled)
-				TestSeedMigrations.SeedBlogs(context);
+			//if (AutomaticMigrationsEnabled)
+				//TestSeedMigrations.SeedBlogs(context);
 		}
 	}
 }

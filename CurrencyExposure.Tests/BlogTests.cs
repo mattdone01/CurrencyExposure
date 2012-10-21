@@ -1,4 +1,5 @@
-﻿using System.Data.Entity;
+﻿using System;
+using System.Data.Entity;
 using System.Linq;
 using CurrencyExposure.Model;
 using CurrencyExposure.Repository;
@@ -143,6 +144,80 @@ namespace CurrencyExposure.Tests
 			var emailSub = new EmailSubscribe { Email = "mattdone#gmail.com" };
 			var result = _blogRepo.SaveEmailSubscription(emailSub);
 			result.Status.ShouldBe(false);
+		}
+
+		[TestMethod]
+		public void SaveANewBlog()
+		{
+			var newId = DateTime.Now.Ticks.ToString();
+			var blogDto = new BlogDto
+				              {
+								  Title = newId,
+					              BlogSummary = "This is a blogSummary",
+					              Article = "This is the blog article",
+					              Tag = "This is the blog tag",
+					              BlogCategoryId = 1,
+					              BlogAuthorId = 1
+				              };
+			var result = _blogRepo.SaveBlog(blogDto);
+			result.Status.ShouldBe(true);
+		}
+
+		[TestMethod]
+		public void SaveANewBlogShouldFailIfAuthorNotAssigned()
+		{
+			var newId = DateTime.Now.Ticks.ToString();
+			var blogDto = new BlogDto
+			{
+				Title = newId,
+				BlogSummary = "This is a blogSummary",
+				Article = "This is the blog article",
+				Tag = "This is the blog tag",
+				BlogCategoryId = 1
+			};
+			var result = _blogRepo.SaveBlog(blogDto);
+			result.Status.ShouldBe(false);
+		}
+
+		[TestMethod]
+		public void UpdateAnExistingBlog()
+		{
+			var oldBlog = _blogRepo.GetBlog(5);
+			var newTagId = DateTime.Now.Ticks.ToString();
+			var blogDto = new BlogDto
+			{
+				BlogId = 5,
+				Tag = newTagId,
+				Title = oldBlog.Title,
+				BlogSummary = oldBlog.BlogSummary,
+				Article = oldBlog.Article,
+				BlogCategoryId = oldBlog.BlogCategory.Id,
+				BlogAuthorId = oldBlog.BlogAuthor.Id
+			};
+			var result = _blogRepo.SaveBlog(blogDto);
+			result.Status.ShouldBe(true);
+			var blog = _blogRepo.GetBlog(5);
+			blog.Tag.ShouldBe(newTagId);
+		}
+
+
+		[TestMethod]
+		public void DeleteABlog()
+		{
+			var blogDto = new BlogDto
+			{
+				Title = "This is a test Title",
+				BlogSummary = "This is a blogSummary",
+				Article = "This is the blog article",
+				Tag = "This is the blog tag",
+				BlogCategoryId = 1,
+				BlogAuthorId = 1
+			};
+			var result = _blogRepo.SaveBlog(blogDto);
+			result.Status.ShouldBe(true);
+			int varNewBlogId = result.NewId;
+			result = _blogRepo.DeleteBlog(varNewBlogId);
+			result.Status.ShouldBe(true);
 		}
 	}
 }

@@ -15,5 +15,7 @@ namespace CurrencyExposure.Repository
 		OperationStatus SaveComments(BlogCommentDto comment);
 		OperationStatus SaveContactUs(ContactUs contactDetails);
 		OperationStatus SaveEmailSubscription(EmailSubscribe emailSubDto);
+		OperationStatus SaveBlog(BlogDto blogDto);
+		OperationStatus DeleteBlog(int blogId);
 	}
 }

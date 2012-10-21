@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Text;
@@ -37,7 +38,7 @@ namespace CurrencyExposure.Repository
 				return context.Blogs
 					.Include(t => t.BlogComments)
 					.Include(t => t.BlogCategory)
-					.Include(t => t.BlogAuthor).ToList()
+					.Include(t => t.BlogAuthor)
 					.Take(1)
 					.OrderByDescending(c => c.CreateDate)
 					.SingleOrDefault();
@@ -106,6 +107,71 @@ namespace CurrencyExposure.Repository
 				taskCompletionSource.TrySetResult(result);
 				return taskCompletionSource.Task;
 			}
+		}
+
+		public OperationStatus SaveBlog(BlogDto blogDto)
+		{
+
+			var result = new OperationStatus();
+			try
+			{
+				using (var context = new CurrencyExposureContext())
+				{
+					var newBlog = new Blog();
+					if (blogDto.BlogId.HasValue)
+						newBlog = context.Blogs.First(c => c.Id == blogDto.BlogId);
+
+					newBlog.Title = blogDto.Title;
+					newBlog.BlogSummary = blogDto.BlogSummary;
+					newBlog.Article = blogDto.Article;
+					newBlog.Tag = blogDto.Tag;
+					newBlog.BlogAuthor = context.BlogAuthors.First(c => c.Id == blogDto.BlogAuthorId);
+					newBlog.BlogCategory = context.BlogCategorys.First(c => c.Id == blogDto.BlogCategoryId);
+
+					if (blogDto.BlogId.HasValue)
+					{
+						context.Blogs.Attach(newBlog);
+						context.Entry(newBlog).State = EntityState.Modified;
+						result.RecordsAffected = context.SaveChanges();
+					}
+					else
+					{
+						context.Entry(newBlog).State = EntityState.Added;
+						result.RecordsAffected = context.SaveChanges();
+					}
+					result.NewId = newBlog.Id;
+				}
+			}
+			catch (Exception ex)
+			{
+				return OperationStatus.CreateFromException("Failed to save blog", ex);
+			}
+
+			result.Status = result.RecordsAffected > 0;
+			result.Message = !result.Status ? "Failed to save blog" : "Blog saved";
+			return result;
+		}
+
+		public OperationStatus DeleteBlog(int blogId)
+		{
+			var result = new OperationStatus();
+			try
+			{
+				using (var context = new CurrencyExposureContext())
+				{
+					Blog myBlog = context.Blogs.FirstOrDefault(c => c.Id == blogId);
+					context.Entry(myBlog).State = EntityState.Deleted;
+					result.RecordsAffected = context.SaveChanges();
+				}
+			}
+			catch (Exception ex)
+			{
+				return OperationStatus.CreateFromException("Failed to delete blog", ex);
+			}
+
+			result.Status = result.RecordsAffected > 0;
+			result.Message = !result.Status ? "Failed to delete blog" : "Blog deleted";
+			return result;
 		}
 
 		public OperationStatus SaveComments(BlogCommentDto comment)
