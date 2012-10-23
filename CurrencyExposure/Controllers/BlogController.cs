@@ -77,26 +77,5 @@ namespace CurrencyExposure.Controllers
 			result.RenderedPartialViewUpdate = partialView;
 			return Json(result); 
 		}
-
-		[HttpPost]
-		[ValidateInput(false)]
-		public ActionResult SaveBlog(BlogDto myBlogDto)
-		{
-			var result = new OperationStatus();
-			if (ModelState.IsValid)
-				result = _blogRepository.SaveBlog(myBlogDto);
-
-			return Json(result); 
-		}
-
-		[HttpPost]
-		public ActionResult DeleteBlog(int blogId)
-		{
-			var result = new OperationStatus();
-			if (blogId > 0)
-				result = _blogRepository.DeleteBlog(blogId);
-
-			return Json(result);
-		}
     }
 }

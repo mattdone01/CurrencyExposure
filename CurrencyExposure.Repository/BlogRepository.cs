@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Data.Entity.Validation;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -141,6 +143,18 @@ namespace CurrencyExposure.Repository
 					}
 					result.NewId = newBlog.Id;
 				}
+			}
+			catch (DbEntityValidationException dbEx)
+			{
+				string error = string.Empty;
+				foreach (var validationErrors in dbEx.EntityValidationErrors)
+				{
+					foreach (var validationError in validationErrors.ValidationErrors)
+					{
+						error += string.Format(validationError.ErrorMessage) + Environment.NewLine;
+					}
+				}
+				return OperationStatus.CreateFromException("Validation Exeption " + error, dbEx);
 			}
 			catch (Exception ex)
 			{

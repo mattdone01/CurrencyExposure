@@ -25,8 +25,14 @@ $(document).ready(function () {
 			"subscript",
 			"superscript",
 			"viewHtml"
-		]
+		],
+		execute: onCommandExecute
 	});
+	
+	function onCommandExecute() {
+		if ($("#k-editor-image-url").length > 0)
+			$("#k-editor-image-url").val("http://www.currencyexposure.com/uploads/");
+	}
 		
 	$("#grid").kendoGrid({
 		dataSource: {
@@ -79,7 +85,7 @@ function onChange(id) {
 		$("#blog_edit_author").val(data.BlogAuthor.Id);
 		$("#blog_edit_category").val(data.BlogCategory.Id);
 		$("#blog_edit_tags").val(data.Tag);
-		$("#blog_edit_summary").text(data.BlogSummary);
+		$("#blog_edit_summary").val(data.BlogSummary);
 		var editor = $("#editor").data("kendoEditor");
 		editor.value(data.Article);
 	});
@@ -91,12 +97,12 @@ function saveblogcontents() {
 	$("#edit_blog_return_message").val("");
 	$.ajax({
 		type: 'POST',
-		url: '/blog/SaveBlog',
+		url: '/admin/SaveBlog',
 		dataType: 'json',
 		data: {
 			BlogId: blogId,
 			Title: $("#blog_edit_title").val(),
-			BlogSummary: $("#blog_edit_summary").text(),
+			BlogSummary: $("#blog_edit_summary").val(),
 			Article: editor.value(),
 			Tag: $("#blog_edit_tags").val(),
 			BlogCategoryId: $("#blog_edit_category").val(),
@@ -126,7 +132,7 @@ function deleteblog() {
 	$("#edit_blog_return_message").val("");
 	$.ajax({
 		type: 'POST',
-		url: '/blog/DeleteBlog',
+		url: '/admin/DeleteBlog',
 		dataType: 'json',
 		data: {
 			BlogId: blogId,
@@ -149,14 +155,8 @@ function uploadWindowOpen() {
 function uploadWindowOnOpen() {
 	$("#files").kendoUpload({
 		async: {
-			saveUrl: "/blog/UploadFiles",
+			saveUrl: "/admin/UploadFiles",
 			autoUpload: true,
-		},
-		upload: function (e) {
-			e.data = {
-				nodeText: nodeText,
-				nodeId: nodeId
-			};
 		},
 		success: null
 	});
@@ -179,7 +179,7 @@ function openKendoWindow(title, url, openCallBack, closeCallBack, size) {
 		content: url,
 		open: openCallBack,
 		close: closeCallBack,
-		modal: false //Should this be true?
+		modal: true 
 	});
 	var window = $("#window").data("kendoWindow");
 	window.title(title);
