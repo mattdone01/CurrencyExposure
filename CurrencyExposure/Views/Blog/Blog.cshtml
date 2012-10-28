@@ -5,12 +5,9 @@
 	string blogId = Model.Id.ToString();
 }
 
-@Scripts.Render("~/bundles/jquery")
-@Scripts.Render("~/bundles/jqueryval")
-@Scripts.Render("~/bundles/currencyexposure")
-
 <script>
 	$(document).ready(function () {
+		$.validator.unobtrusive.parse("#section_body");
 		$("ul#navigation li").removeClass("selected");
 		$("#BlogTab").addClass("selected");
 		var blogId = $("#mainblogid").val();
@@ -20,7 +17,7 @@
 
 <div class="blog_article_floats">
 	<div>
-		<h2>Recent Articles</h2>
+		<h2 class="blog_article_floats_header1">Recent Articles</h2>
 		<div id="blog_articles_list" class="blog_article_floats_content">
 			@{Html.RenderAction("GetArticlesList", "Blog");}
 		</div>

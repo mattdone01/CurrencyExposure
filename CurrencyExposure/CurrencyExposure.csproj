@@ -185,6 +185,7 @@
     <Content Include="Content\Images\slantjpeg.jpg" />
     <Content Include="Content\Images\slantlogo.png" />
     <Content Include="Content\Images\step_bg.png" />
+    <Content Include="Content\Images\sw-bg.jpg" />
     <Content Include="Content\Images\TwitterFeed.png" />
     <Content Include="Content\Images\twitter_icon.png" />
     <Content Include="Content\kendo\Black\editor.png" />
@@ -309,7 +310,7 @@
     <None Include="Properties\PublishProfiles\currencyexposure.com - Web Deploy.pubxml" />
     <None Include="Scripts\libs\jquery-1.8.1.intellisense.js" />
     <Content Include="Scripts\libs\jquery.tipTip.js" />
-    <Content Include="Scripts\libs\jquery.tipTip.minified.js" />
+    <Content Include="Scripts\libs\jquery.tipTip.min.js" />
     <Content Include="Scripts\libs\jquery-1.8.1.js" />
     <Content Include="Scripts\libs\jquery-1.8.1.min.js" />
     <Content Include="Scripts\libs\jquery-ui-1.8.23.js" />

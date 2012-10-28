@@ -1,13 +1,9 @@
 ﻿@{
     ViewBag.Title = "Links";
 }
-@Scripts.Render("~/bundles/jquery")
-@Scripts.Render("~/bundles/jqueryval")
-@Scripts.Render("~/bundles/currencyexposure")
 
 <script>
 	$(document).ready(function () {
-		$("#body").height($(document).height() - 200);
 		$("ul#navigation li").removeClass("selected");
 		$("#LinksTab").addClass("selected");
 	});

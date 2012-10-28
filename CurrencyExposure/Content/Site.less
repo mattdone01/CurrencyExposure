@@ -100,7 +100,6 @@ header {
     height: 100px;
     width: @BodyWidth;
     margin: 0 auto;
-    background: url("Images/sw-bg.jpg") top left repeat #F0F0F0;
 }
 
     header .content-wrapper {
@@ -469,6 +468,10 @@ ul#navigation li.selected a:link, ul#navigation li.selected a:visited {
     font-size: 13px;
 }
 
+.blog_article_floats_header1{
+	margin-top: 47px;
+}
+
 .blog_article_floats h2 {
     display: inline-block;
     text-align: left;
@@ -805,17 +808,12 @@ input:focus, textarea:focus {
  }
 
  /*---------------------------------------Footer area------------------------------------*/
-footer {
-    text-align: center;
-    height: 15px;
+.footer-middle {
+    min-width: 680px;
     margin: 0 auto;
-	width: @BodyWidth;
-	border-top:1px solid #000;
-    border-top: 1px black;
-    border-top-style: solid;
-    padding-top: 10px;
-    font-weight: normal;
-    font-size: 10px;
-    margin-top: 20px;
-	background: url("Images/sw-bg.jpg") top left repeat #F0F0F0;
+    text-align: center;
+    border-top: 1px solid;
+    overflow: hidden;
+    margin-right: 40px;
+	margin-top: 20px;	
 }

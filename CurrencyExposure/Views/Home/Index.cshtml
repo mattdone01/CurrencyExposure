@@ -2,12 +2,10 @@
 @{
     ViewBag.Title = "Currency Exposure";
 }
-@Scripts.Render("~/bundles/jquery")
-@Scripts.Render("~/bundles/jqueryval")
-@Scripts.Render("~/bundles/currencyexposure")
 
 <script>
 	$(document).ready(function () {
+		$.validator.unobtrusive.parse("#section_body");
 		$("ul#navigation li").removeClass("selected");
 		$("#HomeTab").addClass("selected");
 		$("#img_currencytool").tipTip({

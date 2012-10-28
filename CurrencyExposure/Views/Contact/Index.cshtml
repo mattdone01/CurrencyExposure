@@ -4,9 +4,13 @@
     ViewBag.Title = "Contact Us";
 }
 
-@Scripts.Render("~/bundles/jquery")
-@Scripts.Render("~/bundles/jqueryval")
-@Scripts.Render("~/bundles/currencyexposure")
+<script>
+	$(document).ready(function () {
+		$.validator.unobtrusive.parse("#section_body");
+		$("ul#navigation li").removeClass("selected");
+		$("#ContactTab").addClass("selected");
+	});
+</script>
 
 <h2 class="mainheading">CONTACT US</h2>
 
@@ -81,9 +85,4 @@
 		</div>
 	</fieldset>
 }
-<script>
-	$(document).ready(function () {
-		$("ul#navigation li").removeClass("selected");
-		$("#ContactTab").addClass("selected");
-	});
-</script>
+

@@ -38,13 +38,13 @@ namespace CurrencyExposure.Controllers
 			return Json(blog, JsonRequestBehavior.AllowGet);
 		}
 
-		public async Task<ActionResult> GetCommentsList(int count = 3)
+		public async Task<ActionResult> GetCommentsList(int count = 5)
 		{
 			List<CommentsListDto> result = await _blogRepository.GetCommentsList(count);
 			return PartialView("_BlogRecentCommentsList", result);
 		}
 
-		public async Task<ActionResult> GetArticlesList(int count = 3)
+		public async Task<ActionResult> GetArticlesList(int count = 5)
 		{
 			List<BlogSummaryDto> result = await _blogRepository.GetArticlesList(count);
 			return PartialView("_BlogArticleList", result);
