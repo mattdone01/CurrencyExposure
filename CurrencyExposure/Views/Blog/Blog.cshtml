@@ -1,45 +1,18 @@
 ﻿﻿@model CurrencyExposure.Model.Blog
 @{
     ViewBag.Title = Model.Title;
-    Layout = "~/Views/Shared/_Layout.cshtml";
 	string Article = Model.Article;
 	string blogId = Model.Id.ToString();
 }
 
-<script type="text/x-jquery-tmpl" id="blogarticle_template">
-	<div class="blogarticles_template blogfloats">
-		<a href="/Blog/GetBlog/${Id}">${Title}</a><br />
-		${Author} - ${formatDate(CreateDate)}
-	</div>
-	<br />
-</script>
-
-<script type="text/x-jquery-tmpl" id="blogcomment_template">
-	<div class="blogcomments_template blogfloats">
-		<a href="/Blog/GetBlog/${BlogId}">${Title}</a><br />
-		${Name} - ${formatDate(CreateDate)}
-	</div>
-	<br />
-</script>
-
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/jqueryval")
+@Scripts.Render("~/bundles/currencyexposure")
 
 <script>
 	$(document).ready(function () {
 		$("ul#navigation li").removeClass("selected");
 		$("#BlogTab").addClass("selected");
-
-		$.getJSON("/Blog/GetArticlesList", { count: 5 }, function (data) {
-			$("#blogarticle_template").tmpl(data).appendTo("#blog_articles_list");
-			$(".blogarticles_template:even").css("background-color", "#EBEBE0").css("width", "100%");
-			$("#blog_articles_list").append('<div class="blogbuttonblogfloat"><a id="bloglistbutton" class="blogbuttonx blogbuttonblogfloat" href="/blog/BlogSearch">Show More</a></div>');
-		});
-
-		$.getJSON("/Blog/GetCommentsList", { count: 5 }, function (data) {
-			$("#blogcomment_template").tmpl(data).appendTo("#blog_recent_comments_list");
-			$(".blogcomments_template:even").css("background-color", "#EBEBE0");
-			$("#blog_recent_comments_list").append('<div class="blogbuttonblogfloat"><a id="blogcommentbutton" class="blogbuttonx" href="/blog/CommentSearch">Show More</a></div>');
-		});
-
 		var blogId = $("#mainblogid").val();
 		$("#BlogId").val(blogId);
 	});
@@ -49,12 +22,14 @@
 	<div>
 		<h2>Recent Articles</h2>
 		<div id="blog_articles_list" class="blog_article_floats_content">
+			@{Html.RenderAction("GetArticlesList", "Blog");}
 		</div>
 	</div>
 
 	<div>
 		<h2>Recent Comments</h2>
 		<div id="blog_recent_comments_list" class="blog_article_floats_content">
+			@{Html.RenderAction("GetCommentsList", "Blog");}
 		</div>
 	</div>
 </div>

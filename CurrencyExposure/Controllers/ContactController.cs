@@ -19,6 +19,9 @@ namespace CurrencyExposure.Controllers
 		public ActionResult Index(bool prodEnquiry = false)
         {
 			var contact = new ContactUs { ProductEnquiry = prodEnquiry };
+			if (Request.IsAjaxRequest())
+				return PartialView(contact);
+
 			return View(contact);
         }
 

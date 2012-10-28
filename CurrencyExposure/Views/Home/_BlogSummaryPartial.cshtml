@@ -9,7 +9,7 @@
 			@MvcHtmlString.Create(article)
 		</div>
 		<div class="blog_button_div">
-			@Html.ActionLink("Read More", "Index", "Blog", new {Id = @summary.Id}, new {Class = "blogbuttonz"})
+			@Ajax.ActionLink("Read More", "Index", "Blog", new {Id = @summary.Id},new AjaxOptions { InsertionMode = InsertionMode.Replace, UpdateTargetId = "section_body" })
 		</div>
 	</div>
 }

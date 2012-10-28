@@ -19,22 +19,35 @@ namespace CurrencyExposure.Controllers
         public ActionResult Index()
         {
 	       var blogs = _blogRepository.GetBlogSummaries();
+
+		   if (Request.IsAjaxRequest())
+			   return PartialView(blogs);
+
 		   return View(blogs);
         }
 
 		public ActionResult About()
 		{
+			if (Request.IsAjaxRequest())
+				return PartialView();
+
 			return View();
 		}
 
 
 		public ActionResult Links()
 		{
+			if (Request.IsAjaxRequest())
+				return PartialView();
+
 			return View();
 		}
 
 		public ActionResult ExposurePlatform()
 		{
+			if (Request.IsAjaxRequest())
+				return PartialView();
+
 			return View();
 		}
 
@@ -51,6 +64,10 @@ namespace CurrencyExposure.Controllers
 			if (ModelState.IsValid)
 			{
 				status = _blogRepository.SaveEmailSubscription(emaildto);
+			}
+			else
+			{
+				status.Message = "Invalid Email";
 			}
 
 			return Json(status);

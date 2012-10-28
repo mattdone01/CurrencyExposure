@@ -21,6 +21,9 @@ namespace CurrencyExposure.Controllers
 		public ActionResult Index(int id = 0)
 		{
 			var blog = _blogRepository.GetBlog(id);
+			if (Request.IsAjaxRequest())
+				return PartialView("Blog", blog);
+
 			return View("Blog", blog);
 		}
 
@@ -35,16 +38,16 @@ namespace CurrencyExposure.Controllers
 			return Json(blog, JsonRequestBehavior.AllowGet);
 		}
 
-		public async Task<JsonNetResult> GetCommentsList(int count = 3)
+		public async Task<ActionResult> GetCommentsList(int count = 3)
 		{
-			var result = await _blogRepository.GetCommentsList(count);
-			return ToJsonNet(result, JsonRequestBehavior.AllowGet);
+			List<CommentsListDto> result = await _blogRepository.GetCommentsList(count);
+			return PartialView("_BlogRecentCommentsList", result);
 		}
 
-		public async Task<JsonNetResult> GetArticlesList(int count = 3)
+		public async Task<ActionResult> GetArticlesList(int count = 3)
 		{
-			var result = await _blogRepository.GetArticlesList(count);
-			return ToJsonNet(result, JsonRequestBehavior.AllowGet);
+			List<BlogSummaryDto> result = await _blogRepository.GetArticlesList(count);
+			return PartialView("_BlogArticleList", result);
 		}
 		
 		public ActionResult CreateComment()
@@ -55,11 +58,17 @@ namespace CurrencyExposure.Controllers
 
 		public ActionResult BlogSearch()
 		{
+			if (Request.IsAjaxRequest())
+				return PartialView("BlogSearch");
+
 			return View("BlogSearch");
 		}
 
 		public ActionResult CommentSearch()
 		{
+			if (Request.IsAjaxRequest())
+				return PartialView("CommentSearch"); 
+
 			return View("CommentSearch");
 		}
 
@@ -70,11 +79,15 @@ namespace CurrencyExposure.Controllers
 			if (ModelState.IsValid)
 			{
 				result = _blogRepository.SaveComments(blogComment);
+				var blog = _blogRepository.GetBlog(blogComment.BlogId);
+				var partialView = this.RenderPartialViewToString("_BlogCommentListPartial", blog.BlogComments);
+				result.RenderedPartialViewUpdate = partialView;
 			}
-
-			var blog = _blogRepository.GetBlog(blogComment.BlogId);
-			var partialView = this.RenderPartialViewToString("_BlogCommentListPartial", blog.BlogComments);
-			result.RenderedPartialViewUpdate = partialView;
+			else
+			{
+				result.Message = "Failed to save comment";
+			}
+			
 			return Json(result); 
 		}
     }

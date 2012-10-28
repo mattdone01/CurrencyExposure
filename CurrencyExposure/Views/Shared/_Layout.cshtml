@@ -70,11 +70,11 @@
 					</section>
 					<nav>
 						<ul id="navigation">
-							<li id="ContactTab">@Html.ActionLink("Contact", "Index", "Contact")</li>
-							<li id="AboutTab">@Html.ActionLink("About", "About", "Home")</li>
-							<li id="LinksTab">@Html.ActionLink("Links", "Links", "Home")</li>
-							<li id="BlogTab">@Html.ActionLink("Blog", "Index", "Blog")</li>
-							<li id="HomeTab" class="selected">@Html.ActionLink("Home", "Index", "Home")</li>
+							<li id="ContactTab">@Ajax.ActionLink("Contact", "Index", "Contact", new AjaxOptions { InsertionMode = InsertionMode.Replace, UpdateTargetId = "section_body" })</li>
+							<li id="AboutTab">@Ajax.ActionLink("About", "About", "Home", new AjaxOptions { InsertionMode = InsertionMode.Replace, UpdateTargetId = "section_body" })</li>
+							<li id="LinksTab">@Ajax.ActionLink("Links", "Links", "Home", new AjaxOptions { InsertionMode = InsertionMode.Replace, UpdateTargetId = "section_body" })</li>
+							<li id="BlogTab">@Ajax.ActionLink("Blog", "Index", "Blog", new AjaxOptions { InsertionMode = InsertionMode.Replace, UpdateTargetId = "section_body" })</li>
+							<li id="HomeTab" class="selected">@Ajax.ActionLink("Home", "Index", "Home", new AjaxOptions { InsertionMode = InsertionMode.Replace, UpdateTargetId = "section_body" })</li>
 						</ul>
 					</nav>
 				</div>
@@ -83,7 +83,7 @@
 		<div id="MainSiteDiv">
 			<iframe id="tmc-ticker" src="http://themoneyconverter.com/USD/RateTicker.aspx" style="width:1060px;height:30px" scrolling="no" frameborder="0" marginwidth="0" marginheight="0"></iframe>
 			<div id="body">
-				<section class="content-wrapper main-content">
+				<section id="section_body" class="content-wrapper main-content">
 					@RenderBody()
 				</section>
 			</div>

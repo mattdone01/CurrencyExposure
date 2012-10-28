@@ -122,7 +122,7 @@ function clearblogcontents() {
 	$("#blog_edit_author").val(1);
 	$("#blog_edit_category").val(1);
 	$("#blog_edit_tags").val("");
-	$("#blog_edit_summary").text("");
+	$("#blog_edit_summary").val("");
 	var editor = $("#editor").data("kendoEditor");
 	editor.value("");
 }

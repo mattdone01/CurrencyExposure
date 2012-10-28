@@ -1,0 +1,14 @@
+﻿@model IEnumerable<CurrencyExposure.Model.CommentsListDto>
+<div class="blogcomments_template blogfloats">
+@foreach (var summary in Model)
+{
+	<div class="blogarticles_template blogfloats">
+		@Ajax.ActionLink(@summary.Title, "GetBlog", "Blog", new { Id = @summary.BlogId }, new AjaxOptions { InsertionMode = InsertionMode.Replace, UpdateTargetId = "section_body" })
+		<br />
+		@summary.Name - @summary.CreateDate.ToShortDateString()
+	</div>
+	<br />
+}
+
+</div>
+<br />
