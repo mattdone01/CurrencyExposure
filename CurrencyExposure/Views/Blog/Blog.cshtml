@@ -12,6 +12,9 @@
 		$("#BlogTab").addClass("selected");
 		var blogId = $("#mainblogid").val();
 		$("#BlogId").val(blogId);
+		
+		if ($(".twitter-share-button").length == 0)
+			twttr.widgets.load();
 	});
 </script>
 
