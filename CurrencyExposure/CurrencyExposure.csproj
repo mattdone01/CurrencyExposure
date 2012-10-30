@@ -163,12 +163,13 @@
     <Content Include="Content\Images\CurrencyCircle1.ico" />
     <Content Include="Content\Images\CurrencyTool.png" />
     <Content Include="Content\Images\currency_box.png" />
+    <Content Include="Content\Images\email-icon.jpg" />
     <Content Include="Content\Images\email.png" />
+    <Content Include="Content\Images\facebook.png" />
     <Content Include="Content\Images\facebook_icon.png" />
     <Content Include="Content\Images\ftr_logo.jpg" />
     <Content Include="Content\Images\go_btn.jpg" />
     <Content Include="Content\Images\hedge_tool.png" />
-    <Content Include="Content\Images\HomePage_cta.png" />
     <Content Include="Content\Images\lightgreybg.jpg" />
     <Content Include="Content\Images\loading.gif" />
     <Content Include="Content\Images\mid_bg.png" />
@@ -184,6 +185,7 @@
     <Content Include="Content\Images\slantlogo.png" />
     <Content Include="Content\Images\step_bg.png" />
     <Content Include="Content\Images\sw-bg.jpg" />
+    <Content Include="Content\Images\twitter.png" />
     <Content Include="Content\Images\TwitterFeed.png" />
     <Content Include="Content\Images\twitter_icon.png" />
     <Content Include="Content\kendo\Black\editor.png" />

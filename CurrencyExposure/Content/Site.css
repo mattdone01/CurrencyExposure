@@ -98,7 +98,7 @@ body {
   min-height: 900px;
 }
 header {
-  height: 94px;
+  height: 100px;
   width: 1060px;
   margin: 0 auto;
 }
@@ -119,9 +119,8 @@ fieldset legend {
   text-align: center;
   font-size: 35px;
   font-weight: normal;
-  margin-top: -1px;
+  margin-top: 10px;
   padding-bottom: 5px;
-  background: url("Images/btm_icon.jpg") no-repeat bottom center;
 }
 /* Contact*/
 #contactus {
@@ -419,50 +418,49 @@ h3 {
   font-size: 12px;
 }
 #blog_blogarticle h1 {
-  margin-left: 15px;
+  margin-left: 30px;
   font-weight: bold;
   font-size: 20px;
-  color: #659bc2;
 }
 #blog_blogarticle h2 {
   display: inline;
 }
-#blog_blogarticle,
-h3 {
-  display: inline;
-  font-size: 10px;
+.blog_article_headings {
+  padding: 15px;
+}
+.blog_article_headings h3 {
+  font-size: 12px;
 }
 #blog_article_content {
   margin-left: 30px;
-  width: 650px;
+  width: 680px;
   margin-bottom: 5px;
-  padding: 15px;
-  border: 1px solid #659bc2;
-  -webkit-border-radius: 6px;
-  -moz-border-radius: 6px;
-  border-radius: 6px;
-  -webkit-box-shadow: #888888 5px 5px 5px;
-  -moz-box-shadow: #888888 5px 5px 5px;
-  box-shadow: 5px 5px 5px #888888;
+  border: 1px solid grey;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  background-color: white;
 }
 #blog_article_article {
   font-size: 13px;
   padding-top: 15px;
-  font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;
+  font-family: Helvetica Neue, Helvetica, Arial;
+  padding: 20px;
+  border-top: solid 1px #D4D4CA;
 }
 .blog_article_floats {
   float: right;
   clear: both;
-  text-align: center;
+  text-align: left !important;
   margin-right: 55px;
   margin-bottom: 5px;
-  margin-top: -10px;
+  margin-top: 20px;
   font-size: 13px;
 }
 .blog_article_floats h2 {
   display: inline-block;
   text-align: left;
-  font-size: 18px;
+  font-size: 20px;
 }
 .blog_article_floats_content {
   margin-bottom: 5px;
@@ -470,13 +468,18 @@ h3 {
   height: 280px;
   width: 250px;
   text-align: left;
-  border: 1px solid #659bc2;
-  -webkit-border-radius: 6px;
-  -moz-border-radius: 6px;
-  border-radius: 6px;
+  border: 1px solid grey;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  background-color: white;
   -webkit-box-shadow: #888888 5px 5px 5px;
   -moz-box-shadow: #888888 5px 5px 5px;
   box-shadow: 5px 5px 5px #888888;
+}
+#blogDisclaimer {
+  font-style: italic;
+  padding: 15px;
 }
 .blogfloats {
   width: 100%;
@@ -488,13 +491,21 @@ h3 {
   -moz-border-radius: 6px;
   border-radius: 6px;
 }
+.blog_article_list {
+  list-style: square;
+  margin-left: -20px;
+}
+.blog_comments_list {
+  list-style: square;
+  margin-left: -20px;
+}
 .blogbuttonblogfloat {
   text-align: center;
   padding-top: 5px;
 }
 .blogCommentHeader {
   text-align: left;
-  margin-left: 15px;
+  margin-left: 27px;
   font-weight: bold;
   font-size: 20px;
 }
@@ -504,13 +515,14 @@ h3 {
   width: 650px;
   margin-bottom: 5px;
   padding: 15px;
-  border: 1px solid #659bc2;
-  -webkit-border-radius: 6px;
-  -moz-border-radius: 6px;
-  border-radius: 6px;
-  -webkit-box-shadow: #888888 5px 5px 5px;
-  -moz-box-shadow: #888888 5px 5px 5px;
-  box-shadow: 5px 5px 5px #888888;
+  border: 1px solid grey;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  background-color: white;
+}
+.floatimageleft {
+  float: right;
 }
 #blog_socialLinks {
   width: 710px;
@@ -523,8 +535,10 @@ h3 {
 #blog_socialLinks a,
 img {
   border: none;
-  padding: 1px;
   text-decoration: none;
+}
+#home_page_twitter_top {
+  padding-left: 2px;
 }
 /*Blog Button*/
 .blogbutton {
@@ -782,13 +796,11 @@ input {
   width: 750px;
   margin-bottom: 5px;
   padding: 15px;
-  border: 1px solid #659bc2;
-  -webkit-border-radius: 6px;
-  -moz-border-radius: 6px;
-  border-radius: 6px;
-  -webkit-box-shadow: #888888 5px 5px 5px;
-  -moz-box-shadow: #888888 5px 5px 5px;
-  box-shadow: 5px 5px 5px #888888;
+  border: 1px solid grey;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  background-color: white;
 }
 #links_content h4 {
   font-size: 16px;
@@ -803,13 +815,11 @@ input {
   width: 750px;
   margin-bottom: 5px;
   padding: 15px;
-  border: 1px solid #659bc2;
-  -webkit-border-radius: 6px;
-  -moz-border-radius: 6px;
-  border-radius: 6px;
-  -webkit-box-shadow: #888888 5px 5px 5px;
-  -moz-box-shadow: #888888 5px 5px 5px;
-  box-shadow: 5px 5px 5px #888888;
+  border: 1px solid grey;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  background-color: white;
 }
 /*---------------------------------------Footer area------------------------------------*/
 .footer-middle {

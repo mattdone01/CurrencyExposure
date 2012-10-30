@@ -35,13 +35,14 @@
 <div id="blog_blogarticle">
 	<h1>@Html.DisplayFor(model => model.Title)</h1>
 	<div id="blog_article_content">
-		<h3>Posted by: @Html.DisplayFor(model => model.BlogAuthor.AuthorName) </h3>
-		<br />
-		<h3>On: @Html.DisplayFor(model => model.CreateDate)</h3>
+		<div class="blog_article_headings">
+			<h3>Posted by: @Html.DisplayFor(model => model.BlogAuthor.AuthorName) </h3>
+			<br />
+			<h3>On: @Html.DisplayFor(model => model.CreateDate)</h3>
+		</div>
 		<div id="blog_article_article">@MvcHtmlString.Create(Article)</div>
 		<div id="blogDisclaimer">
-			
-			<p style="font-style:italic;padding-top: 20px;">
+			<p>
 				<strong>General Disclaimer:</strong> All ideas, opinions, recommendations and/or forecasts, expressed or implied herein, 
 				are for informational and educational purposes only and should not be construed as financial product advice or an inducement 
 				or instruction to invest, trade, and/or speculate in the markets. All trading and investing activities are subject to the usual 
