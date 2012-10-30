@@ -37,7 +37,16 @@
 				js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1";
 				fjs.parentNode.insertBefore(js, fjs);
 			}(document, 'script', 'facebook-jssdk'));
-		</script>
+			
+			function ReInitBlogs() {
+				twttr.widgets.load();
+				FB.XFBML.parse();
+			}
+			
+			function ReInitHome() {
+				twttr.widgets.load();
+			}
+</script>
 		<header>
 			<div class="content-wrapper">
 				<div class="logo">
@@ -56,12 +65,14 @@
 									</a>
 								</li>
 								<li>
-									<a href="https://twitter.com/CurrencyExposur" title="">
+									
+									<a href="https://twitter.com/CurrencyExposur" title="" target="_blank">
 										<img src="~/Content/Images/twitter_icon.png" alt="">
 									</a>
 								</li>
 								<li>
-									<a href="http://www.facebook.com/pages/CurrencyExposurecom/430339047010625" title="">
+									
+									<a href="http://www.facebook.com/pages/CurrencyExposurecom/430339047010625" title="" target="_blank">
 										<img src="~/Content/Images/facebook_icon.png" alt="">
 									</a>
 								</li>
@@ -70,11 +81,11 @@
 					</section>
 					<nav>
 						<ul id="navigation">
-							<li id="ContactTab">@Ajax.ActionLink("Contact", "Index", "Contact", new AjaxOptions { InsertionMode = InsertionMode.Replace, UpdateTargetId = "section_body" })</li>
+							<li id="ContactTab">@Ajax.ActionLink("Contact", "Index", "Contact", new AjaxOptions { InsertionMode = InsertionMode.Replace, UpdateTargetId = "section_body"})</li>
 							<li id="AboutTab">@Ajax.ActionLink("About", "About", "Home", new AjaxOptions { InsertionMode = InsertionMode.Replace, UpdateTargetId = "section_body" })</li>
 							<li id="LinksTab">@Ajax.ActionLink("Links", "Links", "Home", new AjaxOptions { InsertionMode = InsertionMode.Replace, UpdateTargetId = "section_body" })</li>
-							<li id="BlogTab">@Ajax.ActionLink("Blog", "Index", "Blog", new AjaxOptions { InsertionMode = InsertionMode.Replace, UpdateTargetId = "section_body" })</li>
-							<li id="HomeTab" class="selected">@Ajax.ActionLink("Home", "Index", "Home", new AjaxOptions { InsertionMode = InsertionMode.Replace, UpdateTargetId = "section_body" })</li>
+							<li id="BlogTab">@Ajax.ActionLink("Blog", "Index", "Blog", new AjaxOptions { InsertionMode = InsertionMode.Replace, UpdateTargetId = "section_body", OnSuccess = "ReInitBlogs" })</li>
+							<li id="HomeTab" class="selected">@Ajax.ActionLink("Home", "Index", "Home", new AjaxOptions { InsertionMode = InsertionMode.Replace, UpdateTargetId = "section_body", OnSuccess = "ReInitHome" })</li>
 						</ul>
 					</nav>
 				</div>
