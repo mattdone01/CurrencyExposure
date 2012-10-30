@@ -55,13 +55,16 @@
 	<input type="hidden" id="mainblogid" value="@Model.Id" />
 </div>
 <div id="blog_socialLinks">
-	<a href="mailto:info@CurrencyExposure.com" title="@Html.DisplayFor(model => model.Title): http://www.currencyexposure.com/getblog/@Model.Id.ToString()">
-		<img src="~/Content/Images/Email.png" alt="">
-	</a>
-
-	<fb:like id="fb-blog" href="http://www.currencyexposure.com/getblog/@Model.Id.ToString()/"  title="@ViewBag.Title" send="true" 
-		layout="button_count" width="450" show_faces="false" font="segoe ui"></fb:like>
-
+	<span>
+		<a href="mailto:info@CurrencyExposure.com" title="@Html.DisplayFor(model => model.Title): http://www.currencyexposure.com/getblog/@Model.Id.ToString()">
+			<img src="~/Content/Images/Email.png" alt="">
+		</a>
+	</span>
+	<span>
+		<fb:like id="fb-blog" href="http://www.currencyexposure.com/getblog/@Model.Id.ToString()/"  title="@ViewBag.Title" send="true" 
+				 layout="button_count" width="450" show_faces="false" font="segoe ui"></fb:like>
+	</span>
+	<span>
 	<a id="blog_twitter" href="https://twitter.com/share" class="twitter-share-button" data-text="www.currencyexposure.com | @Model.Title"
 	   data-url="http://www.currencyexposure.com/getbog/@Model.Id.ToString()/" data-via="currencyexposur">Tweet</a>
 	<script>
@@ -75,6 +78,7 @@
 			}
 		}(document, "script", "twitter-wjs");
 	</script>
+	</span>
 </div>
 
 @{Html.RenderAction("CreateComment", "Blog");}

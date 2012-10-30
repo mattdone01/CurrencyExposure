@@ -172,6 +172,7 @@
     <Content Include="Content\Images\loading.gif" />
     <Content Include="Content\Images\mid_bg.png" />
     <Content Include="Content\Images\newsletter.png" />
+    <Content Include="Content\Images\page_loading.gif" />
     <Content Include="Content\Images\pic41.png" />
     <Content Include="Content\Images\pic5.png" />
     <Content Include="Content\Images\pic6.png" />
