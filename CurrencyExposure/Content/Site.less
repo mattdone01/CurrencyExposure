@@ -1,7 +1,9 @@
 @font-family:  Helvetica Neue, Helvetica, Arial;
 @BodyWidth: 1060px;
 @TextColour: #58585A; 
-@CEBlue: #1074BC;
+@CEBlue: #659BC2;
+@h1TextSize: 20px;
+@h2TextSize: 18px;
 
 
 body {
@@ -62,6 +64,13 @@ body {
     -moz-box-shadow: #888888 5px 5px 5px;
     box-shadow: 5px 5px 5px #888888;
 }
+.roundedBorders-WhiteBack {
+    border: 1px solid grey;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    background-color: white;
+}
 
 .KendoGridFix {
     text-align: left !Important;
@@ -77,9 +86,7 @@ body {
 /* main layout
 ----------------------------------------------------------*/
 #ajax-loader-div {
-    height: 400px;
-    position: relative;
-    background-color: lightgrey;
+    position:   absolute;
 }
 
 .ajax-loader-image {
@@ -108,10 +115,11 @@ body {
     background-position: 220px 50px;
     padding-left: 10px;
     height: 100%;
+	min-height: 900px;
 }
 
 header {
-    height: 100px;
+    height: 94px;
     width: @BodyWidth;
     margin: 0 auto;
 }
@@ -220,9 +228,8 @@ ul#navigation li a:link, ul#navigation li a:visited {
 	width: 100px;
 	height: 40px;
 	line-height: 36px;
-	text-transform: uppercase;
 	text-decoration: none;
-	font-size: 12px;
+	font-size: 13px;
 	font-weight: bold;
 	color: #fff;
 	letter-spacing: 1px;
@@ -285,13 +292,14 @@ ul#navigation li.selected a:link, ul#navigation li.selected a:visited {
     display: inline;
 }
 
-#home_emailsubscribe{
-	padding: 5px;
+#home_emailsubscribe {
+    padding: 5px;
     text-align: left;
-    width: 220px;
-    margin-right: 56px;
-    .boxshadow;
-    .roundedBorders;
+    width: 264px;
+    margin-right: 38px;
+	padding-bottom: 10px;
+	margin-top: 13px;
+   .roundedBorders-WhiteBack;
 }
 
 #emailsubmit {
@@ -301,20 +309,21 @@ ul#navigation li.selected a:link, ul#navigation li.selected a:visited {
     border: 0;
     font-size: 14px;
     color: white;
-    margin-top: 5px;
-    margin-bottom: 7px;
-    margin-left: 60px;
+    margin-top: 10px;
+    margin-left: 80px;
     .roundedBorders;
 }
 
 #home_emailsubscribe input {
-    width: 95%;
+    width: 99%;
 }
 
 #home_email_label {
     margin-bottom: 5px;
     display: inline-block;
     font-weight: bold;
+	font-size: 15px;
+	padding-bottom: 4px;
 }
 
 .twitter-widget{
@@ -351,33 +360,44 @@ ul#navigation li.selected a:link, ul#navigation li.selected a:visited {
 }
 
 #homepage_content h1 {
-    margin-left: -10px;
     font-weight: bold;
-    font-size: 20px;
+    font-size: @h1TextSize;
 }
 
 #homepage_actioncall {
-    min-width: 680px;
-    margin: 0 auto;
-    text-align: center;
-    border-bottom: 1px solid;
-    overflow: hidden;
-    margin-right: 35px;
-    padding-left: 180px;
-    padding-right: 180px;
+    background-color: @CEBlue;
+    height: 200px;
+    margin-left: -10px;
+    margin-right: 25px;
+}
+
+.homepage_actioncall_float-left{
+	float:left;
+	width: 300px;
+	margin-left: 30px;
+	margin-top: 13px;
+}
+
+.homepage_actioncall_float-right{
+	float:right;
+	width: 500px;
+	margin-right: 80px;
+	margin-top: 20px;
 }
 
 #homepage_actioncall h1 {
-    font-size: 26px;
+    font-size: 35px;
     display: inline;
+	color: white;
 }
 
     #homepage_actioncall h2 {
-        font-size: 13px;
+        font-size: 12px;
         font-style: italic;
         font-weight: normal;
         margin: 0;
         padding: 6px;
+		color: white;
     }
 
 #homepage_rightfloat_container {
@@ -385,9 +405,13 @@ ul#navigation li.selected a:link, ul#navigation li.selected a:visited {
 }
 
 #home_toolad {
-    height: 270px;
+    height: 285px;
     margin-top: 40px;
-    margin-right: 50px;
+    margin-right: 36px;
+}
+
+#home_toolad img  {
+   width: 275px;
 }
 
 #home_ourvision {
@@ -407,14 +431,13 @@ ul#navigation li.selected a:link, ul#navigation li.selected a:visited {
 .home_blogSummary {
     width: 700px;    
     margin-bottom: 10px;
-    padding-left: 15px;
-    .roundedBorders;
-    .boxshadow;
+	padding-top: 10px;
+	.roundedBorders-WhiteBack;
 }
 
 .home_blogSummary h2, h3 {
     display: inline;
-    font-size: 1.2em;
+    font-size: 16px;
     color: @CEBlue;
 }
 
@@ -422,9 +445,16 @@ ul#navigation li.selected a:link, ul#navigation li.selected a:visited {
     font-size: 11px;
 }
 
+.blog_summary_headings{
+	padding-left: 15px;
+	padding-bottom: 5px;
+}
+
 .home_blogSummary_text {
+	padding-left: 15px;
     height: 94px;
     overflow:hidden;
+	border-top: solid 1px #D4D4CA;
 }
 
 /********* Blogs   *************/
@@ -445,7 +475,7 @@ ul#navigation li.selected a:link, ul#navigation li.selected a:visited {
 #blog_blogarticle h1 {
     margin-left: 15px;
     font-weight: bold;
-    font-size: 20px;
+    font-size: @h1TextSize;
     color: @CEBlue;
 }
 #blog_blogarticle h2 {
@@ -482,14 +512,10 @@ ul#navigation li.selected a:link, ul#navigation li.selected a:visited {
     font-size: 13px;
 }
 
-.blog_article_floats_header1{
-	margin-top: 47px;
-}
-
 .blog_article_floats h2 {
     display: inline-block;
     text-align: left;
-    font-size: 18px;
+    font-size: @h2TextSize;
 }
 
 .blog_article_floats_content {
@@ -630,7 +656,7 @@ input:focus, textarea:focus {
 
 .blog_comments h2{
     display: inline;
-    font-size: 1.2em;
+    font-size: 14px;
     color: @CEBlue;
 }
 

@@ -168,6 +168,7 @@
     <Content Include="Content\Images\ftr_logo.jpg" />
     <Content Include="Content\Images\go_btn.jpg" />
     <Content Include="Content\Images\hedge_tool.png" />
+    <Content Include="Content\Images\HomePage_cta.png" />
     <Content Include="Content\Images\lightgreybg.jpg" />
     <Content Include="Content\Images\loading.gif" />
     <Content Include="Content\Images\mid_bg.png" />

@@ -39,7 +39,7 @@ $(document).ready(function () {
 			pageSize: 10,
 			transport: {
 				read: {
-					url: "/Blog/GetArticlesList",
+					url: "/Blog/GetArticlesListAsJson",
 					dataType: "json",
 					data: {
 						count: 10
@@ -80,7 +80,9 @@ $(document).ready(function () {
 
 function onChange(id) {
 	$("#blog_edit_id").val(id);
-	$.getJSON('/blog/GetBlogAsJson/' + id, function (data) {
+	$("#pageLoading").css("display", "");
+
+	$.getJSON('/blog/GetBlogAsJson/' + id, function(data) {
 		$("#blog_edit_title").val(data.Title);
 		$("#blog_edit_author").val(data.BlogAuthor.Id);
 		$("#blog_edit_category").val(data.BlogCategory.Id);
@@ -88,6 +90,7 @@ function onChange(id) {
 		$("#blog_edit_summary").val(data.BlogSummary);
 		var editor = $("#editor").data("kendoEditor");
 		editor.value(data.Article);
+		$("#pageLoading").css("display", "none");
 	});
 }
 

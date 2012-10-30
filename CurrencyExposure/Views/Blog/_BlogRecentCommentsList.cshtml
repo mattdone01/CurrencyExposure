@@ -3,7 +3,7 @@
 @foreach (var summary in Model)
 {
 	<div class="blogarticles_template blogfloats">
-		@Ajax.ActionLink(@summary.Title, "GetBlog", "Blog", new { Id = @summary.BlogId }, new AjaxOptions { InsertionMode = InsertionMode.Replace, UpdateTargetId = "section_body", OnSuccess = "ReInitBlogs" })
+		@Ajax.ActionLink(@summary.Title, "GetBlog", "Blog", new { Id = @summary.BlogId }, new AjaxOptions { InsertionMode = InsertionMode.Replace, UpdateTargetId = "section_body", OnSuccess = "ReInitBlogs",OnBegin = "onAjaxBegin", OnComplete = "onAjaxEnd", OnFailure = "onAjaxFailure" })
 		<br />
 		@summary.Name - @summary.CreateDate.ToShortDateString()
 	</div>

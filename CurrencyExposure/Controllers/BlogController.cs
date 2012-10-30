@@ -49,6 +49,12 @@ namespace CurrencyExposure.Controllers
 			List<BlogSummaryDto> result = await _blogRepository.GetArticlesList(count);
 			return PartialView("_BlogArticleList", result);
 		}
+
+		public async Task<JsonNetResult> GetArticlesListAsJson(int count = 5)
+		{
+			var result = await _blogRepository.GetArticlesList(count);
+			return ToJsonNet(result, JsonRequestBehavior.AllowGet);
+		}
 		
 		public ActionResult CreateComment()
 		{
