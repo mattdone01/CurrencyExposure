@@ -1,21 +1,9 @@
-﻿﻿@model CurrencyExposure.Model.Blog
+﻿@model CurrencyExposure.Model.Blog
 @{
     ViewBag.Title = Model.Title;
 	string Article = Model.Article;
 	string blogId = Model.Id.ToString();
 }
-
-<script>
-	$(document).ready(function () {
-		$.validator.unobtrusive.parse("#section_body");
-		$("ul#navigation li").removeClass("selected");
-		$("#BlogTab").addClass("selected");
-		var blogId = $("#mainblogid").val();
-		$("#BlogId").val(blogId);
-		$("#pageLoading").css("display", "none");
-	});
-</script>
-
 <div class="blog_article_floats">
 	<div>
 		<h2 class="blog_article_floats_header1">Recent Articles</h2>
@@ -31,7 +19,6 @@
 		</div>
 	</div>
 </div>
-
 <div id="blog_blogarticle">
 	<h1>@Html.DisplayFor(model => model.Title)</h1>
 	<div id="blog_article_content">
@@ -59,7 +46,7 @@
 <div id="blog_socialLinks">
 	<span>
 		<a href="mailto:info@CurrencyExposure.com" title="@Html.DisplayFor(model => model.Title): http://www.currencyexposure.com/getblog/@Model.Id.ToString()">
-			<img src="~/Content/Images/Email.png" alt="">
+			<img src="~/Content/Images/email.png" alt="" height="22" width="22">
 		</a>
 	</span>
 	<span>
@@ -82,9 +69,18 @@
 	</script>
 	</span>
 </div>
-
 @{Html.RenderAction("CreateComment", "Blog");}
 <h1 class="blogCommentHeader">Comments</h1>
 <div id="blogcommentlistdiv">
-@Html.Partial("_BlogCommentListPartial", Model.BlogComments)
+	@Html.Partial("_BlogCommentListPartial", Model.BlogComments)
 </div>
+<script>
+	$(document).ready(function () {
+		$.validator.unobtrusive.parse("#section_body");
+		$("ul#navigation li").removeClass("selected");
+		$("#BlogTab").addClass("selected");
+		var blogId = $("#mainblogid").val();
+		$("#BlogId").val(blogId);
+		$("#pageLoading").css("display", "none");
+	});
+</script>

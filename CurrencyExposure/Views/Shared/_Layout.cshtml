@@ -50,8 +50,10 @@
 			function onAjaxBegin() {
 				$("#pageLoading").css("display", "");
 			}
-			function onAjaxFailure () {
+			function onAjaxFailure(ajaxContext) {
 				$("#pageLoading").css("display", "none");
+				var response = ajaxContext.get_response();
+				$("#section_body").append(response);
 			}
 			function onAjaxEnd() {
 				$("#pageLoading").css("display", "none");
@@ -104,9 +106,7 @@
 		<div id="MainSiteDiv">
 			<iframe id="tmc-ticker" src="http://themoneyconverter.com/USD/RateTicker.aspx" style="width:1060px;height:30px" scrolling="no" frameborder="0" marginwidth="0" marginheight="0"></iframe>
 			<div id="body">
-				<section id="section_body" class="content-wrapper main-content">
-					@RenderBody()
-				</section>
+				<section id="section_body" class="content-wrapper main-content">@RenderBody()</section>
 				<div class="footer-middle">
 					<label>©2012 CurrencyExposure.com. All rights reserved. </label>
 						<img id="pageLoading" src="~/Content/Images/page_loading.gif" class="ajax-loader-image" style="display: none;" height="150" width="150" />

@@ -293,7 +293,6 @@ ul#navigation li.selected a:link, ul#navigation li.selected a:visited {
 
 #home_emailsubscribe {
     padding: 5px;
-    text-align: left;
     width: 264px;
     margin-right: 38px;
 	padding-bottom: 10px;
@@ -309,16 +308,19 @@ ul#navigation li.selected a:link, ul#navigation li.selected a:visited {
     font-size: 14px;
     color: white;
     margin-top: 10px;
-    margin-left: 80px;
     .roundedBorders;
 }
 
 #home_emailsubscribe input {
-    width: 99%;
+    width: 92%;
+	border: 1px solid @CEBlue;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+	padding: 5px;
 }
 
 #home_email_label {
-    margin-bottom: 5px;
     display: inline-block;
     font-weight: bold;
 	font-size: 15px;
@@ -509,7 +511,7 @@ ul#navigation li.selected a:link, ul#navigation li.selected a:visited {
     text-align: left !important;
     margin-right: 55px;
     margin-bottom: 5px;
-    margin-top: 20px;
+    margin-top: -18px;
     font-size: 13px;
 }
 
@@ -639,14 +641,8 @@ ul#navigation li.selected a:link, ul#navigation li.selected a:visited {
  /*Blog Comments*/
 #comment_Reply input, textarea {
     padding: 7px;
-    border: solid 1px #E5E5E5;
-    outline: 0;
-    font: normal 13px/100% Verdana, Tahoma, sans-serif;
-    width: 200px;
-    background: #FFFFFF url('bg_form.png') left top repeat-x;
-    background: -webkit-gradient(linear, left top, left 25, from(#FFFFFF), color-stop(4%, #EEEEEE), to(#FFFFFF));
-    background: -moz-linear-gradient(top, #FFFFFF, #EEEEEE 1px, #FFFFFF 25px);
-    .boxshadow;
+    border: solid 1px #528ecc;
+	.roundedBorders;
 }
 
 #comment_Reply textarea {
@@ -654,12 +650,6 @@ ul#navigation li.selected a:link, ul#navigation li.selected a:visited {
     max-width: 400px;
     height: 150px;
     line-height: 150%;
-}
-
-#comment_Reply input:hover, textarea:hover,
-input:focus, textarea:focus {
-    border-color: #C9C9C9;
-    -webkit-box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 8px;
 }
 
 #comment_Reply label {
