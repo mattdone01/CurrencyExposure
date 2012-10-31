@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.ServiceModel.Syndication;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 using CurrencyExposure.Helpers;
@@ -40,20 +42,41 @@ namespace CurrencyExposure.Controllers
 
 		public async Task<ActionResult> GetCommentsList(int count = 5)
 		{
-			List<CommentsListDto> result = await _blogRepository.GetCommentsList(count);
+			List<CommentsListDto> result = await _blogRepository.GetCommentsListAsync(count);
 			return PartialView("_BlogRecentCommentsList", result);
+		}
+
+		public async Task<ActionResult> GetCommentsListAsJson(int count = 5)
+		{
+			List<CommentsListDto> result = await _blogRepository.GetCommentsListAsync(count);
+			return ToJsonNet(result, JsonRequestBehavior.AllowGet);
 		}
 
 		public async Task<ActionResult> GetArticlesList(int count = 5)
 		{
-			List<BlogSummaryDto> result = await _blogRepository.GetArticlesList(count);
+			List<BlogSummaryDto> result = await _blogRepository.GetArticlesListAsync(count);
 			return PartialView("_BlogArticleList", result);
 		}
 
 		public async Task<JsonNetResult> GetArticlesListAsJson(int count = 5)
 		{
-			var result = await _blogRepository.GetArticlesList(count);
+			var result = await _blogRepository.GetArticlesListAsync(count);
 			return ToJsonNet(result, JsonRequestBehavior.AllowGet);
+		}
+
+		public ActionResult GetPosts()
+		{
+			var blog = _blogRepository.GetBlog();
+			var result =  _blogRepository.GetArticlesList(25);
+			var postItems = result.Select(p => new SyndicationItem(p.Title, p.Summary, new Uri(p.BlogUrl),p.Id.ToString(),p.CreateDate));
+
+			var feed = new SyndicationFeed(blog.Title, blog.BlogSummary, new Uri(blog.BlogUrl), blog.Id.ToString(),
+			                               blog.CreateDate, postItems)
+				{
+					Language = "en-US"
+				};
+
+			return new FeedResult(new Rss20FeedFormatter(feed));
 		}
 		
 		public ActionResult CreateComment()

@@ -33,7 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-	<includesetaclproviderondestination>False</includesetaclproviderondestination>
+    <includesetaclproviderondestination>False</includesetaclproviderondestination>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\</OutputPath>
@@ -64,6 +64,7 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -148,6 +149,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\ControllerExtensions.cs" />
+    <Compile Include="Helpers\FeedResult.cs" />
     <Compile Include="Helpers\JsonNetResult.cs" />
     <Compile Include="Helpers\LessTransform.cs" />
     <Compile Include="Helpers\UnityDependencyResolver.cs" />
@@ -182,6 +184,7 @@
     <Content Include="Content\Images\pic7.png" />
     <Content Include="Content\Images\pic8.png" />
     <Content Include="Content\Images\rates.png" />
+    <Content Include="Content\Images\rss.png" />
     <Content Include="Content\Images\slantjpeg.jpg" />
     <Content Include="Content\Images\slantlogo.png" />
     <Content Include="Content\Images\step_bg.png" />

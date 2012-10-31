@@ -49,14 +49,14 @@ namespace CurrencyExposure.Tests
 		[TestMethod]
 		public void CanGetCommentsList()
 		{
-			var blogComments = _blogRepo.GetCommentsList(3);
+			var blogComments = _blogRepo.GetCommentsListAsync(3);
 			blogComments.Result.Count.ShouldBe(3);
 		}
 
 		[TestMethod]
 		public void CanGetArticleList()
 		{
-			var blogArticles = _blogRepo.GetArticlesList(3);
+			var blogArticles = _blogRepo.GetArticlesListAsync(3);
 			blogArticles.Result.Count.ShouldBe(3);
 		}
 

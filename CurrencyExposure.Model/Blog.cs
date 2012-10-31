@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -33,5 +34,11 @@ namespace CurrencyExposure.Model
 		public virtual BlogAuthor BlogAuthor { get; set; }
 		public ICollection<BlogComment> BlogComments { get; set; }
 		public ICollection<BlogSocialLink> BlogSocialLinks { get; set; }
+
+		[NotMapped]
+		public string BlogUrl
+		{
+			get { return "http://www.currencyexposure.com/getblog/" + Id.ToString(); }
+		}
 	}
 }

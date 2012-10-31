@@ -9,6 +9,11 @@
 		<h2 class="blog_article_floats_header1">Recent Articles</h2>
 		<div id="blog_articles_list" class="blog_article_floats_content">
 			@{Html.RenderAction("GetArticlesList", "Blog");}
+			<div class="blog_float_show_more"><a id="bloglistbutton" class="blogbuttonblogfloat" href="/blog/BlogSearch">Find Blogs</a></div>
+			<div id="blog_rss_image">
+				<a href="/blog/GetPosts" title="">
+					<img src="~/Content/Images/rss.png" height="24" width="24" /></a>
+			</div>
 		</div>
 	</div>
 
@@ -16,7 +21,9 @@
 		<h2>Recent Comments</h2>
 		<div id="blog_recent_comments_list" class="blog_article_floats_content">
 			@{Html.RenderAction("GetCommentsList", "Blog");}
+			<div class="blog_float_show_more"><a id="blogcommentbutton" class="" href="/blog/CommentSearch">Find Comments</a></div>
 		</div>
+		
 	</div>
 </div>
 <div id="blog_blogarticle">
@@ -55,7 +62,7 @@
 	</span>
 	<span>
 	<a id="blog_twitter" href="https://twitter.com/share" class="twitter-share-button" data-text="www.currencyexposure.com | @Model.Title"
-	   data-url="http://www.currencyexposure.com/getbog/@Model.Id.ToString()/" data-via="currencyexposur">Tweet</a>
+	   data-url="http://www.currencyexposure.com/getblog/@Model.Id.ToString()/" data-via="currencyexposur">Tweet</a>
 	<script>
 		!function(d, s, id) {
 			var js, fjs = d.getElementsByTagName(s)[0];

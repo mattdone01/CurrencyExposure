@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CurrencyExposure.Model
 {
@@ -10,5 +11,11 @@ namespace CurrencyExposure.Model
 		public string Author { get; set; }
 		public string Category { get; set; }
 		public DateTime CreateDate { get; set; }
+
+		[NotMapped]
+		public string BlogUrl
+		{
+			get { return "http://www.currencyexposure.com/getblog/" + Id.ToString(); }
+		}
 	}
 }

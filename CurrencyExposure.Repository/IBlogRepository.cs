@@ -8,10 +8,12 @@ namespace CurrencyExposure.Repository
 {
 	public interface IBlogRepository
 	{
-		Blog GetBlog(int id);
+		Blog GetBlog(int id = 0);
 		List<BlogSummaryDto> GetBlogSummaries(int count = 5);
-		Task<List<CommentsListDto>> GetCommentsList(int count = 3);
-		Task<List<BlogSummaryDto>> GetArticlesList(int count = 3);
+		Task<List<CommentsListDto>> GetCommentsListAsync(int count = 3);
+		Task<List<BlogSummaryDto>> GetArticlesListAsync(int count = 3);
+		List<CommentsListDto> GetCommentsList(int count = 3);
+		List<BlogSummaryDto> GetArticlesList(int count = 3);
 		OperationStatus SaveComments(BlogCommentDto comment);
 		OperationStatus SaveContactUs(ContactUs contactDetails);
 		OperationStatus SaveEmailSubscription(EmailSubscribe emailSubDto);
