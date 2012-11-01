@@ -66,7 +66,7 @@ namespace CurrencyExposure.Repository
 			}
 		}
 
-		public Task<List<CommentsListDto>> GetCommentsList(int count = 5)
+		public Task<List<CommentsListDto>> GetCommentsListAsync(int count = 5)
 		{
 			var taskCompletionSource = new TaskCompletionSource<List<CommentsListDto>>();
 			using (var context = new CurrencyExposureContext())
@@ -88,7 +88,7 @@ namespace CurrencyExposure.Repository
 			}
 		}
 
-		public Task<List<BlogSummaryDto>> GetArticlesList(int count = 3)
+		public Task<List<BlogSummaryDto>> GetArticlesListAsync(int count = 3)
 		{
 			var taskCompletionSource = new TaskCompletionSource<List<BlogSummaryDto>>();
 			using (var context = new CurrencyExposureContext())
@@ -283,6 +283,50 @@ namespace CurrencyExposure.Repository
 					result.Message = "Thanks for subscribing";
 			}
 			return result;
+		}
+
+
+		public List<CommentsListDto> GetCommentsList(int count = 3)
+		{
+			using (var context = new CurrencyExposureContext())
+			{
+				var result = context.BlogComments
+					.Include(t => t.Blog)
+					.OrderByDescending(s => s.CreateDate)
+					.Take(count)
+					.Select(s => new CommentsListDto
+					{
+						Title = s.Title,
+						Id = s.Id,
+						Name = s.Name,
+						BlogId = s.Blog.Id,
+						CreateDate = s.CreateDate
+					}).ToList();
+
+				return result;
+			}
+		}
+
+		public List<BlogSummaryDto> GetArticlesList(int count = 3)
+		{
+			using (var context = new CurrencyExposureContext())
+			{
+				var result = context.Blogs
+					.Include(t => t.BlogAuthor)
+					.Include(t => t.BlogCategory)
+					.OrderByDescending(s => s.CreateDate)
+					.Take(count)
+					.Select(s => new BlogSummaryDto
+					{
+						Id = s.Id,
+						Title = s.Title,
+						Author = s.BlogAuthor.AuthorName,
+						Category = s.BlogCategory.CategoryName,
+						CreateDate = s.CreateDate
+					}).ToList();
+
+				return result;
+			}
 		}
 	}
 }

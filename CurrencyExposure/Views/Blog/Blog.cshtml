@@ -1,26 +1,19 @@
-﻿﻿@model CurrencyExposure.Model.Blog
+﻿@model CurrencyExposure.Model.Blog
 @{
     ViewBag.Title = Model.Title;
 	string Article = Model.Article;
 	string blogId = Model.Id.ToString();
 }
-
-<script>
-	$(document).ready(function () {
-		$.validator.unobtrusive.parse("#section_body");
-		$("ul#navigation li").removeClass("selected");
-		$("#BlogTab").addClass("selected");
-		var blogId = $("#mainblogid").val();
-		$("#BlogId").val(blogId);
-		$("#pageLoading").css("display", "none");
-	});
-</script>
-
 <div class="blog_article_floats">
 	<div>
 		<h2 class="blog_article_floats_header1">Recent Articles</h2>
 		<div id="blog_articles_list" class="blog_article_floats_content">
 			@{Html.RenderAction("GetArticlesList", "Blog");}
+			<div class="blog_float_show_more"><a id="bloglistbutton" class="blogbuttonblogfloat" href="/blog/BlogSearch">Find Blogs</a></div>
+			<div id="blog_rss_image">
+				<a href="/blog/GetPosts" title="">
+					<img src="~/Content/Images/rss.png" height="24" width="24" /></a>
+			</div>
 		</div>
 	</div>
 
@@ -28,10 +21,11 @@
 		<h2>Recent Comments</h2>
 		<div id="blog_recent_comments_list" class="blog_article_floats_content">
 			@{Html.RenderAction("GetCommentsList", "Blog");}
+			<div class="blog_float_show_more"><a id="blogcommentbutton" class="" href="/blog/CommentSearch">Find Comments</a></div>
 		</div>
+		
 	</div>
 </div>
-
 <div id="blog_blogarticle">
 	<h1>@Html.DisplayFor(model => model.Title)</h1>
 	<div id="blog_article_content">
@@ -59,7 +53,7 @@
 <div id="blog_socialLinks">
 	<span>
 		<a href="mailto:info@CurrencyExposure.com" title="@Html.DisplayFor(model => model.Title): http://www.currencyexposure.com/getblog/@Model.Id.ToString()">
-			<img src="~/Content/Images/Email.png" alt="">
+			<img src="~/Content/Images/email.png" alt="" height="22" width="22">
 		</a>
 	</span>
 	<span>
@@ -68,7 +62,7 @@
 	</span>
 	<span>
 	<a id="blog_twitter" href="https://twitter.com/share" class="twitter-share-button" data-text="www.currencyexposure.com | @Model.Title"
-	   data-url="http://www.currencyexposure.com/getbog/@Model.Id.ToString()/" data-via="currencyexposur">Tweet</a>
+	   data-url="http://www.currencyexposure.com/getblog/@Model.Id.ToString()/" data-via="currencyexposur">Tweet</a>
 	<script>
 		!function(d, s, id) {
 			var js, fjs = d.getElementsByTagName(s)[0];
@@ -82,9 +76,18 @@
 	</script>
 	</span>
 </div>
-
 @{Html.RenderAction("CreateComment", "Blog");}
 <h1 class="blogCommentHeader">Comments</h1>
 <div id="blogcommentlistdiv">
-@Html.Partial("_BlogCommentListPartial", Model.BlogComments)
+	@Html.Partial("_BlogCommentListPartial", Model.BlogComments)
 </div>
+<script>
+	$(document).ready(function () {
+		$.validator.unobtrusive.parse("#section_body");
+		$("ul#navigation li").removeClass("selected");
+		$("#BlogTab").addClass("selected");
+		var blogId = $("#mainblogid").val();
+		$("#BlogId").val(blogId);
+		$("#pageLoading").css("display", "none");
+	});
+</script>

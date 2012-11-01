@@ -293,7 +293,6 @@ ul#navigation li.selected a:link, ul#navigation li.selected a:visited {
 
 #home_emailsubscribe {
     padding: 5px;
-    text-align: left;
     width: 264px;
     margin-right: 38px;
 	padding-bottom: 10px;
@@ -309,16 +308,19 @@ ul#navigation li.selected a:link, ul#navigation li.selected a:visited {
     font-size: 14px;
     color: white;
     margin-top: 10px;
-    margin-left: 80px;
     .roundedBorders;
 }
 
 #home_emailsubscribe input {
-    width: 99%;
+    width: 92%;
+	border: 1px solid @CEBlue;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+	padding: 5px;
 }
 
 #home_email_label {
-    margin-bottom: 5px;
     display: inline-block;
     font-weight: bold;
 	font-size: 15px;
@@ -509,7 +511,7 @@ ul#navigation li.selected a:link, ul#navigation li.selected a:visited {
     text-align: left !important;
     margin-right: 55px;
     margin-bottom: 5px;
-    margin-top: 20px;
+    margin-top: -18px;
     font-size: 13px;
 }
 
@@ -600,53 +602,22 @@ ul#navigation li.selected a:link, ul#navigation li.selected a:visited {
 	padding-left: 2px;
 }
 
-/*Blog Button*/
-.blogbutton {
-	-moz-box-shadow:inset 0px 1px 0px 0px #bbdaf7;
-	-webkit-box-shadow:inset 0px 1px 0px 0px #bbdaf7;
-	box-shadow:inset 0px 1px 0px 0px #bbdaf7;
-	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #79bbff), color-stop(1, @CEBlue) );
-	background:-moz-linear-gradient( center top, #79bbff 5%, @CEBlue 100% );
-	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#79bbff', endColorstr='#378de5');
-	background-color:#79bbff;
-	-moz-border-radius:6px;
-	-webkit-border-radius:6px;
-	border-radius:6px;
-	border:1px solid #84bbf3;
-	display:inline-block;
-	color:#ffffff;
-	font-family:arial;
-	font-size:14px;
-	font-weight:bold;
-	padding:6px 21px;
-	text-decoration:none;
-	text-shadow:1px 1px 0px #528ecc;
+.blog_float_show_more { 
+	text-align: center;
+	position: relative;
 }
 
-.blogbutton:hover {
-	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, @CEBlue), color-stop(1, #79bbff) );
-	background:-moz-linear-gradient( center top, @CEBlue 5%, #79bbff 100% );
-	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#378de5', endColorstr='#79bbff');
-	background-color:@CEBlue;
-}
- 
- .blogbutton:active {
-	position:relative;
-	top:1px;
+#blog_rss_image{
+	float: right;
+	margin-bottom: 10px;
 }
 
 
  /*Blog Comments*/
 #comment_Reply input, textarea {
     padding: 7px;
-    border: solid 1px #E5E5E5;
-    outline: 0;
-    font: normal 13px/100% Verdana, Tahoma, sans-serif;
-    width: 200px;
-    background: #FFFFFF url('bg_form.png') left top repeat-x;
-    background: -webkit-gradient(linear, left top, left 25, from(#FFFFFF), color-stop(4%, #EEEEEE), to(#FFFFFF));
-    background: -moz-linear-gradient(top, #FFFFFF, #EEEEEE 1px, #FFFFFF 25px);
-    .boxshadow;
+    border: solid 1px #528ecc;
+	.roundedBorders;
 }
 
 #comment_Reply textarea {
@@ -654,12 +625,6 @@ ul#navigation li.selected a:link, ul#navigation li.selected a:visited {
     max-width: 400px;
     height: 150px;
     line-height: 150%;
-}
-
-#comment_Reply input:hover, textarea:hover,
-input:focus, textarea:focus {
-    border-color: #C9C9C9;
-    -webkit-box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 8px;
 }
 
 #comment_Reply label {
