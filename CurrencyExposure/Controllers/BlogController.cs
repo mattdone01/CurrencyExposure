@@ -7,7 +7,6 @@ using System.Web.Mvc;
 using CurrencyExposure.Helpers;
 using CurrencyExposure.Model;
 using CurrencyExposure.Repository;
-using CurrencyExposure.Helpers;
 
 namespace CurrencyExposure.Controllers
 {

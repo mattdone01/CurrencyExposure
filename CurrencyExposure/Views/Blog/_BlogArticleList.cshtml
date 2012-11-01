@@ -1,10 +1,16 @@
 ﻿@model IEnumerable<CurrencyExposure.Model.BlogSummaryDto>
 <ul class="blog_article_list">
 	@foreach(var summary in Model)
-{
+	{
 		<li>@Ajax.ActionLink(@summary.Title, "GetBlog", "Blog", new {Id = @summary.Id}, new AjaxOptions { InsertionMode = InsertionMode.Replace, UpdateTargetId = "section_body", OnSuccess = "ReInitBlogs",OnBegin = "onAjaxBegin", OnComplete = "onAjaxEnd", OnFailure = "onAjaxFailure" })
 			<br />
 			@summary.Author - @summary.CreateDate.ToShortDateString()
 		</li>
-}
+	}
 </ul>
+<div class="blog_float_show_more">
+	<a id="bloglistbutton" class="blogbuttonblogfloat" href="/blog/BlogSearch">Find Blogs</a>
+	<a href="/blog/GetPosts" title="" style="float:right">
+		<img src="~/Content/Images/rss.png" height="24" width="24" /></a>
+</div>
+
