@@ -65,12 +65,10 @@ namespace CurrencyExposure.Controllers
 
 		public ActionResult GetPosts()
 		{
-			var blog = _blogRepository.GetBlog();
 			var result =  _blogRepository.GetArticlesList(25);
 			var postItems = result.Select(p => new SyndicationItem(p.Title, p.Summary, new Uri(p.BlogUrl),p.Id.ToString(),p.CreateDate));
 
-			var feed = new SyndicationFeed(blog.Title, blog.BlogSummary, new Uri(blog.BlogUrl), blog.Id.ToString(),
-			                               blog.CreateDate, postItems)
+			var feed = new SyndicationFeed("Currency Exposure", "Currency Management for Small Business", new Uri("www.currencyexposure.com"), postItems)
 				{
 					Language = "en-US"
 				};
