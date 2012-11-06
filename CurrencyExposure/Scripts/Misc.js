@@ -1,4 +1,36 @@
-﻿function formatDate(datetime) {
+﻿(function (d, s, id) {
+	var js, fjs = d.getElementsByTagName(s)[0];
+	if (d.getElementById(id)) return;
+	js = d.createElement(s);
+	js.id = id;
+	js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1";
+	fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+
+function ReInitBlogs() {
+	twttr.widgets.load();
+	FB.XFBML.parse();
+}
+
+function ReInitHome() {
+	twttr.widgets.load();
+}
+
+function onAjaxBegin(e) {
+	$("#pageLoading").css("display", "");
+}
+function onAjaxFailure(ajaxContext) {
+	$("#pageLoading").css("display", "none");
+	var response = ajaxContext.get_response();
+	$("#section_body").append(response);
+}
+function onAjaxEnd(e) {
+	$("#pageLoading").css("display", "none");
+	var mypage = $("#mypageid").val();
+	_gaq.push(['_trackPageview', '/' + mypage]);
+}
+
+function formatDate(datetime) {
 	var dateObj = new Date(datetime);
 	return dateObj.toDateString();
 }
