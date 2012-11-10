@@ -173,6 +173,7 @@
     <Content Include="Content\Images\ftr_logo.jpg" />
     <Content Include="Content\Images\go_btn.jpg" />
     <Content Include="Content\Images\hedge_tool.png" />
+    <Content Include="Content\Images\homebanner.png" />
     <Content Include="Content\Images\lightgreybg.jpg" />
     <Content Include="Content\Images\loading.gif" />
     <Content Include="Content\Images\mid_bg.png" />
@@ -241,6 +242,9 @@
     <Content Include="Content\kendo\Silver\sprite.png" />
     <Content Include="Content\kendo\textures\glass.png" />
     <Content Include="Content\kendo\textures\highlight.png" />
+    <Content Include="Content\Site.min.css">
+      <DependentUpon>Site.less</DependentUpon>
+    </Content>
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />

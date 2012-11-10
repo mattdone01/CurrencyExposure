@@ -329,7 +329,7 @@ ul#navigation li.selected a:visited {
 .homepage_actioncall_float-left {
   float: left;
   width: 300px;
-  margin-left: 30px;
+  margin-left: 50px;
   margin-top: 13px;
 }
 .homepage_actioncall_float-right {
@@ -403,6 +403,7 @@ h3 {
 }
 .home_blogSummary_text {
   padding-left: 15px;
+  padding-right: 10px;
   height: 94px;
   overflow: hidden;
   border-top: solid 1px #D4D4CA;

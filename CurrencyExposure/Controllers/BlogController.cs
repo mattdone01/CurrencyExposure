@@ -63,7 +63,7 @@ namespace CurrencyExposure.Controllers
 			return ToJsonNet(result, JsonRequestBehavior.AllowGet);
 		}
 
-		public ActionResult GetPosts()
+		public ActionResult GetPostsAsRss()
 		{
 			var result =  _blogRepository.GetArticlesList(25);
 			var postItems = result.Select(p => new SyndicationItem(p.Title, p.Summary, new Uri(p.BlogUrl),p.Id.ToString(),p.CreateDate));
