@@ -1,0 +1,29 @@
+﻿@{
+    ViewBag.Title = "About";
+}
+
+<script>
+	$(document).ready(function () {
+		$("ul#navigation li").removeClass("selected");
+		$("#AboutTab").addClass("selected");
+		$("#pageLoading").css("display", "none");		
+	});
+</script>
+<input id="mypageid" type="hidden" value="About"/>
+<div id="about_us">
+<h2 class="mainheading">About Us</h2>
+<div id="about_us_content">
+	<p>
+		CurrencyExposure.com was formed from a couple of FX sales dealers and an IT professional who noticed a lack of independent and publicly available information to assist smaller businesses navigate their way through foreign exchange hedging decisions.
+	</p>
+	<p>
+		Our vision for this website is to unravelling some of the myths of currency markets by providing small and informative articles that we hope will be useful to businesses in Australia and elsewhere.&nbsp;
+	</p>
+	<p>
+		The focus is on technology, an understanding of your exposure as well as objective and well thought out hedging strategies.
+	</p>
+	<p>
+		Our ultimate aim is in developing currency management tools to assist small and medium sized businesses add rigor to decisions on currency hedging.
+	</p>
+</div>
+</div>
