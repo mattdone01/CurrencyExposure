@@ -1,0 +1,32 @@
+﻿@using CurrencyExposure.Model.Enums
+@model List<CurrencyExposure.Model.Invoice>
+    @{
+        ViewBag.Title = "Invoices";
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+
+<h2>********************BILLS*******************</h2>
+@foreach (var invoice in Model.Where(i => i.InvoiceType == InvoiceType.Bill))
+{
+    <p>Invoice Number: @invoice.InvoiceId<br/>
+        Invoice Date: @invoice.CreateDate<br/>
+        Invoice Due: @invoice.DueDate<br/>
+        Amount: @invoice.Amount<br/>
+        Currency: @invoice.Currency<br/>
+        Rate: @invoice.CurrencyRate<br/>
+    </p>
+}
+
+<h2>********************Purchase Orders*******************</h2>
+    @foreach (var invoice in Model.Where(i => i.InvoiceType == InvoiceType.PurchaseOrder))
+    {
+        <p>
+            Invoice Number: @invoice.InvoiceId<br />
+            Invoice Date: @invoice.CreateDate<br />
+            Invoice Due: @invoice.DueDate<br />
+            Amount: @invoice.Amount<br />
+            Currency: @invoice.Currency<br />
+            Rate: @invoice.CurrencyRate<br />
+        </p>
+    }
+
