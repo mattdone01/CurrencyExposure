@@ -30,7 +30,22 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Antlr3.Runtime">
+      <HintPath>..\CurrencyExposure.Web\Bin\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Unity.3.5.1404.0\lib\net45\Microsoft.Practices.Unity.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Configuration">
+      <HintPath>..\packages\Unity.3.5.1404.0\lib\net45\Microsoft.Practices.Unity.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.RegistrationByConvention">
+      <HintPath>..\packages\Unity.3.5.1404.0\lib\net45\Microsoft.Practices.Unity.RegistrationByConvention.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -39,11 +54,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Bill.cs" />
+    <Compile Include="DatabaseObjects\Audit.cs" />
+    <Compile Include="DatabaseObjects\Bill.cs" />
+    <Compile Include="Dto\ChangePasswordDto.cs" />
+    <Compile Include="Enums\AuditType.cs" />
     <Compile Include="Enums\InvoiceType.cs" />
-    <Compile Include="Invoice.cs" />
+    <Compile Include="DatabaseObjects\Invoice.cs" />
+    <Compile Include="Dto\LoginDto.cs" />
+    <Compile Include="OperationStatus.cs" />
+    <Compile Include="DatabaseObjects\Organisation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="PurchaseOrder.cs" />
+    <Compile Include="DatabaseObjects\PurchaseOrder.cs" />
+    <Compile Include="DatabaseObjects\OAuthToken.cs" />
+    <Compile Include="DatabaseObjects\User.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using CurrencyExposure.Repository;
+using CurrencyExposure.Web.Helpers;
 
 namespace CurrencyExposure.Web
 {
@@ -22,6 +25,13 @@ namespace CurrencyExposure.Web
 			FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
 			RouteConfig.RegisterRoutes(RouteTable.Routes);
 			BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+
+			Database.SetInitializer<CurrencyExposureContext>(null);
+			//Custom dependency resolver
+			var unityContainer = IocContainer.Instance;
+			//unityContainer.RegisterControllers(); No longer needed due to package update
+			DependencyResolver.SetResolver(new UnityDependencyResolver(unityContainer));
 		}
 	}
 }

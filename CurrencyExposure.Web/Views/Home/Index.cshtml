@@ -2,4 +2,11 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
+<h1>Please login</h1>
+<label>UserName: </label><input id="UserName" type="text"/>
+<label>Password: </label><input id="Password" type="password"/>
+
+<input type="button" title="Delete" value="D" onclick="location.href = '@Url.Action("Delete", "movies", new {id = item.ID})'"/>
+
 @Html.ActionLink("Connect to xero", "Connect", "Home", new { id = "btnConnect" })

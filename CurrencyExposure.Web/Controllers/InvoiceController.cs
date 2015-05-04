@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using CurrencyExposure.Model;
+using CurrencyExposure.Model.DatabaseObjects;
 using CurrencyExposure.Repository.Xero;
 using Xero.Api.Core.Model;
 using Xero.Api.Core.Model.Types;
 using Xero.Api.Example.Applications.Public;
-using Invoice = CurrencyExposure.Model.Invoice;
+using Invoice = CurrencyExposure.Model.DatabaseObjects.Invoice;
 
 namespace CurrencyExposure.Web.Controllers
 {
@@ -20,7 +21,7 @@ namespace CurrencyExposure.Web.Controllers
 			try
 			{
 				var invoices = api.Invoices.Find().ToList();
-				List<CurrencyExposure.Model.Invoice> myInvoices = new List<Invoice>();
+				List<Invoice> myInvoices = new List<Invoice>();
 				foreach (var invoice in invoices)
 				{
 					if (invoice.Type == InvoiceType.AccountsReceivable)
