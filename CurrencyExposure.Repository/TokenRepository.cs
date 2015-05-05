@@ -2,43 +2,13 @@
 using System.Data.Entity;
 using System.Data.Entity.Validation;
 using System.Linq;
-using System.Web.UI.WebControls;
 using CurrencyExposure.Model;
 using CurrencyExposure.Model.DatabaseObjects;
-using CurrencyExposure.Repository.Xero;
 
 namespace CurrencyExposure.Repository
 {
-	public class TokenRepository : ITokenRepository
+    public class TokenRepository : ITokenRepository
 	{
-		public void AutorizeToken(string name, string token, string verifier, string orgId)
-		{
-
-			GetToken(this._tokenUri, token, "oauth/AccessToken", header);
-			
-			
-
-			if (accessToken == null)
-				return View("NoAuthorized");
-
-			var token = new OAuthToken();
-			token.ConsumerKey = accessToken.ConsumerKey;
-			token.ConsumerSecret = accessToken.ConsumerSecret;
-			token.ExpiresAt = accessToken.SessionExpiresAt.Value;
-			token.OrganisationId = accessToken.OrganisationId;
-			token.Session = accessToken.Session;
-			token.SessionExpiresAt = accessToken.SessionExpiresAt.Value;
-			token.TokenKey = accessToken.TokenKey;
-			token.TokenSecret = accessToken.TokenSecret;
-			token.UserId = accessToken.UserId;
-			var result = _tokenRepository.AddToken(token);
-			if (!result.Status)
-				return View("NoAuthorized");
-
-			return System.Web.UI.WebControls.View(accessToken);
-		}
-
-
 		public OperationStatus AddToken(OAuthToken token)
 		{
 			var result = new OperationStatus();
@@ -89,7 +59,7 @@ namespace CurrencyExposure.Repository
 					}
 					if (token.SessionExpiresAt.Subtract(DateTime.Now.ToUniversalTime()).Seconds < 60)
 					{
-						DeleteToken(token.Id);
+						DeleteToken(token.OrganisationId);
 						result.Message = "Token has expired";
 						result.Status = false;
 						return result;
@@ -105,14 +75,14 @@ namespace CurrencyExposure.Repository
 			return result;
 		}
 
-		public OperationStatus DeleteToken(int tokenId)
+		public OperationStatus DeleteToken(string organisationId)
 		{
 			var result = new OperationStatus();
 			try
 			{
 				using (var context = new CurrencyExposureContext())
 				{
-					OAuthToken myToken = context.OAuthToken.FirstOrDefault(c => c.Id == tokenId);
+                    OAuthToken myToken = context.OAuthToken.FirstOrDefault(c => c.OrganisationId == organisationId);
 					context.Entry(myToken).State = EntityState.Deleted;
 					result.RecordsAffected = context.SaveChanges();
 				}
@@ -134,7 +104,7 @@ namespace CurrencyExposure.Repository
 	{
 		OperationStatus AddToken(OAuthToken token);
 		OperationStatus<OAuthToken> GetToken(string organisationId);
-		OperationStatus DeleteToken(int tokenId);
+		OperationStatus DeleteToken(string organisationId);
 		bool IsTokenExpired(OAuthToken token);
 	}
 }

@@ -1,14 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using System.Web.Security;
-using CurrencyExposure.Model;
 using CurrencyExposure.Model.Dto;
 using CurrencyExposure.Repository;
-using Microsoft.Ajax.Utilities;
 
 namespace CurrencyExposure.Web.Controllers
 {
@@ -50,6 +43,7 @@ namespace CurrencyExposure.Web.Controllers
 				if (result.OperationObject.Company == null)
 				{
 					//Need to create a brand new token.
+                    return RedirectToAction("Index", "Token");
 				}
 				
 				//Check if token exists and is still active.
@@ -60,8 +54,7 @@ namespace CurrencyExposure.Web.Controllers
 					return RedirectToLocal(returnUrl);
 				}
 
-				//Token has expired or is invalid. Get another one.
-				
+                return RedirectToAction("Renew", "Token");
 			}
 
 			ModelState.AddModelError("", "Invalid login attempt.");

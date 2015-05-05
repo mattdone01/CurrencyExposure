@@ -9,6 +9,7 @@ using System.Web.Optimization;
 using System.Web.Routing;
 using CurrencyExposure.Repository;
 using CurrencyExposure.Web.Helpers;
+using Microsoft.Practices.Unity;
 
 namespace CurrencyExposure.Web
 {
@@ -29,8 +30,8 @@ namespace CurrencyExposure.Web
 
 			Database.SetInitializer<CurrencyExposureContext>(null);
 			//Custom dependency resolver
-			var unityContainer = IocContainer.Instance;
-			//unityContainer.RegisterControllers(); No longer needed due to package update
+			IUnityContainer unityContainer = IocContainer.Instance;
+		    IocWebRegistration.RegisterMvcTypesForIoc(unityContainer);
 			DependencyResolver.SetResolver(new UnityDependencyResolver(unityContainer));
 		}
 	}

@@ -1,4 +1,6 @@
-﻿using Microsoft.Practices.Unity;
+﻿using CurrencyExposure.Repository.Xero;
+using Microsoft.Practices.Unity;
+using Xero.Api.Infrastructure.Interfaces;
 
 namespace CurrencyExposure.Repository
 {
@@ -15,9 +17,11 @@ namespace CurrencyExposure.Repository
 		{
 			get
 			{
-				_instance.RegisterType<ITokenRepository, TokenRepository>(new PerRequestLifetimeManager());
+                _instance.RegisterType<IAccountRepository, AccountRepository>(new PerRequestLifetimeManager());
 				_instance.RegisterType<IBillRepository, BillRepository>(new PerRequestLifetimeManager());
-				_instance.RegisterType<ITokenRepository, TokenRepository>(new PerRequestLifetimeManager());
+                _instance.RegisterType<IPurchaseOrderRepository, PurchaseOrderRepository>(new PerRequestLifetimeManager());
+                _instance.RegisterType<ITokenRepository, TokenRepository>(new PerRequestLifetimeManager());
+                _instance.RegisterType<ITokenStore, XeroSqlTokenStore>(new PerRequestLifetimeManager());
 				return _instance;
 			}
 		}

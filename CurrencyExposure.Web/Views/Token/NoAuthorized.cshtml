@@ -1,0 +1,9 @@
+﻿@model dynamic
+
+@{
+    ViewBag.Title = "title";
+    Layout = "_Layout";
+}
+
+<h2>You are not authorised. Please connect to xero and reauthorise currency exposure</h2>
+@Html.ActionLink("Connect to xero", "Connect", "Home", new { id = "btnConnect" })

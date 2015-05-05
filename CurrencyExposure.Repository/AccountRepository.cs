@@ -30,6 +30,26 @@ namespace CurrencyExposure.Repository
 			return result;
 		}
 
+        public OperationStatus<User> GetUser(string userName)
+	    {
+            var result = new OperationStatus<User>();
+            try
+            {
+                using (var context = new CurrencyExposureContext())
+                {
+                    var user = context.User.Include(t => t.Company).SingleOrDefault(u => u.EmailAddress == userName);
+                    result.OperationObject = user;
+                    result.Status = user != null;
+                }
+            }
+            catch (Exception ex)
+            {
+                result.CreateFromException(string.Format("Failed to get user {0}",userName), ex);
+                return result;
+            }
+            return result;
+	    }
+
 		public void SaveLoginAudit(string userName)
 		{
 			using (var context = new CurrencyExposureContext())
@@ -101,5 +121,6 @@ namespace CurrencyExposure.Repository
 		void SaveLoginAudit(string userName);
 		OperationStatus ChangePassWord(ChangePasswordDto passwordDto, string userName);
 		OperationStatus<User> ValidateUser(string userName, string password);
+	    OperationStatus<User> GetUser(string userName);
 	}
 }
