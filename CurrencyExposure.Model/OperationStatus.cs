@@ -31,7 +31,7 @@ namespace CurrencyExposure.Model
 		public string ExceptionInnerMessage { get; set; }
 		public string ExceptionInnerStackTrace { get; set; }
 		public bool NeedConfirmation { get; set; }
-		public string ConfirmationToken { get; set; }
+		public bool TokenExpired { get; set; }
 		public string GetFailureMessage()
 		{
 			string msg = string.Format("Operation Status has Failed: {0}", Message);

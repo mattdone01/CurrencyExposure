@@ -24,6 +24,9 @@ namespace CurrencyExposure.Web.Controllers
                 return View("Error", result);
 
             var importResult = _importDataHandler.ImportData(result.OperationObject);
+			if(importResult.TokenExpired)
+				return RedirectToAction("Renew", "Token");
+
             if (!importResult.Status)
                 return View("Error", result);
 

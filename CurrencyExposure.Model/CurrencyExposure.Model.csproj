@@ -53,6 +53,7 @@
   <ItemGroup>
     <Compile Include="DatabaseObjects\Audit.cs" />
     <Compile Include="DatabaseObjects\Bill.cs" />
+    <Compile Include="DatabaseObjects\Rate.cs" />
     <Compile Include="Dto\ChangePasswordDto.cs" />
     <Compile Include="Enums\AuditType.cs" />
     <Compile Include="Enums\InvoiceType.cs" />

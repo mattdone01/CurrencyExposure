@@ -18,17 +18,23 @@ namespace CurrencyExposure.Web.Handlers
 		private readonly IAuthenticator _authenticator;
 		private readonly IBillRepository _billRepository;
 		private readonly IPurchaseOrderRepository _purchaseOrderRepository;
+		private readonly ITokenStore _tokenStore;
 
 		public XeroImportDataHandler(IAuthenticator authenticator, IBillRepository billRepository,
-			IPurchaseOrderRepository purchaseOrderRepository)
+			IPurchaseOrderRepository purchaseOrderRepository, ITokenStore tokenStore)
 		{
 			_authenticator = authenticator;
 			_billRepository = billRepository;
 			_purchaseOrderRepository = purchaseOrderRepository;
+			_tokenStore = tokenStore;
 		}
 
 		public OperationStatus ImportData(User user)
 		{
+			var token = _tokenStore.Find(user.EmailAddress);
+			if (token == null || token.HasExpired)
+				return new OperationStatus(false, "Please Renew your token") {TokenExpired = true};
+
 			var consumer = new Consumer(user.Company.ConsumerKey, user.Company.ConsumerSecret);
 			var apiUser = new ApiUser
 			              {

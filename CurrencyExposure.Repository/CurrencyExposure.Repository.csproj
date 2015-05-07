@@ -57,6 +57,9 @@
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
     </Reference>
+    <Reference Include="RestSharp">
+      <HintPath>..\packages\RestSharp.105.1.0\lib\net45\RestSharp.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -127,9 +130,14 @@
     <Compile Include="Migrations\201505070858575_AddOrgId.Designer.cs">
       <DependentUpon>201505070858575_AddOrgId.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201505070926425_RequiredFlags.cs" />
+    <Compile Include="Migrations\201505070926425_RequiredFlags.Designer.cs">
+      <DependentUpon>201505070926425_RequiredFlags.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PurchaseOrderRepository.cs" />
+    <Compile Include="RateRepository.cs" />
     <Compile Include="RepositoryBase.cs" />
     <Compile Include="TokenRepository.cs" />
     <Compile Include="Xero\XeroSqlTokenStore.cs" />
@@ -150,6 +158,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201505070858575_AddOrgId.resx">
       <DependentUpon>201505070858575_AddOrgId.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201505070926425_RequiredFlags.resx">
+      <DependentUpon>201505070926425_RequiredFlags.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
