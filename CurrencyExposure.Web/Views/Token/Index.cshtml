@@ -1,8 +1,12 @@
-﻿@model dynamic
+﻿@model CurrencyExposure.Model.OperationStatus
 
 @{
-    ViewBag.Title = "title";
-    Layout = "_Layout";
+    ViewBag.Title = "Renew Token";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>title</h2>
+<h2>Token Renewal</h2>
+
+@Html.ActionLink("Click to Renew Token", "Renew") ;
+
+<h3>Please note you will be redirected to Xero to renew and authorise CurrencyExposure to see you data.</h3>

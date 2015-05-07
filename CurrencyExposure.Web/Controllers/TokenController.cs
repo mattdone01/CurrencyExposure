@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Web.Mvc;
+using CurrencyExposure.Model;
 using CurrencyExposure.Repository;
 using CurrencyExposure.Web.Helpers;
 using Xero.Api.Infrastructure.Interfaces;
@@ -13,6 +14,7 @@ namespace CurrencyExposure.Web.Controllers
         IToken RetrieveAndStoreAccessToken(string userId, string tokenKey, string verfier, string organisationShortCode);
     }
 
+	[Authorize]
     public class TokenController : Controller
     {
         private readonly IAccountRepository _accountRepository;
@@ -38,9 +40,12 @@ namespace CurrencyExposure.Web.Controllers
             if (!result.Status)
                 return View("Error", result);
 
-            var consumer = new Consumer(result.OperationObject.Company.ConsumerKey, result.OperationObject.Company.ConsumerSecret);
-            var authorizeUrl = _authenticator.GetRequestTokenAuthorizeUrl(consumer, result.OperationObject.EmailAddress);
-            return Redirect(authorizeUrl);
+			var token = _tokenStore.Find(result.OperationObject.Company.OrganisationId);
+	        if (token == null || token.HasExpired)
+	        {
+				return View(new OperationStatus(false,"Your Token has expired or does not exist. You will need to renew it"));
+	        }
+	        return RedirectToAction("Index", "Home");
         }
 
         /// <summary>
@@ -56,7 +61,8 @@ namespace CurrencyExposure.Web.Controllers
             try
             {
                 var token = _tokenStore.Find(result.OperationObject.Company.OrganisationId);
-                _tokenStore.Delete(token);
+				if(token != null)
+					_tokenStore.Delete(token);
             }
             catch (Exception ex)
             {
@@ -73,7 +79,7 @@ namespace CurrencyExposure.Web.Controllers
         [AllowAnonymous]
 		public ActionResult Authorize(string oauth_token, string oauth_verifier, string org)
         {
-            var accessToken = _authenticator.RetrieveAndStoreAccessToken(_user.Name, oauth_token, oauth_verifier, org);
+			var accessToken = _authenticator.RetrieveAndStoreAccessToken(User.Identity.Name, oauth_token, oauth_verifier, org);
             if (accessToken == null)
                 return View("NoAuthorized");
 

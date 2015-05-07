@@ -3,10 +3,9 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Please login</h1>
-<label>UserName: </label><input id="UserName" type="text"/>
-<label>Password: </label><input id="Password" type="password"/>
+<h1>Welcome to Currency Exposure</h1>
 
-<input type="button" title="Delete" value="D" onclick="location.href = '@Url.Action("Delete", "movies", new {id = item.ID})'"/>
+<h2>Please Click the button to refresh your data from Xero.</h2>
 
-@Html.ActionLink("Connect to xero", "Connect", "Home", new { id = "btnConnect" })
+
+<input type="button" title="Import Data" value="D" onclick="location.href='@Url.Action("Index", "ImportData")'" />

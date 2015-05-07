@@ -47,7 +47,7 @@ namespace CurrencyExposure.Web.Controllers
 				}
 				
 				//Check if token exists and is still active.
-				var tokenResult = _tokenRepo.GetToken(result.OperationObject.Company.OrganisationId);
+				var tokenResult = _tokenRepo.GetToken(user.EmailAddress);
 				if (tokenResult.Status && tokenResult.OperationObject != null &&
 				    !_tokenRepo.IsTokenExpired(tokenResult.OperationObject))
 				{

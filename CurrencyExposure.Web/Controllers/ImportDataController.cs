@@ -4,7 +4,8 @@ using CurrencyExposure.Web.Handlers;
 
 namespace CurrencyExposure.Web.Controllers
 {
-    public class ImportDataController : Controller
+   [Authorize]
+	public class ImportDataController : Controller
     {
         private readonly IAccountRepository _accountRepository;
         private readonly IImportDataHandler _importDataHandler;
@@ -26,7 +27,7 @@ namespace CurrencyExposure.Web.Controllers
             if (!importResult.Status)
                 return View("Error", result);
 
-            return View();
+			return View(result);
         }
     }
 }

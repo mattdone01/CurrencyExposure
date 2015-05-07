@@ -22,6 +22,6 @@ namespace CurrencyExposure.Model.DatabaseObjects
 
 		public DateTime ExpiresAt { get; set;}
 
-		public DateTime SessionExpiresAt { get; set; }
+		public DateTime? SessionExpiresAt { get; set; }
 	}
 }

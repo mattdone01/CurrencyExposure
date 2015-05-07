@@ -1,9 +1,9 @@
-﻿@model $model$
+﻿@model CurrencyExposure.Model.OperationStatus
 
 @{
-  ViewBag.Title = "$title$";
-  Layout = "$_Layout$";
+    ViewBag.Title = "Import Data";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>$title$</h2>
-$END$
+<h2>Import Complete</h2>
+<h2>@Model.Message</h2>

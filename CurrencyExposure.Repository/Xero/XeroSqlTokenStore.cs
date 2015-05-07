@@ -17,8 +17,8 @@ namespace CurrencyExposure.Repository.Xero
         public IToken Find(string user)
         {
             var result = _tokenRepository.GetToken(user);
-            if (!result.Status)
-                throw new Exception("Failed to Find Token", new Exception(result.ExceptionInnerMessage));
+	        if (!result.Status)
+		        return null;
             var storedToken = result.OperationObject;
 
             var xeroToken = new Token();
@@ -40,10 +40,10 @@ namespace CurrencyExposure.Repository.Xero
             var token = new OAuthToken();
             token.ConsumerKey = accessToken.ConsumerKey;
             token.ConsumerSecret = accessToken.ConsumerSecret;
-            token.ExpiresAt = accessToken.SessionExpiresAt.Value;
+            token.ExpiresAt = accessToken.ExpiresAt.Value;
             token.OrganisationId = accessToken.OrganisationId;
             token.Session = accessToken.Session;
-            token.SessionExpiresAt = accessToken.SessionExpiresAt.Value;
+			token.SessionExpiresAt = accessToken.SessionExpiresAt ?? accessToken.ExpiresAt.Value; 
             token.TokenKey = accessToken.TokenKey;
             token.TokenSecret = accessToken.TokenSecret;
             token.UserId = accessToken.UserId;

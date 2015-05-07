@@ -119,6 +119,15 @@
     <Compile Include="BillRepository.cs" />
     <Compile Include="CurrencyExposureContext.cs" />
     <Compile Include="IocContainer.cs" />
+    <Compile Include="Migrations\201505070636282_InitalMigration.cs" />
+    <Compile Include="Migrations\201505070636282_InitalMigration.Designer.cs">
+      <DependentUpon>201505070636282_InitalMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201505070858575_AddOrgId.cs" />
+    <Compile Include="Migrations\201505070858575_AddOrgId.Designer.cs">
+      <DependentUpon>201505070858575_AddOrgId.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PurchaseOrderRepository.cs" />
     <Compile Include="RepositoryBase.cs" />
@@ -134,6 +143,14 @@
       <Project>{17f2010d-5011-4ad9-9752-aa3eaafa4ab0}</Project>
       <Name>CurrencyExposure.Model</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201505070636282_InitalMigration.resx">
+      <DependentUpon>201505070636282_InitalMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201505070858575_AddOrgId.resx">
+      <DependentUpon>201505070858575_AddOrgId.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\System.Data.SQLite.Core.1.0.96.0\build\net45\System.Data.SQLite.Core.targets" Condition="Exists('..\packages\System.Data.SQLite.Core.1.0.96.0\build\net45\System.Data.SQLite.Core.targets')" />

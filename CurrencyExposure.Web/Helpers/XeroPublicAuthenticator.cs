@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Security.Cryptography.X509Certificates;
 using CurrencyExposure.Web.Controllers;
 using Xero.Api.Infrastructure.Interfaces;
@@ -9,7 +10,8 @@ namespace CurrencyExposure.Web.Helpers
 {
     public class XeroPublicAuthenticator : IMvcAuthenticator
     {
-        private readonly string _baseUri;
+        private static Dictionary<string, IToken> _requestTokens = new Dictionary<string, IToken>();
+		private readonly string _baseUri;
         private readonly string _tokenUri;
         private readonly string _callBackUrl;
         private readonly ITokenStore _store;
@@ -17,7 +19,8 @@ namespace CurrencyExposure.Web.Helpers
         public XeroPublicAuthenticator(ITokenStore store)
         {
             _baseUri = "https://api.xero.com"; //TODO: Move to App Settings
-            _tokenUri = "https://api-partner.network.xero.com"; //TODO: Move to App Settings
+            //_tokenUri = "https://api-partner.network.xero.com"; //This is for partner apis
+			_tokenUri = "https://api.xero.com";//TODO: Move to App Settings
             _callBackUrl = "http://localhost/CurrencyExposure.Web/Token/Authorize"; //TODO: Move to App Settings
             _store = store;
         }
@@ -58,6 +61,11 @@ namespace CurrencyExposure.Web.Helpers
         {
             IToken requestToken = GetRequestToken(consumer);
             requestToken.UserId = userId;
+	        if (_requestTokens.ContainsKey(userId))
+		        _requestTokens[userId] = requestToken;
+	        else
+		        _requestTokens.Add(userId, requestToken);
+
             return GetAuthorizeUrl(requestToken);
         }
 
@@ -90,20 +98,30 @@ namespace CurrencyExposure.Web.Helpers
             return CreateSignature(token, verb, uriBuilder.Uri, verifier, renewToken, callback);
         }
 
-        public IToken RetrieveAndStoreAccessToken(string userId, string tokenKey, string verfier,
-            string organisationShortCode)
+        public IToken RetrieveAndStoreAccessToken(string userId, string tokenKey, string verfier,string organisationShortCode)
         {
-            IToken token1 = _store.Find(userId);
-            if (token1 == null)
-                throw new ApplicationException("Failed to look up request token for user");
-            if (token1.TokenKey != tokenKey)
-                throw new ApplicationException("Request token key does not match");
-            IToken accessToken = Tokens.GetAccessToken(token1,
-                GetAuthorization(token1, "POST", Tokens.AccessUri, null, verfier, false));
-            accessToken.UserId = userId;
-            _store.Delete(accessToken);
-            _store.Add(accessToken);
-            return accessToken;
+			var existingAccessToken = _store.Find(userId);
+			if (existingAccessToken != null)
+				return existingAccessToken;
+
+			if (!_requestTokens.ContainsKey(userId))
+				throw new ApplicationException("Failed to look up request token for user");
+
+	        var requestToken = _requestTokens[userId];
+			if (requestToken.TokenKey != tokenKey)
+				throw new ApplicationException("Request token key does not match");
+	        
+			_requestTokens.Remove(userId);
+
+			var accessToken = Tokens.GetAccessToken(requestToken,
+				GetAuthorization(requestToken, "POST", Tokens.AccessUri, null, verfier));
+
+			accessToken.UserId = userId;
+
+			_store.Delete(accessToken);
+			_store.Add(accessToken);
+
+			return accessToken;
         }
 
         public string GetSignature(IConsumer consumer, IUser user, Uri uri, string verb, IConsumer consumer1)
